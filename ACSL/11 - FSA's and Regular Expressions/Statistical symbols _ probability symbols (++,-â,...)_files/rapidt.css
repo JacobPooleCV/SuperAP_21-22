@@ -1,0 +1,268 @@
+﻿* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html, body {
+	margin:0px;
+	padding:0px;
+	color:#222;
+	background:#eee;
+	font-size:14px;
+	font-family:Arial,Verdana,Helvetica,sans-serif;
+	border-style:none;
+	min-height: 100%;
+}
+
+#wrapper {
+	max-width:980px;
+	margin:0 auto;
+	border-width:0px;
+	background:white;
+	-webkit-box-shadow: 1px 1px 10px 5px rgba(192, 192, 192, 0.53);
+	-moz-box-shadow:    1px 1px 10px 5px rgba(192, 192, 192, 0.53);
+	box-shadow:         1px 1px 10px 5px rgba(192, 192, 192, 0.53);
+}
+
+#header {
+	background:#ffcc66;
+	margin:0px;
+	padding:10px 10px 10px 20px;
+	line-height:0%;
+	height:90px;
+	position:relative;
+	line-height:100%;
+}
+
+#nav {
+	padding:8px 10px 8px 0px;
+	background:#ffbb55;
+	color:#000;
+	clear:left;
+}
+
+#nav a {
+	padding:8px 5px 8px 5px;
+	color:#000;
+	text-decoration:none; 
+	border:1px solid #ffbb55;
+}
+
+#nav a:link, a:visited {
+}
+
+#nav a:hover {
+	background-color:#ffaa44;
+	border:1px solid #ff9933;
+}
+
+#lcol {
+	background:#fff;
+	padding:20px 0px 20px 20px;
+	position:relative;
+	float:left;
+	top:0px;
+	left:0px;
+	max-width:660px;
+}
+#rcol {
+	//border-left:1px #cccccc solid;
+	//padding:20px 20px 10px 10px;
+	padding:20px 20px 10px 0px;
+	position:relative;
+	float:right;
+	top:0px;
+	right:0px;
+	max-width:320px;
+}
+
+.gcse-searchbox {
+	width:300px;
+}
+
+.gcse-searchbox TD
+{
+	padding-right:0px;
+	padding-left:0px;
+}
+
+input.gsc-input {
+    border-color: #004220;
+}
+
+input.gsc-search-button {
+    border-color: #004220;
+	width:66px !important;
+	height:25px !important;
+	padding:5px 25px 5px 25px !important;
+}
+
+#rec-ad {
+	margin-top:25px;
+}
+#ban-ad {
+	margin-left:5px;	
+}
+
+#doc {
+	margin-left:-36px;
+}
+
+#feedback {
+	max-width:600px;
+	margin-left:5px;
+}
+
+#feedback table {
+	max-width:500px;
+	border-style:none;
+}
+
+#feedback input[type=text] {
+	margin-left:2px;
+	padding:5px;
+	width:250px;
+}
+
+#feedback input[type=button] {
+	padding:5px;
+	font-size:14px;
+}
+
+#footer {
+	color:#ccc;
+	background:#444;
+	padding:30px;	
+	clear:both;
+	text-align:center;
+	line-height:200%;
+}
+
+#footer a {
+	color:#ccc;
+	padding:8px 5px 8px 5px;
+	text-decoration:none; 
+}
+
+#footer a:link, a:visited {
+}
+
+#footer a:hover {
+	color:#eee;
+	background:#333;
+}
+
+
+
+BODY
+{
+	line-height: 1.3;
+}
+P
+{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+TABLE
+{
+	margin-bottom: 5px;
+}
+TH
+{
+	background-color: #E0E0E0;
+	font-style: normal;
+}
+TD
+{
+	padding-right:5px;
+	padding-left:5px;
+}
+UL, UL UL
+{
+	//font-size: 1.1em;
+	font-size: 1em;
+	list-style-position:outside;
+}
+LI
+{
+	margin-top:2px;
+	margin-left: -11px;
+}
+H1,H2,H3
+{
+	font-weight:normal;
+}
+H1
+{
+	margin-top:0px;
+	margin-bottom:4px;
+	padding-bottom:0px;
+	color: #333333;
+}
+H1 { font-size: 1.8em; margin-top: 10px; }
+H2 { font-size: 1.4em; letter-spacing: 0px; margin-top: 15px; margin-bottom: 3px;}
+H3 { font-size: 1.4em; letter-spacing: 0px; margin-top: 15px; margin-bottom: 3px;}
+H4 { font-size: 1.1em; margin-top: 5px; margin-bottom: 2px; font-weight: bold;}
+H5 { font-size: 0.9em; margin-top: 5px; margin-bottom: 2px; font-weight: bold;}
+H6 { font-size: 1.1em; color: #333333; font-weight: normal; font-style: italic; margin-top: 3px; margin-bottom: 0px; }
+
+#rcol H5 { font-size: 0.9em; font-weight: bold; margin-top: 5px; margin-bottom: 2px; background:#eee; padding:5px 5px 5px 10px}
+
+PRE
+{
+	background-color: #FBEDBB;
+	padding: 7pt;
+	font: 9pt "Courier New", Courier, mono;
+	white-space: pre;
+	overflow:auto !important;
+}
+
+input 	  { font-size: 0.9em; }
+input.btn { font-size: 1.2em; }
+.intext		{ background-color: #ffffff; padding-left:3px; border:1px inset #eee}  
+.outtext	{ background-color: #e0f0e0; padding-left:3px; border:1px solid #ddd}
+
+a:link		{ text-decoration: none; color: #083d8d; }
+a:visited	{ text-decoration: none; color: #083d8d; }
+a:active	{ text-decoration: underline; color: #000000; }
+a:hover		{ text-decoration: underline; color: #000000; }
+a:focus	    { outline: none; }
+
+.math       { font-family: "Times New Roman"; font-size: 1.6em; padding-left: 6px; font-weight: normal;}
+.mathsymbol { font-family: "Times New Roman"; font-size: 1.2em;  font-weight: normal; }
+.text       { font-family: "Times New Roman", Times, serif; font-size: 1.2em }
+.code       { font-family: "Courier New"; font-size: 1.0em; padding-left: 6px;}
+.codebg     { font-family: "Courier New"; font-size: 1.0em; color: #000000; background-color:#f0f0f0; margin-top: 0px; margin-bottom: 0px; padding-left: 6px; }
+.codebg.p   { font-family: "Courier New"; font-size: 1.0em; color: #000000; background-color:#f0f0f0; margin-top: 0px; margin-bottom: 0px;}
+p.code      { font-family: "Courier New"; font-size: 1.0em; color: #000000; background-color:#f0f0f0; margin:0px; padding:5px; border-width:1px; border-color:#ccc; border-style:solid; line-height:20px}
+p.wcode     { font-family: "Courier New"; font-size: 1.0em; color: #000000}
+p.tcode		{ font-family: "Courier New"; font-size: 1.0em; color: #000000; background-color:#f0f0f0; margin:0px; padding:5px; border-width:1px; border-color:#ccc; border-style:solid; line-height:20px }
+
+.table1 .hov { border: 2px black solid; padding: 4px; }
+.table1 .ho2 { border: 2px #707070 solid; padding: 4px; }
+.table1 .td  { border: 1px black solid; padding: 5px; }
+table.dtable { border: 1px #ccc solid; border-collapse:collapse; padding: 5px;}
+table.dtable th { border: 1px #ccc solid; border-collapse:collapse; padding: 5px; font-weight:normal;}
+table.dtable td { border: 1px #ccc solid; border-collapse:collapse; padding: 5px;}
+
+table.calc {
+	border-spacing: 0px;
+	border-collapse: separate;
+	background-color: #f0f0f0;
+	border:1px #ddd solid;
+	border-radius:7px;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+}
+table.calc td {
+	border-width: 0px;
+	padding: 2px;
+	border-style: none;
+	border-color: #f0f0f0;
+	background-color: #f0f0f0;
+}
+
+*html .yui-picker-bg {
+background-image: none;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://yui.yahooapis.com/2.5.2/build/colorpicker/assets/picker_mask.png', sizingMethod='scale');
+}

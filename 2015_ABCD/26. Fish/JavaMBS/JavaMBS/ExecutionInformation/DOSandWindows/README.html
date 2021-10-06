@@ -1,0 +1,67 @@
+<html><head><title>MBS: TextPad Instructions</title>
+</head>
+
+<body bgcolor="#ffffff">
+<center>
+  <h1>Marine Biology Simulation</h1>
+  <p>&nbsp;</p>
+</center>
+
+<h3>Information on compiling and running the Marine Biology Simulation program 
+  under DOS and Windows (from a DOS or Command Prompt window):</h3>
+
+<p>
+To compile all the necessary files for the Marine Biology Simulation,
+run the following command within the <code>Code</code> folder:
+<pre><code>  javac.exe -classpath .;.\mbsbb.jar;.\mbsgui.jar *.java</code></pre>
+You may need to specify the full path name for the <code>javac.exe</code> file,
+such as <code>C:\jdk1.2.2\bin\javac.exe</code>.  For your convenience, we have
+provided <code>compMBS.bat</code> (for "Compile MBS") in this folder.  If you
+want to use it, move it to the <code>JavaMBS\Code</code> directory and correct
+the full path name for <code>javac.exe</code>.  Then run
+<pre><code>  compMBS</code></pre>
+which will run the command above to compile all the Java source
+files in the current directory (<code>Code</code>).
+
+<p>
+To run the Marine Biology Simulation, run the following
+command from within the <code>Code</code> folder:
+<pre><code>  java.exe -classpath .;.\mbsbb.jar;.\mbsgui.jar [target]</code></pre>
+where <code>[target]</code> should be replaced by one of the following:
+<pre>    <code>MBSGUI</code>            program with full graphical user interface
+                        (from beginning of Chapter 1)
+    <code>SimpleMBSDemo1</code>    simple demo program (end of Chapter 1)
+    <code>SimpleMBSDemo2</code>    second demo program (end of Chapter 1)</pre>
+You may need to specify the full path name for the <code>java.exe</code> file,
+such as <code>C:\jdk1.2.2\bin\java.exe</code>.  For your convenience, we have
+provided <code>runMBS.bat</code> ("Run MBS") in this folder.  If you want to
+use it, move it to the <code>JavaMBS\Code</code> directory and correct the full
+path name for <code>java.exe</code>.  Then type
+<pre><code>  runMBS [target]</code></pre>
+where <code>[target]</code> is one of the three classes listed above.  This
+command will run the <code>java.exe</code> command, setting the classpath.  If
+you do not specify the target, <code>runMBS</code> will use <code>MBSGUI</code>.
+
+<p>
+When you go to open an environment data file, the file chooser
+window should come up in the <code>Code</code> folder, where the program is running.
+You will need to go up to the <code>JavaMBS</code> folder and then down to the
+<code>DataFiles</code> folder to find the initial configuration files.
+
+<p>
+For Chapter 3 (and later chapters), if you are using the <code>Fish.java</code> file
+from the <code>DynamicPopulation</code> folder rather than modifying the file in the
+<code>Code</code> folder (see <code>FishModsForChap3.txt</code> in the <code>Code</code> folder for more
+details), you will also need to execute the following command in
+the <code>DynamicPopulation</code> folder:
+<pre><code>  javac.exe -classpath ..;..\mbsbb.jar;..\mbsgui.jar Fish.java</code></pre>
+Then copy the <code>Fish.class</code> file from the <code>DynamicPopulation</code> 
+folder to the <code>Code</code> folder before running the usual <code>java.exe</code> 
+command to actually run the simulation. You can copy the <code>compDPop.bat</code> 
+file from this folder to the <code>Code</code> folder and correct the full path 
+name for the <code>javac</code> command as you did in <code>compMBS.bat</code>. 
+Run <code>compDPop</code> from the <code>Code</code> folder. This command will 
+compile the <code>Fish</code> class in the <code>DynamicPopulation</code> folder 
+and then copy the <code>Fish.class</code> file to the <code>Code</code> folder. 
+Then run the Marine Biology Simulation as usual. 
+</body></html>

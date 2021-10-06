@@ -1,0 +1,5 @@
+Apples : None : 0 58
+Apple Juice : Jug : 25 52
+Oranges : None : 24 64
+Orange Juice : Carton : 50 45
+Animal Crackers : Box : 100 63

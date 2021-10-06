@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>HA36_1Delete.java</title>
+</head>
+<body>
+<pre>
+<b>public</b> <b>void</b> delete(Comparable target)
+// post: deletes a node with data equal to target, <b>if</b> present,
+//       preserving binary search tree property
+{
+  myRoot = deleteHelper(myRoot, target);
+}
+
+<b>private</b> TreeNode deleteHelper(TreeNode node, Comparable target)
+// pre : node points to a non-empty binary search tree
+// post: deletes a node with data equal to target, <b>if</b> present,
+//       preserving binary search tree property
+{
+  <b>if</b> (node == null)
+    <b>throw</b> <b>new</b> NoSuchElementException();
+
+  <b>else</b> <b>if</b> (target.compareTo(node.getValue()) == 0)
+  {
+     <b>return</b> deleteTargetNode(node);
+  }
+  <b>else</b> <b>if</b> (target.compareTo(node.getValue()) &lt; 0)
+  {
+    node.setLeft(deleteHelper(node.getLeft(), target));
+    <b>return</b> node;
+  }
+  <b>else</b> //target.compareTo(root.getValue()) &gt; 0
+  {
+    node.setRight(deleteHelper(node.getRight(), target));
+    <b>return</b> node;
+  }
+}
+
+<b>private</b> TreeNode deleteTargetNode(TreeNode target)
+// pre : target points to node to be deleted
+// post: target node is deleted preserving binary search tree property
+{
+  <b>if</b> (target.getRight() == null)
+  {
+    <b>return</b> target.getLeft();
+  }
+  <b>else</b> <b>if</b> (target.getLeft() == null)
+  {
+    <b>return</b> target.getRight();
+  }
+  <b>else</b> <b>if</b> (target.getLeft().getRight() == null)
+  {
+     target.setValue(target.getLeft().getValue());
+     target.setLeft(target.getLeft().getLeft());
+     <b>return</b> target;
+  }
+  <b>else</b> // left child has right child
+  {
+     TreeNode marker = target.getLeft();
+     <b>while</b> (marker.getRight().getRight() != null)
+       marker = marker.getRight();
+
+     target.setValue(marker.getRight().getValue());
+     marker.setRight(marker.getRight().getLeft());
+     <b>return</b> target;
+  }
+}
+
+// ------------------ testDelete method - add to BSTree.java
+
+<b>public</b> <b>void</b> testDelete(BinarySearchTree temp)
+{
+  <b>int</b> idToDelete;
+  <b>boolean</b> success;
+
+  System.out.println(&quot;Testing delete algorithm\n&quot;);
+  System.out.print(&quot;Enter Id value to delete (-1 to quit) --&gt; &quot;);
+  idToDelete = console.readInt();
+
+  <b>while</b> (idToDelete &gt;= 0)
+  {
+    Item dNode = <b>new</b> Item(idToDelete, 0);
+
+    <b>if</b> (temp.find(dNode) == null)
+      System.out.println(&quot;Id# &quot; + idToDelete + &quot;  No such part in stock&quot;);
+    <b>else</b>
+    {
+      temp.delete(dNode);
+      System.out.println(&quot;     Id #&quot; + idToDelete + &quot; was deleted&quot;);
+    }
+    System.out.println();
+    System.out.print(&quot;Enter Id value to delete (-1 to quit) --&gt; &quot;);
+
+    idToDelete = console.readInt();
+  }
+}
+</pre>
+</body>
+</html>

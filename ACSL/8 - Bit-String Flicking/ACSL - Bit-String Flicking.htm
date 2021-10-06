@@ -1,0 +1,256 @@
+
+<!-- saved from url=(0068)http://www.minich.com/education/wyo/acsl/bitstringflicking/index.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ACSL - Bit-String Flicking</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<p align="center"><big><strong>Bit-String Flicking</strong></big></p>
+
+<p><a href="http://www.minich.com/education/wyo/acsl/bitstringflicking/bitstringwksht1.htm">Bit-String Flicking Worksheet #1</a>, <a href="http://www.minich.com/education/wyo/acsl/bitstringflicking/bitstringwksht2.htm">Bit-String 
+  Flicking Worksheet #2</a>, <a href="http://www.minich.com/education/wyo/acsl/bitstringflicking/bitstringwksht3.htm">Bit-String Flicking 
+  Worksheet #3</a>, <a href="http://www.minich.com/education/wyo/acsl/bitstringflicking/bitstringwksht4.htm">Bit-String Flicking Worksheet 
+  #4</a></p>
+<p>A bit string is a sequence of bits (1's and 0's). Bit strings are used for 
+  various reasons by computer scientists.</p>
+
+<p>Bit-string flicking is the process of operating on bit strings with<b> logical 
+  operators</b>,<b> shifts</b>, and <b>circulates</b>. <br>
+  <font size="+1"><br>
+  I. Logical Operators</font></p>
+<blockquote>
+  <p> The logical operators that are used in bit string flicking are:</p>
+  <p>AND, OR, XOR, and NOT</p>
+  <p>Note that these Boolean, logical operators are often written in upper-case 
+    letters. Sometimes, we use the following symbols in place instead of these 
+    operators.</p>
+  <p>AND is represented as &amp;<br>
+    OR is represented as | (known as the vertical pipe)<br>
+    XOR is represented as <img src="./ACSL - Bit-String Flicking_files/xorsymbol.gif" width="21" height="20"> 
+    (in C++, it is represented as the caret, ^)<br>
+    NOT is represented as ~ (known as a tilde)</p>
+  <p>You apply these logical operators on a "bit by bit" basis. Of course, 
+    the bit 1 is evaluated as TRUE and the bit 0 is evaluated as FALSE. The logical 
+    operators apply just like they do in Boolean logic. Remember that AND is similar 
+    to mathematical multiplication and that OR is like addition.</p>
+  <p>Some real easy examples:</p>
+  <p><strong><big>1 &amp; 1 = 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    1 | 0 = 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 | 0 = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    1 &amp; 0 = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 <img src="./ACSL - Bit-String Flicking_files/xorsymbol.gif" width="21" height="20">&nbsp;0 
+    = 1</big></strong></p>
+  <p>More complicated examples:</p>
+  <p><strong><big><font color="#FF0000">1</font><font color="#FF8040">0</font>1 
+    &amp; <font color="#FF0000">1</font><font color="#FF8040">1</font>0 = <font color="#FF0000">1</font><font color="#FF8040">0</font>0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <font color="#0000FF">1</font>1<font color="#00FF00">0</font><font color="#FF0000">0</font> | <font color="#0000FF">0</font>1<font color="#00FF00">0</font><font color="#FF0000">0</font> = <font color="#0000FF">1</font>1<font color="#00FF00">0</font><font color="#FF0000">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<font color="#000000">0</font><font color="#0000CC">1</font> 
+    </font><img src="./ACSL - Bit-String Flicking_files/xorsymbol.gif" width="21" height="20">&nbsp;<font color="#FF0000">1</font>1<font color="#0000CC">0</font> 
+    = <font color="#fF0000">0</font>1<font color="#0000CC">1</font> </big></strong></p>
+  <p>The color coding in the examples above depict the fact that the logical operators 
+    work on a bit by bit basis since the like colored bits are evaluated 2 at 
+    a time.</p>
+  <p>The NOT operator applies just like the negative sign in mathematics except, 
+    of course, the "negative" of 1 is 0 in Boolean logic and vice versa.</p>
+  <p>Examples:</p>
+  <p><big><strong>~1 = 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~10111 = 01000 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~(111 &amp; 100) = ~100 = 011</strong></big></p>
+  <p>Note that in the case of bit strings, you may not disregard leading 0's as 
+    you would in mathematics or even binary arithmetic. That is, in binary arithmetic 
+    one can subtract the binary numbers </p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 111<br>
+    &nbsp;&nbsp; -&nbsp;&nbsp;&nbsp; 101<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 010 <br>
+    <br>
+    and simplify that answer to simply 10</p>
+  <p><b><font size="+1">but</font></b> in bit string flicking you must <strong>NEVER</strong> 
+    drop off a leading 0 bit because every bit has meaning usually. Since bit 
+    strings are often used as a set of flags or since the lead bit may indicate 
+    a number being negative or positive, you cannot disregard the leading 0 if 
+    there is one.</p>
+  <p>Another logical operator is the <b>XOR</b>. It is sometimes called the "eXclusive 
+    OR " operator. It works as the phrase "...either....or....but not 
+    both " is defined in the English language. For example, </p>
+  <p>a XOR b is true if either bit a is TRUE or bit b is TRUE <strong>but not 
+    both.</strong> So,</p>
+  <p>1 XOR 0 = 1&nbsp;&nbsp;&nbsp; and 0 XOR 1 = 1&nbsp;&nbsp;&nbsp; and 1 XOR 
+    1 = 0 &nbsp;&nbsp;&nbsp; and 0 <img src="./ACSL - Bit-String Flicking_files/xorsymbol.gif" width="21" height="20"> 
+    0 = 0</p>
+  <p>10110 XOR 00101 = 10011 (remember to evaluate the expression on a bit by 
+    bit basis)</p>
+  <p>Yet another logical operator is <b>XNOR</b>. It is sometimes called the eXclusive 
+    NOR. It is true if both of its arguments are the same (either 1 or 0). It 
+    is the opposite of XOR and is equivalent to ~(A XOR B).</p>
+  <p>For example, 1011 XNOR 1110 = 1010</p>
+  <p>You should memorize or be able to reproduce the following truth table that 
+    summarizes the AND, OR, XOR, and NOT logical operations.</p>
+  <a name="truthtable"></a>
+<table width="68%" border="1">
+    <tbody><tr> 
+      <td width="4%"> 
+        <div align="center"><b>A</b></div>
+      </td>
+      <td width="4%"> 
+        <div align="center"><b>B</b></div>
+      </td>
+      <td width="15%"> 
+        <div align="center"><b>A AND B</b></div>
+      </td>
+      <td width="16%"> 
+        <div align="center"><b>A OR B</b></div>
+      </td>
+      <td width="16%"> 
+        <div align="center"><b>A XOR B</b></div>
+      </td>
+      <td width="18%"> 
+        <div align="center"><b>A XNOR B</b></div>
+      </td>
+      <td width="27%"> 
+        <div align="center"><b>NOT A</b></div>
+      </td>
+    </tr>
+    <tr bgcolor="#3333FF"> 
+      <td colspan="7" height="6">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="4%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="4%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="15%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="27%"> 
+        <div align="center">1</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="4%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="4%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="15%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="27%"> 
+        <div align="center">1</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="4%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="4%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="15%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="27%"> 
+        <div align="center">0</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="4%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="4%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="15%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="16%"> 
+        <div align="center">0</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">1</div>
+      </td>
+      <td width="27%"> 
+        <div align="center">0</div>
+      </td>
+    </tr>
+  </tbody></table>
+  <p><br>
+  </p>
+</blockquote>
+<p><font size="+1">II. Shifting</font></p>
+<blockquote>
+  <p>Another set of operations that can be performed on bit strings is "logical 
+    <b>shifting</b>." Shifting "ripples" the bit string to the 
+    right or left. Bits are shifted out of the bit string entirely and zero bits 
+    are shifted in from the other end. Be careful never to change the overall 
+    size of a bit string. One 0 shifts into the bit string to take the place of 
+    each bit that is shifted out.</p>
+  <p>Examples:</p>
+  <p><big><strong>LSHIFT-3 <font color="#0000FF">100</font><font color="#00FF00">0</font><font color="#FF0000">1</font> = <font color="#00FF00">0</font><font color="#FF0000">1</font>000</strong></big></p>
+  <p>The bit string "rippled" to the left losing 3 original bits (<font color="#0000FF">the 
+    blue ones</font>) and three trailing 0 bits (<b>the black ones</b>) were added.</p>
+  <p><big><strong>RSHIFT-1 1011 = 0101</strong></big></p>
+</blockquote>
+<p><font size="+1">III. Circulating</font></p>
+<blockquote>
+  <p>Finally, there is another similar bit string operation known as the <b>circulate</b>. 
+    Circulates do just that, they circulate the bits off of one end of a bit string 
+    into the other end. No zeros are introduced as in the shifts. No bits are 
+    lost they are just rearranged. If however a bit string circulates by the same 
+    amount as its length, it will have circulated back to its original state!</p>
+  <p>Examples:</p>
+  <p><big><strong>RCIRC-3&nbsp;&nbsp;&nbsp; <font color="#FF0000">1</font>0<font color="#0000FF">1</font><font color="#008000">1</font>1 = <font color="#0000FF">1</font><font color="#008000">1</font>1<font color="#FF0000">1</font>0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    RCIRC-1&nbsp;&nbsp; <font color="#0000FF">1</font>01 = 1<font color="#0000FF">1</font>0</strong></big></p>
+  <p><big><strong>LCIRC-5&nbsp;&nbsp;&nbsp; 111<font color="#FF0000">1</font>00101 
+    = 0101111<font color="#FF0000">1</font>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCIRC-4&nbsp; 
+    1<font color="#0000FF">1</font>01 = 1<font color="#0000FF">1</font>01</strong></big></p>
+  <p>Of course, these operations can be compounded into larger expressions. So<b><font color="#CC0033"> 
+    you must be careful</font></b> to evaluate the expressions according to the 
+    <b>order of operations</b> which is (from highest to lowest precedence):</p>
+  <ol>
+    <li>NOT</li>
+    <li>SHIFT and CIRC (evaluate from right to left in the expression)</li>
+    <li>AND (which is similar to multiplication in normal mathematics)</li>
+    <li>XOR and XNOR (evaluate from left to right in the expression)</li>
+    <li>OR (which is similar to addition in normal mathematics)</li>
+  </ol>
+</blockquote>
+<p>The C++ textbook that we use in Honors/AP Comp Science provides an excellent 
+  <a href="http://www.programcpp.com/chapter07/7_1_2.html">tutorial</a> for "bitwize"operators.</p>
+
+<hr>
+
+<p align="center"><a href="http://www.minich.com/education/wyo/acsl/index.htm">ACSL Home Page</a> | <a href="http://www.minich.com/education/wyo/index.htm">Mr.
+Minich's Wyo Home Page</a> | <a href="http://www.minich.com/">Minich.com Web Design</a></p>
+
+
+</body></html>

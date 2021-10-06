@@ -1,0 +1,173 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Lesson 40 - Hash-Coded Data Storage</title><style type="text/css">
+    <!--
+      body                 { color: #000000; background-color: #ffffff; } 
+      A                    { font-family: Verdana, Arial, Helvetica; text-decoration: none; }
+      A:visited            { color: #551a8b; }
+      A:hover              { color: #0066CC;	text-decoration: underline; }
+      dt                   { font-weight: bold; } 
+      input                { font-family: Courier New, Courier, monospace; font-size: 100% }
+      code                 { font-family: Courier New, Courier, monospace; font-size: 120% }
+      titleCode            { font-family: Courier, monospace; font-size: +4; }
+      ol.alpha             { list-style-type: lower-alpha; }
+      span.center          { text-align: center; }
+      span.right           { text-align: right; }
+      span.constant        { color: #990099; }
+      span.keyword         { color: #993333; }
+      span.function-name   { color: #666633; }
+      span.comment         { color: #666666; }
+      span.string          { color: #0000ff; }
+      span.variable-name   { color: #000066; }
+      span.type            { color: #006600; }
+      span.spacer          { font-size: 1pt; }
+      -->
+    </style></head><body bgcolor="ffffff"><script language="javascript">
+    <!-- var emailAbstract="Lesson 40 - Hash-Coded Data Storage";
+    var justTitle="Lesson 40 - Hash-Coded Data Storage";
+    var tutorialPrereqs="";
+    var menu1blurb="Lesson 40 - Hash-Coded Data Storage"; 
+    
+      var browser = "x";
+      if (navigator.userAgent.indexOf("Mozilla/4") != -1) browser = "N3";
+      else if (navigator.userAgent.indexOf("Mozilla/3") != -1) browser = "N3";
+      else browser = "x";
+      
+      if (browser=="N3")
+      {
+    var menu1over=new Image(108,68); 
+    var menu1out=new Image(108,68); 
+    
+        var topmainover=new Image(77,15);
+        var topmainout=new Image(77,15);
+        var bottommainover=new Image(77,15);
+        var bottommainout=new Image(77,15);
+
+        var topfeedbackover=new Image(80,15);
+        var topfeedbackout=new Image(80,15);
+        var bottomfeedbackover=new Image(80,15);
+        var bottomfeedbackout=new Image(80,15);
+        var toppreviousover=new Image(77,15);
+        var toppreviousout=new Image(77,15);
+        var bottompreviousover=new Image(77,15);
+        var bottompreviousout=new Image(77,15);
+        var topnextover=new Image(60,15);
+        var topnextout=new Image(60,15);
+        var bottomnextover=new Image(60,15);
+        var bottomnextout=new Image(60,15);
+        var topnextsectionover=new Image(108,15);
+        var topnextsectionout=new Image(108,15);
+        var bottomnextsectionover=new Image(108,15);
+        var bottomnextsectionout=new Image(108,15);
+      
+    menu1over.src="imagemaster/himenu1.jpg"; 
+    menu1out.src="imagemaster/menu1.jpg"; 
+    
+        var mainblurb="Main menu";
+        var sectionblurb="Section menu";
+        var feedbackblurb="Give feedback on this tutorial";
+        var previousblurb="Go to previous panel";
+        var nextblurb="Go to next panel";
+        var nextsectionblurb="Go to next section";
+
+        topmainover.src="../i/h-main.gif";
+        topmainout.src="../i/main.gif";
+        bottommainover.src="../i/h-main.gif";
+        bottommainout.src="../i/main.gif";
+
+        topfeedbackover.src="../i/h-feedback.gif";
+        topfeedbackout.src="../i/feedback.gif";
+        bottomfeedbackover.src="../i/h-feedback.gif";
+        bottomfeedbackout.src="../i/feedback.gif";
+        toppreviousover.src="../i/h-previous.gif";
+        toppreviousout.src="../i/previous.gif";
+        bottompreviousover.src="../i/h-previous.gif";
+        bottompreviousout.src="../i/previous.gif";
+        topnextover.src="../i/h-next.gif";
+        topnextout.src="../i/next.gif";
+        bottomnextover.src="../i/h-next.gif";
+        bottomnextout.src="../i/next.gif";
+        topnextsectionout.src="../i/nextsection.gif";
+        topnextsectionover.src="../i/h-nextsection.gif";
+        bottomnextsectionout.src="../i/nextsection.gif";
+        bottomnextsectionover.src="../i/h-nextsection.gif";
+      }
+      function iOut(image)
+      {
+        if (browser=="N3")document[image].src=eval(image + "out.src");
+      }
+      function iOver(image)
+      {
+        if (browser=="N3")document[image].src=eval(image + "over.src");
+      }
+      // -->
+    </script><a href="#navskip"><img border="0" alt="Skip to main content" src="../i/c.gif"></a><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD width="150" height="1" bgcolor="#ffffff"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="3" bgcolor="#cc6633"><IMG alt="" height="3" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="1" bgcolor="#333333"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="1" bgcolor="#000000"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR></TABLE><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><img alt="" height="40" width="1" src="../i/c.gif"><font size="+1" face="Arial Bold"><b>Lesson 40 - Hash-Coded Data Storage</b></font><br></td><td width="*" valign="bottom" align="right"><a border="0" href="APCSL40.zip"><img alt="ZIP" border="0" src="../i/icon-zip.gif"></a><a border="0" href="APCSL40-ltr.pdf"><img alt="PDF (letter)" border="0" src="../i/icon-pdf-ltr.gif"></a></td></tr><tr><td height="2" colspan="2"><img height="2" width="1" src="../i/c.gif"></td></tr></table><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD width="150" height="1" bgcolor="#000000" colspan="5"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topmain'); iOver('bottommain'); self.status=mainblurb; return true;" onMouseOut="iOut('topmain'); iOut('bottommain'); self.status=''; return true;" href="index.html"><img alt="Lesson Menu" border="0" src="../i/main.gif" name="topmain"></a></TD><TD background="../i/sw-gold.gif"><a border="0"></a></TD><TD width="100%" background="../i/sw-gold.gif"><img src="../i/c.gif"></TD><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topprevious'); iOver('bottomprevious'); self.status=previousblurb; return true;" onMouseOut="iOut('topprevious'); iOut('bottomprevious'); self.status=''; return true;" href="APCSL40-1-2.html"><img alt="Previous" border="0" src="../i/previous.gif" name="topprevious"></a></TD><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topnext'); iOver('bottomnext'); self.status=nextblurb; return true;" onMouseOut="iOut('topnext'); iOut('bottomnext'); self.status=''; return true;" href="APCSL40-1-4.html"><img alt="Next" border="0" src="../i/next.gif" name="topnext"></a></TD></TR></TABLE><table bgcolor="ffffff" cellspacing="0" cellpadding="2" border="0" height="100" width="100%"><tr><td bgcolor="ffffff" width="15">&nbsp;</td><td bgcolor="ffffff" width="12">&nbsp;</td><td valign="top" align="left" bgcolor="ffffff" width="*"><br><table cellspacing="0" cellpadding="0" border="0"><tr><td width="90%"><font size="4" face="Verdana, Arial, Helvetica"><b>Hashing Schemes</b></font></td><td width="200" align="right"><font size="1" face="Verdana, Arial, Helvetica"><nobr>    page 3 of 8</nobr></font></td></tr></table><br><font size="2" face="Verdana, Arial, Helvetica"><ol xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
+    <li><p>The example of distributing student schedules illustrates a natural means of hashing.  The process can be simplified by organizing the schedules into piles by the first letter of the last name.
+      </p>
+    </li>
+    <li><p>A hashing scheme involves converting a key piece of information into a specific location, thus reducing the amount of searching in the data structure.  Instead of working with the entire list or tree of data, the hashing scheme tells you exactly <u>where</u> to store that data or search for it. 
+      </p>
+    </li>
+    <li><p>One important bar code system used by retail stores is the UPC A code<sup><a target="_blank" href="http://www.adams1.com/pub/russadam/upccode.html">*</a></sup>, which involves a sequence of 10 digits.  This system provides for 10 billion different possible products, 0-9,999,999,999 (which equals 10<sup>10</sup> - 1).  For quick access, an array of 10 billion locations would be nice, but wasteful in terms of computer memory.  Since it is unlikely that a store would carry such a huge number of items, we need a system to store a list of products in a reasonably sized array.
+      </p>
+      <blockquote><img src="images/fig40_1.jpg"></blockquote>
+      <p>Bar code graphic example
+      </p>
+    </li>
+    <li><p>A cash register using a bar code scanner needs a very quick response time when an item is scanned.  The 10-digit bar code is read, the item is searched for in the store's database, and the price is returned to that register.  While searching algorithms of the order (log<sub>2</sub>N) are relatively fast, we seek an even faster algorithm.
+      </p>
+    </li>
+    <li><p>Suppose a store maintains a database of 10,000 bar codes out of the possible 10 billion different values.  The values will be stored in an array called a hash table.  Because an array has direct random access to every cell, using a hashing scheme will give very fast access to the desired item.  The hash table is usually sized about 1.5 to 2.0 times as big as the maximum number of values stored.  (The reason for this sizing will be apparent in a few sections.)  Therefore we will create an array with 15,000 locations.
+      </p>
+    </li>
+    <li><p>The hashing scheme will tell us where item XXXXX XXXXX is stored out of the 15,000 locations.  A hashing algorithm is a sequence of steps, usually mathematical in nature, which converts a key field of information into a location in the hash table.
+      </p>
+      <br>
+      <p align="center"><img src="images/fig40_2.gif"></p>
+      <br>
+    </li>
+    <li><p>These "key-to-address transformations" are called hashing functions or hashing algorithms.  When the key is composed of character data, a numerical equivalent such as the ASCII code is used so that mathematical processing can take place.  Bar codes are numbers, so conversion is not necessary.  Some common hash functions are:
+      </p>
+      <ol class="alpha" style="alpha">
+        <li><p>Division.  The key is subject to modulo division by an integer (often a prime) equal to or slightly smaller than the desired size of the array.  The result of the division determines which short list to work with in the hash table.
+          </p>
+        </li>
+        <li><p>Midsquare.  The key is squared and the digits in the middle are retained for the address.  This probably would not work well with bar codes because they are such large numbers.
+          </p>
+        </li>
+        <li><p>Folding.  The key is divided into several parts, each of which are combined and processed to give an address.  For example:
+          </p>
+          <p>If the bar code = 70662 11001
+          </p>
+          <ol>
+            <li><p>group into pairs:  70  66  21  10  01
+              </p>
+            </li>
+            <li><p>multiply the first three numbers together:
+              </p>
+              <blockquote><pre><code>70 x 66 x 21 = 97020</code></pre></blockquote>
+            </li>
+            <li><p>add this number to the last two numbers
+              </p>
+              <blockquote><pre><code>97020 + 10 + 01 = 97031</code></pre></blockquote>
+            </li>
+            <li><p>find the remainder of modulo division by 14983 (the largest prime less than 15000):
+              </p>
+              <blockquote><pre><code>97031 % 14983 = 7133</code></pre></blockquote>
+            </li>
+            <li><p>address 7133 is the location to store bar code 70662 11001
+              </p>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <br>
+    </li>
+    <li><p>In the address 7133 will be stored all the fields related to this item, such as price and name of the item.
+      </p>
+    </li>
+    <li><p>It is important to develop a good hashing function that avoids collisions in the hash table.  Even using a prime number for the divisor, it is possible for two bar codes to result in the same address - 7133.  To reduce the chances of such a "collision", the hash table is sized about 1.5-2.0 times the number of expected data.  If the hash table in our example were sized at 10,000, the number of items in the database, the likelihood of collisions is increased.  We are trying to balance the need for decreasing the number of collisions against memory limitations, hence the recommended sizing.
+      </p>
+    </li>
+    <li><p>This advance sizing of the hash table affects the mathematics of the hashing algorithm; therefore the programmer must have a very clear idea of the number of data to be stored.  The number of items must be known in advance and this number must be fairly constant during the life of the program.  This limits the use of hashing to certain situations.  If the number of data is unknown or varies greatly, hashing is inappropriate. 
+      </p>
+    </li>
+  </ol><br><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"><font size="1"><sup>*</sup>An explanation of how to read bar codes can be found at <a target="_blank" href="http://www.adams1.com/pub/russadam/upccode.html">http://www.adams1.com/pub/russadam/upccode.html</a>.</font></p><br></font></td></tr></table><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topmain'); iOver('bottommain'); self.status=mainblurb; return true;" onMouseOut="iOut('topmain'); iOut('bottommain'); self.status=''; return true;" href="index.html"><img alt="Lesson Menu" border="0" src="../i/main.gif" name="bottommain"></a></TD><TD background="../i/sw-gold.gif"><a border="0"></a></TD><TD width="100%" background="../i/sw-gold.gif"><img src="../i/c.gif"></TD><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topprevious'); iOver('bottomprevious'); self.status=previousblurb; return true;" onMouseOut="iOut('topprevious'); iOut('bottomprevious'); self.status=''; return true;" href="APCSL40-1-2.html"><img alt="Previous" border="0" src="../i/previous.gif" name="bottomprevious"></a></TD><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topnext'); iOver('bottomnext'); self.status=nextblurb; return true;" onMouseOut="iOut('topnext'); iOut('bottomnext'); self.status=''; return true;" href="APCSL40-1-4.html"><img alt="Next" border="0" src="../i/next.gif" name="bottomnext"></a></TD></TR><TR><TD width="150" height="1" bgcolor="#000000" colspan="6"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR></TABLE><TABLE cellpadding="0" cellspacing="0" border="0"><TR><TD width="62"><TABLE cellpadding="0" cellspacing="0" border="0" width="62"><TR bgcolor="#006699"><TD width="1" bgcolor="#959595"><img alt="" border="0" height="20" width="1" src="../i/c.gif"></TD><TD align="center" width="60" class="mast"><a style="text-decoration: none; color: #ffffff;" class="nav" target="_blank" href="http://www.ict.org"><font face="Arial, Verdana" size="2">Contact</font></a></TD><TD width="1" bgcolor="#959595"><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD><TD width="100%"><TABLE cellpadding="0" cellspacing="0" border="0" width="100%"><TR height="21" bgcolor="#006699"><TD><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD><TD><TABLE cellpadding="0" cellspacing="0" border="0"><TR bgcolor="#006699"><TD width="1" bgcolor="#959595"><img alt="" border="0" height="20" width="1" src="../i/c.gif"></TD><TD align="center" class="mast"><a style="text-decoration: none; color: #ffffff;" class="nav" target="_blank" href="http://www.ict.org/javalicense.pdf"><font face="Arial Narrow" size="1"><nobr>&nbsp;&copy;ICT&nbsp;2003,&nbsp;All&nbsp;Rights&nbsp;Reserved.</nobr></font></a></TD><TD width="1" bgcolor="#959595"><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD></TR></TABLE></body></html>

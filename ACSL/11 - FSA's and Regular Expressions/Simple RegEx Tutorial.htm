@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0057)https://www.icewarp.com/support/online_help/203030104.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title> Simple RegEx Tutorial </title>
+<link rel="stylesheet" type="text/css" href="./Simple RegEx Tutorial_files/stylesheet.css">
+<meta name="Generator" content="AITPublish">
+<meta name="Keywords" content="Simple RegEx Tutorial">
+<link rel="stylesheet" type="text/css" href="./Simple RegEx Tutorial_files/44.css">
+</head>
+<body text="#000000" link="#0000A0" alink="#008000" vlink="#FF0000"><table cellpadding="0" cellspacing="0" border="0">
+<tbody><tr valign="top">
+<td width="18">
+<p class="bodytext"><a href="https://www.icewarp.com/support/online_help/4.htm" target="_self"><img src="./Simple RegEx Tutorial_files/125.gif" alt="Previous Topic" height="17" width="18" vspace="0" hspace="0" align="bottom" border="0"></a></p></td>
+<td width="18">
+<p class="bodytext"><a href="https://www.icewarp.com/support/online_help/401.htm" target="_self"><img src="./Simple RegEx Tutorial_files/124.gif" alt="Next Topic" height="17" width="18" vspace="0" hspace="0" align="bottom" border="0"></a></p></td>
+<td width="48">
+<p class="bodytext"><a href="https://www.icewarp.com/support/online_help/toc17531.htm" target="TOC"><img src="./Simple RegEx Tutorial_files/122.gif" alt="Book Contents" height="17" width="48" vspace="0" hspace="0" align="bottom" border="0"></a></p></td>
+<td width="48">
+<p class="bodytext"><a href="https://www.icewarp.com/support/online_help/indexpage.htm" target="TOC"><img src="./Simple RegEx Tutorial_files/123.gif" alt="Book Index" height="17" width="48" vspace="0" hspace="0" align="bottom" border="0"></a></p></td>
+</tr>
+</tbody></table>
+<h2 class="heading2">Simple RegEx Tutorial</h2>
+<p class="bodytext"> Regular Expression can be used in Content Filter conditions. </p>
+<p class="bodytext">Regular Expressions can be extremely complex but they are very flexible and powerful and can be used to perform comparisons that cannot be done using the other checks available.</p>
+<p class="bodytext">There follows some very basic examples of regular expression usage. For a complete description please visit <a class="jumptemplate" title="" href="http://www.regular-expressions.info/" target="_self">www.regular-expressions.info</a>.</p>
+<h5 class="heading5"><strong class="specialbold">^' and '$' </strong></h5>
+<p class="bodytext">First of all, let's take a look at two special symbols: '^' and '$'. These symbols indicate the start and the end of a string, respectively:</p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"^The"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches any string that starts with "The".</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"of despair$"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that ends in with "of despair".</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"^abc$"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that starts and ends with "abc" - effectively an exact match comparison.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"notice"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that has the text "notice" in it.</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext">You can see that if you don't use either of these two characters, you're saying that the pattern may occur anywhere inside the string -- you're not "hooking" it to any of the edges. </p>
+<h5 class="heading5"><strong class="specialbold">'*', '+', and '?'</strong></h5>
+<p class="bodytext">In addition, the symbols '*', '+', and '?', denote the number of times a character or a sequence of characters may occur. What they mean is: "zero or more", "one or more", and "zero or one." Here are some examples: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab*"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has an a followed by zero or more b's ("ac", "abc", "abbc", etc.)</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab+"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">same, but there's at least one b ("abc", "abbc", etc., but not "ac")</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab?"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">there might be a single b or not ("ac", "abc" but not "abbc").</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"a?b+$"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a possible 'a' followed by one or more 'b's at the end of the string:</p>
+<p class="tablebodytext">Matches any string ending with "ab", "abb", "abbb" etc. or "b", "bb" etc. but not "aab", "aabb" etc.</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext"></p>
+<h5 class="heading5"><strong class="specialbold">Braces { }</strong></h5>
+<p class="bodytext">You can also use bounds, which appear inside braces and indicate ranges in the number of occurrences: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab{2}"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has an a followed by exactly two b's ("abb")</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab{2,}"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">there are at least two b's ("abb", "abbbb", etc.)</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"ab{3,5}"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">from three to five b's ("abbb", "abbbb", or "abbbbb")</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext">Note that you must always specify the first number of a range (i.e., "{0,2}", not "{,2}"). Also, as you might have noticed, the symbols '*', '+', and '?' have the same effect as using the bounds "{0,}", "{1,}", and "{0,1}", respectively. </p>
+<p class="bodytext">Now, to quantify a sequence of characters, put them inside parentheses: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"a(bc)*"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has an a followed by zero or more copies of the sequence "bc"</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"a(bc){1,5}"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">one through five copies of "bc."</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext"></p>
+<h5 class="heading5"><strong class="specialbold">'|' OR operator</strong></h5>
+<p class="bodytext">There's also the '|' symbol, which works as an OR operator: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"hi|hello"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has either "hi" or "hello" in it</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"(b|cd)ef"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that has either "bef" or "cdef"</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"(a|b)*c"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that has a sequence of alternating a's and b's ending in a c</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext"></p>
+<h5 class="heading5"><strong class="specialbold">('.')</strong></h5>
+<p class="bodytext">A period ('.') stands for any single character: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"a.[0-9]"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has an a followed by one character and a digit</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"^.{3}$"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string with exactly 3 characters</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext"></p>
+<h5 class="heading5"><strong class="specialbold">Bracket expressions</strong></h5>
+<p class="bodytext">specify which characters are allowed in a single position of a string: </p>
+<table width="600" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:1px solid #010101">
+<tbody><tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"[ab]"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">matches a string that has either an a or a b (that's the same as "a|b")</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"[a-d]"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that has lowercase letters 'a' through 'd' (that's equal to "a|b|c|d" and even "[abcd]")</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"^[a-zA-Z]"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that starts with a letter</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">"[0-9]%"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that has a single digit before a percent sign</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td style="border:1px solid #010101;" width="99"><p class="tablebodytext">",[a-zA-Z0- 9]$"</p>
+</td>
+<td style="border:1px solid #010101;" width="501"><p class="tablebodytext">a string that ends in a comma followed by an alphanumeric character</p>
+</td>
+</tr>
+
+</tbody></table>
+<p class="bodytext">You can also list which characters you DON'T want -- just use a '^' as the first symbol in a bracket expression (i.e., "%[^a- zA-Z]%" matches a string with a character that is not a letter between two percent signs). </p>
+<p class="bodytext">In order to be taken literally, you must escape the characters "^.[$()|*+?{\" with a backslash ('\'), as they have special meaning. On top of that, you must escape the backslash character itself in PHP3 strings, so, for instance, the regular expression "(\$|A)[0-9]+" would have the function call: ereg("(\\$|A)[0-9]+", $str) (what string does that validate?) </p>
+<p class="bodytext">Just don't forget that bracket expressions are an exception to that rule--inside them, all special characters, including the backslash ('\'), lose their special powers (i.e., "[*\+?{}.]" matches exactly any of the characters inside the brackets). And, as the regex manual pages tell us: "To include a literal ']' in the list, make it the first character (following a possible '^'). To include a literal '-', make it the first or last character, or the second endpoint of a range."</p>
+<p class="bodytext"></p>
+<table cellpadding="0" cellspacing="0" border="0">
+<tbody><tr valign="top">
+<td width="227">
+<p class="relatedheading">See Also</p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/4.htm" target="_self">Shared</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/401.htm" target="_self">Database Settings</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/402.htm" target="_self">Access Mode</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/403.htm" target="_self">Schedule</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/404.htm" target="_self">Domain Admin Rights</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/406.htm" target="_self">Select Accounts</a></p><p class="relateditem"><a href="https://www.icewarp.com/support/online_help/405.htm" target="_self">Account Options</a></p></td>
+</tr>
+</tbody></table>
+
+
+
+
+
+
+</body></html>

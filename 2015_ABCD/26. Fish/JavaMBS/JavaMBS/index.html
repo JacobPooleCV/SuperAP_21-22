@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>MBS Cover Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<center>
+  <h1>Marine Biology Simulation</h1>
+  <h1>Case Study</h1>
+  <h2>Distribution File Contents</h2>
+</center>
+
+<p>&nbsp;</p>
+<p>The Advanced Placement&reg; Marine Biology Simulation case study presents a 
+  simulation program designed to help marine biologists study fish movement in 
+  a small, bounded environment such as a lake or bay.&nbsp; It will be a required 
+  part of the AP Computer Science&nbsp; A and AB curricula starting in the 2003-2004 
+  academic year. </p>
+<p></p>
+<p>When you unzip the <code>JavaMBS.zip</code> distribution file, it creates a 
+  folder or directory called <code>JavaMBS</code>. That folder contains this file 
+  (<code>index.html</code>) and several sub-folders.</p>
+  <center><img src="DirectoryHierarchy.jpg"></center>
+<p>These folders are described below.</p>
+<dl>
+  <dt><a href="Code"><b>Code</b></a></dt>
+  <dd>This folder contains the source (<code>*.java</code>) files for the classes 
+    students will study as part of the case study. It also contains two libraries 
+    (<code>mbsbb.jar</code> and <code>mbsgui.jar</code>) of additional, pre-compiled 
+    classes required by the application. Students will need to read the documentation 
+    for some of these classes (found in the <code>Documentation</code> folder), 
+    but they do not need to understand (or even look at) their implementations. 
+    <p> Students will study a few classes in each chapter of the case study. The 
+      table below shows which classes are introduced in the each of the chapters 
+      of the case study; the ones in <b>bold</b> are the ones whose implementation 
+      or class documentation will be tested on the Advanced Placement exam. 
+    <center>
+      <table border="1" width="90%">
+        <tr> 
+          <td><b>Chapter</b></td>
+          <td><b>Classes Students Study<br>
+            (<code>Code</code> Folder)</b></td>
+          <td> <p><b>Class Documentation<br>
+              Students Read</b></p></td>
+          <td><b>Other Classes Mentioned</b></td>
+        </tr>
+        <tr> 
+          <td valign="top">1</td>
+          <td valign="top">SimpleMBSDemo1<br>
+            SimpleMBSDemo2</td>
+          <td valign="top">&nbsp;</td>
+          <td valign="top"> <p>MBSGUI (for running)<br>
+              BoundedEnv<br>
+              Fish<br>
+              Location<br>
+              SimpleMBSDisplay<br>
+              Simulation</p></td>
+        </tr>
+        <tr> 
+          <td valign="top">2</td>
+          <td valign="top"><b>Simulation</b><br> <b>Fish</b></td>
+          <td valign="top"><b>Environment</b><br> <b>Location</b><br> <b>Direction</b><br> 
+            <b>Debug</b><br> <b>EnvDisplay</b><br> <b>Locatable</b><br> <b>RandNumGenerator</b></td>
+          <td valign="top">SimpleMBSDemo1<br>
+            SimpleMBSDemo2<br>
+            MBSGUI</td>
+        </tr>
+        <tr> 
+          <td valign="top">3</td>
+          <td valign="top"><b>Fish</b> (modified)</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr> 
+          <td valign="top">4</td>
+          <td valign="top"><b>DarterFish</b><br> <b>SlowFish</b></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr> 
+          <td valign="top">5 (AB)</td>
+          <td valign="top"><b>Environment</b><br> <b>BoundedEnv</b><br> <b>UnboundedEnv</b></td>
+          <td valign="top"><b>SquareEnv</b></td>
+          <td valign="top">MBSGUI (further testing)</td>
+        </tr>
+      </table>
+    </center>
+  </dd>
+  <p> 
+  <dt><a href="DataFiles"><b>DataFiles</b></a></dt>
+  <dd>This folder contains a number of data files that provide initial configurations 
+    for fish in an environment. Each file in this folder specifies the dimensions 
+    of a bounded environment and the initial locations and directions for a number 
+    of fish. The case study narrative directs students to use several of these 
+    files, but they are encouraged to experiment with all of them. There is another 
+    folder inside the <code>DataFiles</code> folder called <code>UnboundedEnvDataFiles</code>, 
+    used in Chapter 5.</dd>
+  <p> 
+  <dt><a href="Documentation/index.html"><b>Documentation &nbsp; (Class Documentation)</b></a></dt>
+  <dd>This folder contains documentation for all the classes in the case study 
+    whose implementation or class documentation students study. The documentation 
+    was created using the standard <code>javadoc</code> documentation tool. (For 
+    those coming to Java from C++, the class documentation created by this tool 
+    is similar to the information found in C++ header files.) 
+    <p>The <code>Documentation</code> folder also contains the <a href="Documentation/MBSHelp.html">help 
+      file</a> for the graphical user interface provided as part of this distribution.&nbsp; 
+      You can read this help file by choosing &quot;Help...&quot; from the program's 
+      Help menu or by <a href="Documentation/MBSHelp.html">viewing it</a> directly 
+      in a web browser.</p>
+  </dd>
+  <p> 
+  <dt><a href="ExecutionInformation"><b>ExecutionInformation</b></a></dt>
+  <dd>This folder contains information (or pointers to information) about compiling 
+    and running the Marine Biology Simulation in several common environments, 
+    including DOS and UNIX/Linux/OS X command lines, BlueJ, CodeWarrior, JCreator, 
+    and TextPad.&nbsp; APCentral will provide updated instructions for using these 
+    and other compilers and development environments as information becomes available.</dd>
+  <p> 
+  <dt><a href="Narrative"><b>Narrative</b></a></dt>
+  <dd>This folder contains the <a href="Narrative/2002_mbs.pdf">narrative for 
+    the Marine Biology Simulation case study</a> in PDF format.&nbsp; The narrative 
+    consists of 5 chapters that introduce students to an existing program, describe 
+    modifications to it, and provide discussion questions and programming exercises 
+    for students to explore the program's design and implementation. The APCS 
+    A exam covers material in chapters 1 - 4; the AB exam covers the material 
+    in all 5 chapters. 
+    <ul>
+      <li><b>Chap. 1: Experimenting with the Marine Biology Simulation</b> (can 
+        be done early in the school year)</li>
+      <li><b>Chap. 2: Guided Tour of the MBS Implementation</b> (assumes that 
+        students are comfortable with class implementations and multiple interacting 
+        classes)</li>
+      <li><b>Chap. 3: Creating a Dynamic Population</b> (modifying the <code>Fish</code> 
+        class)</li>
+      <li><b>Chap. 4: Specialized Fish</b> (extending the <code>Fish</code> class 
+        through inheritance; Chapters 3 and 4 may be covered in either order)</li>
+      <li><b>Chap. 5: Environment Implementations</b> (exploring alternative implementations 
+        for the <code>Environment</code> interface (AB exam only))</li>
+    </ul>
+    <p>APCentral will provide links to peer-reviewed materials contributed by 
+      members of the AP community that can be used as lead-ins to the case study. 
+  </dd>
+</dl>
+<p><font size="-1">Copyright&copy; 2002 College Entrance Examination Board 
+(www.collegeboard.com).</font></p>
+</body>
+</html>
+

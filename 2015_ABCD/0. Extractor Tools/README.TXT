@@ -1,0 +1,1 @@
+Copy all the files into your folder. Place JarTools into the folder with the Jar file that you want to view, extract or run. Run the JarTools.exe to view, extract, and run the jar file. Just follow the directions when you run JarTools.

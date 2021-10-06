@@ -1,0 +1,62 @@
+                      Marine Biology Simulation
+
+This file contains information on compiling and running the Marine
+Biology Simulation program under UNIX, including Linux and OS X,
+either with a makefile or without one.
+
+Compiling and running with a makefile:
+
+If you have the make command on your system, you can use the makefile
+in this directory.  First copy it to the JavaMBS/Code directory.
+Then, in that directory, run one of the following commands:
+    make            Compiles all the Java source files that need it
+    make MBSGUI     Compiles necessary source files and runs full GUI version
+    make SimpleMBSDemo1  Compiles necessary source files and runs first demo
+    make SimpleMBSDemo2  Compiles necessary source files and runs second demo
+
+When you go to open an environment data file, the file chooser
+window should come up in the Code directory, where the program is
+running.  You will need to go up to the JavaMBS directory and then
+down to the DataFiles directory to find the initial configuration
+files.
+
+For Chapter 3 (and later chapters), if you are using the Fish.java
+file from the DynamicPopulation directory rather than modifying
+the file in the Code directory (see FishModsForChap3.txt in the
+Code directory for more details), edit the makefile to switch
+which Fish.java file is being used as the sourcefile for the Fish
+class.  To do this, switch which definition of FISHSOURCE is
+commented out in the makefile; the comment symbol is the pound sign
+(#).  Then remove Fish.class from the Code directory and run make
+as described above.
+
+Compiling and running without a makefile:
+
+To compile all the necessary files for the Marine Biology Simulation,
+run the following command within the Code directory:
+  javac -classpath .:./mbsbb.jar:./mbsgui.jar *.java
+
+To run the Marine Biology Simulation, run the following
+command from within the Code directory:
+  java -classpath .:./mbsbb.jar:./mbsgui.jar [target]
+where [target] should be replaced by one of the following:
+    MBSGUI            program with full graphical user interface
+                        (from beginning of Chapter 1)
+    SimpleMBSDemo1    simple demo program (end of Chapter 1)
+    SimpleMBSDemo2    second demo program (end of Chapter 1)
+
+When you go to open an environment data file, the file chooser
+window should come up in the Code directory, where the program is
+running.  You will need to go up to the JavaMBS directory and then
+down to the DataFiles directory to find the initial configuration
+files.
+
+For Chapter 3 (and later chapters), if you are using the Fish.java
+file from the DynamicPopulation directory rather than modifying
+the file in the Code directory (see FishModsForChap3.txt in the
+Code directory for more details), you will also need to execute
+the following command in the DynamicPopulation directory:
+  javac -classpath ..:../mbsbb.jar:../mbsgui.jar Fish.java
+Then copy the Fish.class file from the DynamicPopulation directory
+to the Code directory before running the java command above to
+actually run the simulation.

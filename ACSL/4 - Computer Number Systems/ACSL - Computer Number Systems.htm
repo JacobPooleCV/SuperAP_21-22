@@ -1,0 +1,101 @@
+
+<!-- saved from url=(0051)http://minich.com/education/wyo/acsl/compnosystems/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ACSL - Computer Number Systems</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><a href="http://minich.com/education/wyo/acsl/index.htm">ASCL Topic</a></p>
+<p align="center"><strong><big>Computer Number Systems</big></strong></p>
+
+<p align="center"><font face="Arial" color="#800000"><strong><small>binary - octal -
+decimal - hexadecimal</small></strong></font></p>
+
+<p align="left">All computers do the amazing things that they do by simply manipulating
+ones and zeros. Computers can only do binary (base 2) arithmetic. You must be able to use
+the binary number system in order to appreciate how the computer works. Since the computer works with the binary number system and since it is relatively easy to convert hexadecimal (base 16) and octal numbers (base 8) into binary, computer scientists need to be familiar with the octal and hexadecimal number systems.  </p>
+
+<p align="left">I. Numbering Systems</p>
+<ol>
+  <li>Decimal System 
+    <ul>
+      <li>base 10</li>
+      <li>valid digits - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+    </ul>
+  </li>
+  <li>Binary System 
+    <ul>
+      <li>base 2</li>
+      <li>valid digits - 0, 1</li>
+    </ul>
+  </li>
+  <li>Octal System 
+    <ul>
+      <li>base 8</li>
+      <li>valid digits - 0, 1, 2, 3, 4, 5, 6, 7</li>
+    </ul>
+  </li>
+  <li>Hexadecimal System 
+    <ul>
+      <li>base 16</li>
+      <li>valid digits - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</li>
+      <li>A refers to decimal 10, B refers to decimal 11, etc.</li>
+    </ul>
+  </li>
+</ol>
+<p>II. To convert a number in a base other than 10 to base 10</p>
+<ol>
+  <li>Easy way: If you need to convert 345 (base 8) to decimal, you would label 
+    the three columns as the 1's, 8's, and 64's columns <b>from right to left</b>. 
+    Then, you would multiply the digits by these column labels and compute the 
+    sum of the 3 products. Since a 3 is in the 64's column, you multiply to obtain 
+    192. Since 4 is in the 8's column, you multiply 4 x 8 to get 32. Then add 
+    32 to the 192 from the step before to get a running total of 224. Finally, 
+    since a 5 is in the 1's column, multiply 1 x 5 to get the product of 5 and 
+    add it to the running toal of 224 to get 229. That final value, 229, is the 
+    decimal equivalent to the original number 345 (base 8).<br>
+    <br>
+    View an example - <a href="http://minich.com/education/wyo/acsl/images/shortwaybin2dec.gif">binary to decimal 
+    </a>: <a href="http://minich.com/education/wyo/acsl/images/shortwayoct2dec.gif">octal to decimal</a> : <a href="http://minich.com/education/wyo/acsl/images/shortwayhex2dec.gif">hex 
+    to decimal</a><br>
+    <br>
+  </li>
+  <li>Formal way: Expand the number 345 (base 8) into expanded form. Expanded 
+    form is written as<br>
+    <br>
+    (3 x 8<font size="-2"><sup>2</sup></font>) + ( 4 x 8<font size="-2">1</font>) 
+    + (5 x 8<sup><font size="-1">0</font></sup>) = 229<br>
+    <br>
+    View an example: <a href="http://minich.com/education/wyo/acsl/images/expandedbin2dec.gif">binary to decimal</a> 
+    - <a href="http://minich.com/education/wyo/acsl/images/expandedoct2dec.gif">octal to decimal</a> -<a href="http://minich.com/education/wyo/acsl/images/expandedhex2dec.gif">hex 
+    to decimal</a><br>
+  </li>
+</ol>
+<p>III. To convert a decimal number into a base other than 10</p>
+<ol>
+  <li>Write out the powers in the other base starting at the power of 0 until 
+    you reach a number higher than the given number.</li>
+  <li>Divide the highest power of the base that can divided at least once into 
+    the given number.</li>
+  <li>Put the quotient of that division into a column that will eventually be 
+    the leftmost digit of the final answer.</li>
+  <li>Continue steps 2 &amp; 3 using the remainder of the previous division but 
+    add each successive quotient to the right of previous quotients in the final 
+    answer.<br>
+    <br>
+    View an example: <a href="http://minich.com/education/wyo/acsl/images/dectobin.gif">decimal to binary</a> - 
+    <a href="http://minich.com/education/wyo/acsl/images/dec2oct.gif">decimal to octal</a> - <a href="http://minich.com/education/wyo/acsl/images/dec2hex.gif">decimal 
+    to hex</a></li>
+</ol>
+<p align="left"><b>Computer Number System Worksheets</b></p>
+<p align="left"><a href="http://minich.com/education/wyo/acsl/compnosystems/cnswksht1.htm">CNS Worksheet #1</a> (addition)<br>
+  <a href="http://minich.com/education/wyo/acsl/compnosystems/cnswksht2.htm">CNS Worksheet #2</a> (bin/oct/hex to decimal conversion)<br>
+  <a href="http://minich.com/education/wyo/acsl/compnosystems/cnswksht3.htm">CNS Worksheet #3</a> (decimal to bin/oct/hex conversion)<br>
+  <a href="http://minich.com/education/wyo/acsl/compnosystems/cnswksht4.htm">CNS Worksheet #4</a> (addition, subtraction, conversion, 
+  &amp; bin/hex conversion)</p>
+<blockquote>&nbsp;</blockquote>
+<p align="center">&nbsp;</p>
+
+
+</body></html>

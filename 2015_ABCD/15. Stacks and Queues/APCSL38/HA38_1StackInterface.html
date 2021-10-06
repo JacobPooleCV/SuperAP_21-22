@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>HA38_1StackInterface.java</title>
+</head>
+<body>
+<pre>
+<b>public</b> <b>interface</b> Stack
+{
+    // postcondition: returns true <b>if</b> stack is empty, false otherwise
+  <b>boolean</b> isEmpty();
+
+    // precondition:  stack is [e1, e2, ..., en] with n &gt;= 0
+    // postcondition: stack is [e1, e2, ..., en, x]
+  <b>void</b> push(Object x);
+
+    // precondition:  stack is [e1, e2, ..., en] with n &gt;= 1
+    // postcondition: stack is [e1, e2, ..., e(n-1)]; returns en
+    //                 <b>throws</b> an unchecked exception <b>if</b> the stack is empty
+  Object pop();
+
+    // precondition:  stack is [e1, e2, ..., en] with n &gt;= 1
+    // postcondition: returns en
+    //                 <b>throws</b> an unchecked exception <b>if</b> the stack is empty
+  Object peekTop();
+}
+
+
+<b>public</b> <b>class</b> ArrayStack <b>implements</b> Stack
+{
+  <b>private</b> java.util.ArrayList array;
+
+  <b>public</b> ArrayStack()
+  {
+    array = <b>new</b> java.util.ArrayList();
+  }
+
+  <b>public</b> <b>void</b> push(Object obj)
+  {
+    array.add(obj);
+  }
+
+  <b>public</b> Object pop()
+  {
+    <b>return</b> array.remove(array.size() - 1);
+  }
+
+  <b>public</b> Object peekTop()
+  {
+    <b>return</b> array.get(array.size() - 1);
+  }
+
+  <b>public</b> <b>boolean</b> isEmpty()
+  {
+    <b>return</b> array.size() == 0;
+  }
+}
+
+
+<b>public</b> <b>class</b> ListStack <b>implements</b> Stack
+{
+  <b>private</b> java.util.LinkedList list;
+
+  <b>public</b> ListStack()
+  {
+    list = <b>new</b> java.util.LinkedList();
+  }
+
+  <b>public</b> <b>boolean</b> isEmpty()
+  {
+    <b>return</b> list.isEmpty();
+  }
+
+  <b>public</b> <b>void</b> push(Object obj)
+  {
+    list.addFirst(obj);
+  }
+
+  <b>public</b> Object pop()
+  {
+    <b>return</b> list.removeFirst();
+  }
+
+  <b>public</b> Object peekTop()
+  {
+    <b>return</b> list.getFirst();
+  }
+}
+</pre>
+</body>
+</html>

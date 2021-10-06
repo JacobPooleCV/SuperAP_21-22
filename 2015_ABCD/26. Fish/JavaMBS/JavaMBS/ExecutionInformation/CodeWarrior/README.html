@@ -1,0 +1,45 @@
+<html><head><title>MBS: CodeWarrior Instructions</title>
+</head>
+
+<body bgcolor="#ffffff">
+<center>
+  <h1>Marine Biology Simulation</h1>
+  <p>&nbsp;</p>
+</center>
+
+<h3>Information on compiling and running the Marine Biology Simulation using Metrowerks 
+  CodeWarrior: </h3>
+<p>There are several Metrowerks CodeWarrior projects in this folder. The projects 
+  whose names end with &quot;<code>LE2</code>&quot; work under Learning Edition 
+  2, those whose names end with &quot;<code>LE3</code>&quot; work under Learning 
+  Edition 3, and those whose names end with &quot;7&quot; work under CodeWarrior 
+  7 (IDE 4). 
+<p>For each version of CodeWarrior, there are two project files.
+<pre>   OrigFish      <i>Compiles with the original Fish class (Chap 1 & 2)</i>
+   DynPop        <i>Compiles with the breeding and dying Fish class</i>
+                       <i>from the DynamicPopulation folder (Chap 3)</i></pre>
+Copy the two project files corresponding to the version of CodeWarrior you use 
+to the <code>Code</code> folder (under the <code>JavaMBS</code> folder). 
+<p>Each<code></code> project each contain three targets. 
+<pre>   Full GUI             <i>Uses</i> MBSGUI <i>as the main class (Chaps 1 - 5)</i>
+   Simple Demo 1        <i>Uses</i> MBSSimpleDemo1 <i>as the main class (Chap 1)</i>
+   Simple Demo 2        <i>Uses</i> MBSSimpleDemo2 <i>as the main class (Chap 1)</i></pre>
+<p>To choose a target, click on the Current Target pull-down menu in the upper-left 
+  corner of the project window (with the little icon of an arrow pointing to a 
+  target).&nbsp; Then click on the name of the desired target. When you run the 
+  program (by clicking on the green Run arrow or by choosing Run from the Project 
+  menu), the program will use the appropriate main class.&nbsp; If you create 
+  a new main class (by copying <code>MBSSimpleDemo1</code>, for example), you 
+  can make that the main class for a particular target.&nbsp; Open the Target 
+  Settings window by clicking on the Target Settings icon (the one with the yellow 
+  and black strip just to the right of the Current Target pull-down menu) or by 
+  selecting Edit &gt; <i>TargetName</i> Settings from the menu bar. Then click 
+  on Java Target under the Target heading in the left panel.&nbsp; Type the name 
+  of your class (not the file name) into the Main Class field, then click Save 
+  or OK.&nbsp; See the online CodeWarrior help for more details.</p>
+<p>When you go to open an environment data file, the file chooser window will 
+  come up in a project folder, which is the program's current folder during execution.&nbsp; 
+  You will need to go up to the <code>JavaMBS</code> folder (which may be several 
+  levels up) and then down to the <code>DataFiles</code> folder to find the initial 
+  configuration files. </p>
+</body></html>

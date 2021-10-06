@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML//EN">
+<!-- saved from url=(0043)http://www.ied.edu.hk/has/phys/de/de-lg.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Logic Gates</title>
+
+<meta name="GENERATOR" content="Internet Assistant for Word 1.0Z">
+<meta name="AUTHOR" content="HKIEd">
+</head>
+
+<body>
+<p align="center">
+</p><h2><img src="./Logic Gates_files/wd5.gif">Introductory Digital Electronics - Logic Gates</h2><p></p>
+
+<ul>
+	<li><img src="./Logic Gates_files/wd11.gif"><b><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#intrologicgates">Introduction - 
+		Digital Signals and Logic Gates</a></b>
+	</li><li><img src="./Logic Gates_files/wd12.gif"><b><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#basiclogicgates">Basic Logic Gates</a></b>
+	<ul>	<li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#andgate">AND gate</a></i>
+		</li><li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#orgate">OR gate</a></i>
+		</li><li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#notgate">NOT gate</a></i>
+		</li><li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#nandgate">NAND gate</a></i>
+		</li><li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#norgate">NOR gate</a></i>
+		</li><li><i><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#eorgate">EOR gate</a></i>
+	</li></ul>
+	</li><li><img src="./Logic Gates_files/wd13.gif"><b><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#example11">Example</a></b>
+	</li><li><img src="./Logic Gates_files/wd14.gif"><b><a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#problem11">Problem</a></b>
+	</li><li><img src="./Logic Gates_files/wd15.gif"><b><i><a href="http://www.ied.edu.hk/has/phys/de/de-ba.htm">Go to Next Chapter</a> or 
+		<a href="http://www.ied.edu.hk/has/phys/de/home.html">Home Page</a></i></b>
+</li></ul>
+<p>
+</p><hr>
+
+<p>
+</p><h3><img src="./Logic Gates_files/wd11.gif"><u><b><a name="intrologicgates">Digital Signals and Logic Gates </a></b></u></h3>
+<p>
+Engineers know that it is easier to design <font color="#cc00cc"><blink>two-state</blink></font> devices than
+multi-state devices. In logic systems, variables, circuits, statements,
+etc., can be treated in one of two distinct states: <font color="#cc0000">true</font> or <font color="#0000cc">false</font>,
+<font color="#cc0000">yes</font> or <font color="#0000cc">no</font>, 
+<font color="#cc0000">on</font> or <font color="#0000cc">off</font>,
+ <font color="#cc0000">present</font> or <font color="#0000cc">absent</font>,
+ <font color="#cc0000">energized</font> or <font color="#0000cc">not energized</font>,
+<font color="#cc0000">conducting</font> or <font color="#0000cc">non-conducting</font>, 
+<font color="#ccoo00">high voltage</font> or <font color="#0000cc">low voltage</font>, and
+so on.
+</p><p>
+In digital electronics, we distinguish two distinct values of
+voltage, V<sub>H</sub> corresponding to the higher of the two voltages and
+V<sub>L</sub> corresponding to the lower of the two voltages. There are three
+ways in which we can assign binary values to these voltages :
+</p><p>
+</p><pre width="80">1. <font color="#cc0000"><i>Positive logic assignment</i></font> : 	True [ 1 ] : V<sub>H</sub>
+				False [ 0 ] : V<sub>L</sub>
+
+2. <font color="#0000cc"><i>Negative logic assignment</i></font> : 	True [ 1 ] : V<sub>L</sub>
+				False [ 0 ] : V<sub>H</sub>
+
+3. <font color="#cc00cc"><i>Mixed logic assignment</i></font> : 	Allow the designers to use positive
+				or negative logic at any point in 
+				their design, as they desire.
+</pre>
+We shall use positive logic throughout this course. The description
+of the other two assignments can be found in elsewhere <a href="http://www.ied.edu.hk/has/phys/de/de-ref.htm">[Ref.1]</a>.
+<br><hr>
+<p>
+</p><h3><img src="./Logic Gates_files/wd12.gif"><b><u><a name="basiclogicgates">Basic Logic Gates</a></u> </b></h3>
+<p>
+All digital systems can be constructed by only three basic logic
+gates. These basic gates are called the AND gate, the OR gate,
+and the NOT gate. Some textbooks also include the NAND gate, the
+NOR gate and the EOR gate as the members of the family of basic
+logic gates. The description of the operations of these gates
+are listed below <a href="http://www.ied.edu.hk/has/phys/de/de-ref.htm">[Ref.2]</a>:
+</p><dl compact="">
+<dt><b><a name="andgate">AND gate</a></b><img src="./Logic Gates_files/f11and.gif" align="middle"></dt><dd>The AND gate is a circuit which gives a high output (logic 1)  
+            if all its inputs are high. A dot (<img src="./Logic Gates_files/dot.gif" align="bottom">) is used to indicate the   
+            AND operation. In practice, however, the dot is <i>usually omitted</i>.                                                       
+<p>
+</p></dd><dt><b><a name="orgate">OR gate</a></b><img src="./Logic Gates_files/f11or.gif" align="middle">     </dt><dd>The OR gate is a circuit which gives a high output if one or   
+            more of its inputs are high. A plus sign (+) is used to        
+            indicate the OR operation.                                     
+<p>
+</p></dd><dt><b><a name="notgate">NOT gate</a></b><img src="./Logic Gates_files/f11not.gif" align="middle">    </dt><dd>The NOT gate is a circuit which produces at its output the     
+            negated (inverted) version of its input logic. The circuit is  
+            also known as an <i>inverter</i>. If the input variable is A, the     
+            inverted output is written as <img src="./Logic Gates_files/nota.gif" align="bottom">.                               
+<p>
+</p></dd><dt><b><a name="nandgate">NAND gate</a></b><img src="./Logic Gates_files/f11nand.gif" align="middle">  </dt><dd>The NAND gate is a NOT-AND circuit which is equivalent to an   
+            AND circuit followed by a NOT circuit. The output of the NAND  
+            gate is high if any of its inputs is low.                      
+<p>
+</p></dd><dt><b><a name="norgate">NOR gate</a></b><img src="./Logic Gates_files/f11nor.gif" align="middle">    </dt><dd>The NOR gate is a NOT-OR circuit which is equivalent to an OR  
+            circuit followed by a NOT circuit. The output of the NOR gate  
+            is low if any of its inputs is high.                           
+<p>
+</p></dd><dt><b><a name="eorgate">EOR gate</a></b><img src="./Logic Gates_files/f11eor.gif" align="middle">    </dt><dd>The Exclusive-OR gate is a circuit which gives a high output   
+            if either of its two inputs is high, but not both. A           
+            encircled plus sign (<img src="./Logic Gates_files/enplus.gif" align="bottom">) is used to indicate the EOR operation.  
+<p>
+</p></dd></dl><p>
+</p><hr>
+<img src="./Logic Gates_files/fig11.gif">
+<p><img src="./Logic Gates_files/wd20.gif">
+<a name="figure11"><b><u>Figure 1.1</u> Symbols for logic gates</b></a>
+<br></p><hr><p>
+The functions of these basic building blocks are summarized by
+means of a <font color="#cc0000"><i>Truth Table</i></font> as shown in <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#table11">Table 1.1</a>. The table
+shows <i>all possible</i> input/output combinations for two inputs.
+A truth table with n inputs (logic variables) has 2<sup>n</sup> rows.<br> 
+
+<a name="table11"><img src="./Logic Gates_files/tab11a.gif"><img src="./Logic Gates_files/tab11b.gif"></a></p><p><a name="table11">
+<img src="./Logic Gates_files/wd21.gif"><b><u>Table 1.1</u> Truth table representation of logic gates</b></a>
+</p><p></p><hr>
+<a name="example11"><h4><img src="./Logic Gates_files/wd13.gif"><u>Example 1.1</u></h4></a>
+A <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#nandgate">NAND gate</a> can be used as a <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#notgate">NOT gate</a> by the following wiring:
+<br><img src="./Logic Gates_files/fig12.gif"><br>
+<h4><u><a name="figure12">Figure 1.2 Wiring the NAND gate as an inverter</a></u></h4>
+<p></p><hr>
+<a name="problem11"><h4><u><img src="./Logic Gates_files/wd14.gif">Problem 1.1</u></h4></a>
+Draw the logic circuit diagrams similar to those of <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#example11">Example 1.1</a> 
+to show how a <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#norgate">NOR gate</a> can be wired to become a <a href="http://www.ied.edu.hk/has/phys/de/de-lg.htm#notgate">NOT gate</a>.
+<p>
+<font color="#cc0000">Click here to consult <a href="http://www.ied.edu.hk/has/phys/de/de-ans.htm">model answer</a>.
+</font><br>
+</p><hr>
+<img src="./Logic Gates_files/wd15.gif">
+<b><i>Go to <a href="http://www.ied.edu.hk/has/phys/de/de-ba.htm">Next Chapter</a> or 
+		<a href="http://www.ied.edu.hk/has/phys/de/home.html">Home Page</a></i></b>
+
+
+
+</body></html>

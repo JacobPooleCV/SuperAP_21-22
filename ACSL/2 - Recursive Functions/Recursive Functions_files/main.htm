@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0063)http://www.minich.com/education/wyo/acsl/recursivefxns/main.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+   <title>Recursive Functions</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<center><b><font size="+2">Recursive Functions</font></b></center>
+
+<p><br>
+<br>
+<br>
+</p><p><a name="function"></a><font size="+2">What is a function?</font> 
+</p><p><font size="+1">A function is a math equation that means for every 'x'
+value, there is a 'y' value to graph on a cartesian coordinate plane.&nbsp;&nbsp;&nbsp;
+(just a regular graph)</font>
+<br>&nbsp;
+</p><p><a name="recursive"></a><font size="+2">What is a recursive function?</font> 
+</p><p><font size="+1">Well, a recursive function comes from a function that
+contains more than 1 equation, and is repetitively substituting back into
+itself until an answer is found.&nbsp; That is probably very hard to understand..
+so let's look at an example.</font>
+<br>&nbsp;
+<br>&nbsp;
+</p><p><a name="example1"></a><font size="+2">Example #1</font> 
+</p><p><br>
+  <font size="+1">&nbsp;&nbsp;&nbsp; ƒ(7) = ?&nbsp; where</font> 
+</p><p><font size="+1">ƒ(x)&nbsp;&nbsp; {&nbsp; ƒ(x-1) + 2&nbsp;&nbsp;&nbsp;
+if x&gt;5</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if x&lt;=5</font>
+</p><p><font size="+1">ƒ(7) = ƒ(7-1) + 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+since 7 &gt; 5 you use ƒ(x-1) + 2</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = ƒ(6) + 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+now you need ƒ(6)</font>
+</p><p><font size="+1">ƒ(6) = ƒ(6-1) + 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+since 6 &gt; 5 you use f(x-1) + 2 again</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = ƒ(5) + 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+now you need ƒ(5)</font>
+</p><p><font size="+1">ƒ(5) = 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+since 5 = 5, you use 6.</font>
+</p><p><font size="+1">now substite the answer to ƒ(5) into ƒ(6) like this:</font>
+</p><p><font size="+1">ƒ(6) = ƒ(5) + 2</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 6 + 2</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 8</font>
+<br><font size="+1">now substitute the answer to ƒ(6) into ƒ(7) like this:</font>
+</p><p><font size="+1">ƒ(7) = ƒ(6) + 2</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 8 + 2</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 10</font>
+</p><p><b><font size="+1">ƒ(7) = 10</font></b>
+<br>&nbsp;
+<br>&nbsp;
+</p><p><a name="example2"></a><font size="+2">Example #2:</font> 
+</p><p><font size="+1">Find ƒ(150) where</font>
+</p><p><font size="+1">ƒ(x) = {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ƒ(x-20)
++ 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if x &gt; 100</font>
+<br><font size="+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if x &lt;= 100</font>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>
+  &nbsp; 
+</p><p><font size="+1">Need <a href="http://www.minich.com/education/wyo/acsl/recursivefxns/help.htm" onmouseover="alert(&#39;f(150) = f(150-20) + 10&#39;)">help?</a></font>
+<br>&nbsp;
+<br>&nbsp;
+</p><p><font size="+1"><a href="http://www.minich.com/education/wyo/acsl/recursivefxns/answer.htm" onmouseover="alert(&#39;300&#39;)">Answer.</a></font> 
+  <br>
+  &nbsp;
+
+
+</p></body></html>

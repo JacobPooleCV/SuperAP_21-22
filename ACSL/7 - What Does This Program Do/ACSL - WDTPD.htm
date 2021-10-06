@@ -1,0 +1,367 @@
+
+<!-- saved from url=(0056)http://www.minich.com/education/wyo/acsl/wdtpd/index.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ACSL - WDTPD</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><a href="http://www.minich.com/education/wyo/acsl/index.htm">ASCL Topic</a></p>
+
+<p align="center"><big><strong>What Does This Program Do?</strong></big></p>
+
+<p>Worksheets: <a href="http://www.minich.com/education/wyo/acsl/wdtpd/wdtpdwksht1.htm">WDTPD Worksheet #1</a>, <a href="http://www.minich.com/education/wyo/acsl/wdtpd/wdtpdwksht2.htm">WDTPD 
+  Worksheet #2</a>, <a href="http://www.minich.com/education/wyo/acsl/wdtpd/wdtpdwksht3.htm">WDTPD Worksheet #3</a>, <a href="http://www.minich.com/education/wyo/acsl/wdtpd/wdtpdwksht4.htm">WDTPD 
+  Worksheet #4</a>,<br>
+  <a href="http://www.minich.com/education/wyo/acsl/wdtpd/wdtpdwksht5.htm">WDTPD Worksheet #5</a></p>
+<p>Every programmer in every language must be able to accurately deskcheck program 
+  code. There are times when it is necessary to carefully follow the execution 
+  of computer code without actually using the computer or programming language 
+  software. At other times, it is necessary to follow someone else's computer 
+  code that may or may not be adequately documented. This ACSL topic requires 
+  the student to follow programs and program segments and accurately predict the 
+  outcome. A command of the language that you are using is required but all successful 
+  programmers must also understand the general structured flow of execution that 
+  is used by all compilers (BASIC, C, C++, Java, Pascal, etc.)</p>
+
+<p>For this ACSL topic, we will be using the <strong><font color="#800000">TRS-80 dialect
+of BASIC</font></strong>. This language is similar enough to MS Visual Basic that a decent
+Visual Basic programmer could understand it. However, there are a number of functions and
+statements that do not exactly work in Visual Basic, therefore you must study the
+following examples in order to be successful in this ACSL topic. Being familiar with
+different dialects of BASIC will make you a better computer programmer.</p>
+
+<p>You must be familiar with the following relevant topics:&nbsp;&nbsp;&nbsp; 
+</p>
+
+<blockquote>
+  <p>the evaluation of arithmetic expressions, single &amp; nested loops (FOR 
+    &amp; DO loops), branching (IF/THEN statements), subscripted variables, multi-dimensional 
+    arrays, and string manipulations.</p>
+</blockquote>
+
+<p><font size="+2">I. Functions</font></p>
+
+<p>&nbsp;&nbsp;&nbsp; A. <b>INT</b> - The INT (stands for Integer) function returns 
+  the next least whole number. In other words, it truncates a number down. This 
+  is especially tricky when the argument (the number in the parentheses) is negative. 
+  Look at the examples closely.</p>
+
+<blockquote>
+  <p>1. Examples</p>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ INT(3.2) = 3<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ INT(-5.4) = -6<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ INT(0) = 0<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/ INT(-0.4) = -1</p>
+</blockquote>
+
+<blockquote>
+  <p>2. Exercises</p>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e/&nbsp;<a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;-6&#39;)">INT(-5.5)</a><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f/&nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;2&#39;)">INT(2)</a><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;9&#39;)">INT(9.4)</a></p>
+</blockquote>
+
+<p>&nbsp;&nbsp;&nbsp; B. <b>ABS</b> - The ABS (stands for Absolute Value) function 
+  returns the absolute value of the argument.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<blockquote>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ ABS(-3) = 3<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ ABS(0) = 0<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ ABS(14) = 14<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/ ABS(1236) = 1236<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e/ ABS(-23.45) = 23.45<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f/ ABS(5 * -4) =
+  ABS(-20) = 20</p>
+</blockquote>
+
+<blockquote>
+  <p>2. Exercises</p>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;5.5&#39;)">ABS(-5.5)</a><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;2&#39;)">ABS(2)</a></p>
+</blockquote>
+
+<p>&nbsp;&nbsp;&nbsp; C. <b>LEFT$(A$, N)</b> - The LEFT$ (pronounced, "left 
+  string") function returns the first N characters (including embedded spaces) 
+  from the left end of the string, A$. It requires two arguments. If the value 
+  for N is 0, the empty (or null) string is returned. If the value for N exceeds 
+  the length of the string A$ then the whole string A$ is returned (with no extra 
+  padded spaces).</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a/ LEFT$("Programming", 3) = "Pro"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b/ LEFT$("Basic", 1) = "B"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c/ LEFT$("Wyomissing Area", 11) = "Wyomissing "
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Note that here is a trailing space in the
+answer after the 'g'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+d/ LEFT$("abcd", 0) = ""&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(the null string)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+e/ LEFT$("maryland", 3 - 2) = "m"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You must evaluate the expression, 3-2, before
+using LEFT$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+f/ LEFT$("high school", 100) = "high school"</p>
+
+<blockquote>
+  <p>2. Exercises</p>
+</blockquote>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a/ &nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;bal&quot;&#39;)">LEFT$("baloney",
+3)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b/ &nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;John W&quot;&#39;); ">LEFT$("John
+Wayne", 6)</a></p>
+
+<p>&nbsp;&nbsp;&nbsp; D. <b>RIGHT$(A$, N)</b> - The RIGHT$ (pronounced, "right 
+  string") function returns the last N characters (including embedded spaces) 
+  from the right end of the string, A$. It requires two arguments. If the value 
+  for N is 0, the empty string is returned. If the value for N exceeds the length 
+  of the string A$ then the whole string A$ is returned. The characters that are 
+  returned are not reversed, but rather they keep their original relative order.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/
+RIGHT$("Programming", 3) = "ing"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/
+RIGHT$("where", 10) = "where"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ RIGHT$("United
+States", 7) = " States"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Note
+there is a leading space in the answer before the 'S'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/
+RIGHT$("a", 1) = "a"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e/ RIGHT$("abc
+", 1) = " "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A blank space</p>
+
+<p>2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;ney&quot;&#39;)">RIGHT$("baloney", 3)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;c def&quot;&#39;)">RIGHT$("abc def", 5)</a></p>
+
+<p>E. <b>MID$(A$, B, C)</b> - The MID$ (pronounced, "mid string") function 
+  returns the next C characters from the string A$, starting with (and including) 
+  the Bth character. It requires three arguments. If the value for C is 0, the 
+  empty string is returned. If the value for C exceeds the number of remaining 
+  characters after the Bth character, the remaining portion of the string is returned 
+  nevertheless with no extra padded spaces.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/
+MID$("computer", 4, 2) = "pu"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/
+MID$("computer", 1, 3) = "com"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ MID$("Wyo
+Area", 3, 4) = "o Ar"&nbsp; Note that the blank space is counted as a
+character.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/
+MID$("Wyomissing", 4, 1) = "m"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e/ MID$("high
+school", 6, 0) = ""&nbsp;&nbsp;&nbsp; the empty string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f/
+MID$("abcdef", 5, 24) = "ef"</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;lo&quot;&#39;)">MID$("baloney", 3, 2)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;rea Hi&quot;&#39;)">MID$("Wyo Area Hi", 6, 19)</a></p>
+
+<p>F. <b>LEN</b> - The LEN (stands for Length) function returns the length of 
+  a string. You obtain the length of a string simply by counting the number of 
+  characters (including spaces) in that string. The length of the null string 
+  is zero.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/
+LEN("computer") = 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ LEN("a") =
+1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ LEN("Wyo
+Area") = 8&nbsp;&nbsp; The answer is NOT 7, because the blank space counts as a
+character.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;7&#39;)">LEN("mustard")</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;23&#39;)">LEN("peanut butter and jelly")</a></p>
+
+<p>G. <b>STR$</b> - The STR$ (stands for String and pronounced "string function") 
+  function turns a value into a string literal. The final answers to all of the 
+  examples below must include double quotes.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ STR$(13) =
+"13"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ STR$(2.789) =
+"2.789"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ STR$(0) =
+"0"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/ STR$( 4 + 8) =
+"12"</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;3&quot;&#39;)">STR$(3)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;&quot;76.53&quot;&#39;)">STR$(76.53)</a></p>
+
+<p>H. <b>VAL</b> - The VAL (stands for Value) function turns a string literal 
+  (that happens to "look like" a numerical value) into a numerical value 
+  that could later be added, subtracted, multiplied, etc. in a mathematical expression. 
+  Until a string literal such as "15" is turned into a value (like 15, 
+  without the quotes), it cannot be manipulated mathematically.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/
+VAL("22") = 22<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/
+VAL("-8.9") = -8.9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ VAL("b15")
+= syntax error since "b15" cannot be turned into a numerical value simply by
+"stripping off the quotes."</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;25.6&#39;)">VAL("25.6")</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/&nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;0.0002&#39;)">VAL("0.0002")</a></p>
+
+<p>I. <b>SQR</b> - The SQR (stands for Square Root) function returns the square 
+  root of the argument.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ SQR(9) = 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ SQR(25) = 5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ SQR(7) = 2.64575</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/&nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;10&#39;)">SQR(100)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/&nbsp; <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;9&#39;)">SQR(81)</a></p>
+
+<p>J. <b>SGN</b> - The SGN (stands for Sign) function returns the sign of the 
+  argument. That is, it returns -1, if the argument is a negative number. It returns 
+  1 if the argument is a positive number and it returns 0 if the argument is 0, 
+  itself. The SGN function returns no other values than 0, 1, and -1.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Examples</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ SGN(13) = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ SGN(-23) = -1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c/ SGN(4.345) = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d/ SGN(76-324) = -1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e/ SGN(0) = 0</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Exercises</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;-1&#39;)">SGN(-23.4567)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b/ <a href="http://www.minich.com/education/wyo/acsl/wdtpd/answer.htm" onmouseover="alert(&#39;-1, remember to follow the order of operations and multiply 3 * 2 first&#39;)">SGN(5
+- 3 * 2)</a></p>
+
+<hr>
+<p><font size="+2">II. Statements </font>- You must also know how to evaluate 
+  several key BASIC <b>statements</b> that control the flow and that determine 
+  the logic of a program. </p>
+<p>A. <b>INPUT statement </b>- One commonly used statement in BASIC is the INPUT 
+  statement. Presenting a variable name after the keyword INPUT stops the program 
+  and allows the user to enter a value for that variable. For example, </p>
+<blockquote>
+  <p>DIM A AS INTEGER<br>
+    INPUT A<br>
+    PRINT A<br>
+    END </p>
+</blockquote>
+<p>The user is given the chance to input a value for A. That value is then printed 
+  on the screen by the PRINT statement. </p>
+<blockquote>
+  <p>DIM A, B AS INTEGER<br>
+    INPUT A, B<br>
+    IF A &gt; 4 THEN PRINT "A"<br>
+    IF B &gt; 10 THEN PRINT B<br>
+    END </p>
+</blockquote>
+<p>Note that two variables are declared in the program above.. Two values must 
+  be inputted by the user when the program executes. The order in which the user 
+  inputs the 2 values will determine which one is stored in A and which value 
+  is stored in B. The IF/THEN statements are one-line IF/THEN's. In the first 
+  IF/THEN, if the condition is TRUE then the string literal "A" is printed because 
+  of the double quotes around the A. In the second IF/THEN, if the condition is 
+  TRUE then the value for the variable B is printed on the screen.</p>
+<blockquote> 
+  <p>DIM A AS INTEGER<br>
+    INPUT A<br>
+    IF A &gt; 35 THEN<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT (A + 2)<br>
+    ELSE<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT (A - 2)<br>
+    END IF<br>
+    END </p>
+</blockquote>
+<p>In the program immediately above the IF/THEN/ELSE statement could be replaced 
+  by a one-line version as in:</p>
+<blockquote> 
+  <p> DIM A AS INTEGER<br>
+    INPUT A<br>
+    IF A &gt; 35 THEN PRINT (A + 2) ELSE PRINT (A - 2)<br>
+    END </p>
+</blockquote>
+<p>B.<b> FOR Loop</b> - The FOR loop in BASIC is an example of a repetition statement. 
+  It allows a set of statements to continually be executed over and over again 
+  for a specific number of iterations. A loop variable is used after the keyword 
+  FOR and "lower" and "upper" bounds are specified. On the 
+  last line of the loop the keyward NEXT is followed by the loop variable. By 
+  default, the loop variable increments by one each time the loop iterates. When 
+  the loop variable equals the upper bound it iterates one more time. Then, the 
+  loop variable increments but the loop does not iterate and the rest of the program 
+  (below/after the loop) executes.</p>
+<p>The numbers 1 through 5 are printed based on the code in the following program. 
+  The loop variable is A. Its final value, by the way is 6, not 5, because it 
+  is incremented one last time. Note that statements within the body of a loop 
+  should be indented for increased readability.</p>
+<blockquote>
+  <p>DIM A AS INTEGER<br>
+    FOR A = 1 TO 5<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT A<br>
+    NEXT A<br>
+    END </p>
+</blockquote>
+<p>Can you predict what prints out based on the execution of the following example?</p>
+<blockquote>
+  <p>DIM A, B AS INTEGER<br>
+    B = 5<br>
+    FOR A = 1 TO 10<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF A + B &gt;= 12 THEN PRINT "GREATER"<br>
+    NEXT A<br>
+    END</p>
+</blockquote>
+<hr>
+
+<p align="center"><a href="http://www.minich.com/education/wyo/acsl/index.htm">ACSL Resources</a> | <a href="http://www.minich.com/education/wyo/basic/index.htm">Basic Programming</a> | <a href="http://www.minich.com/education/wyo/cplusplus/index.htm">Computer
+Science Using C++</a></p>
+
+<p align="center"><a href="http://www.acsl.org/">ACSL Contest Home Page</a></p>
+
+<p align="center"><a href="http://www.minich.com/education/wyo/index.htm">Mr. Minich's Wyo Home Page</a></p>
+
+
+</body></html>

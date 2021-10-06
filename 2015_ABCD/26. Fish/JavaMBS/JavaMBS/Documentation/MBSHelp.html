@@ -1,0 +1,329 @@
+<html>
+<body>
+
+<a name="Top"></a>
+<center>
+  <h1>Marine Biology Simulation Program:<br>
+  Using the Graphical User Interface</h1>
+</center>
+
+<p>The Advanced Placement&reg; Marine Biology Simulation case study is a simulation 
+  program designed to help marine biologists study fish movement in a small, bounded 
+  environment such as a lake or bay.&nbsp;</p>
+<p>The simulation program is distributed with a graphical user interface (<code>MBSGUI</code>), 
+  described in this help file.&nbsp; Topics include:</p>
+<ul>
+  <li>Choosing an initial fish configuration file. (<a href="#Open">Open</a>) 
+  </li>
+  <li>Running the simulation for one timestep or continuously. (<a href="#Step">Step/Run</a>)</li>
+  <li>Saving the state of the simulation for future use. (<a href="#Save">Save</a>)</li>
+  <li>Creating a new environment and populating it with fish.&nbsp; (<a href="#Create">Create</a>)</li>
+  <li>Seeding the random number generator to get repeatable results. (<a href="#Seed">Seed</a>)</li>
+  <li>Viewing large environments. (<a href="#View">View</a>)</li>
+  <li>Customizing the graphical user interface.&nbsp; (<a href="#Advanced">Advanced 
+    Features</a>)</li>
+</ul>
+<table width="90%" align="center" border="1"><tr>
+    <td> 
+      <h4><i>Notes:</i></h4>
+      <ol>
+        <li>This document does not describe how to compile and run the Marine 
+          Biology Simulation program, which depends on the specific type of computer 
+          and software you are using.&nbsp; Information on compiling and running 
+          the program on a number of common platforms can be found in the <code>ExecutionInformation</code> 
+          folder under the main <code>JavaMBS</code> folder.&nbsp; The actual 
+          case study document can be found in the <code>Narrative</code> folder.</li>
+        <li>You may run the Marine Biology Simulation program using the graphical 
+          user interface described in this document or using an interface provided 
+          from another source.&nbsp; The Advanced Placement exam will not test 
+          students on the specifics of the graphical user interface.&nbsp; See 
+          the Introduction to the case study document for more information on 
+          what may be covered on the exam.</li>
+      </ol>
+    </td>
+  </tr></table>
+<h3><a name="Open"></a>Opening an existing initial configuration file</h3>
+  
+<p> The Marine Biology Simulation (MBS) case study is distributed with a number 
+  of initial configuration files in the <code>DataFiles</code> folder, including 
+  the <code>fish.dat</code>, <code>manyFish.dat</code>, and <code>onefish.dat</code> 
+  files mentioned in Chapter 1.&nbsp; (You may not see the <code>.dat</code> extensions 
+  if your computer environment doesn't show them automatically.)&nbsp; To choose 
+  an initial configuration file: </p>
+<UL>
+  <LI>Select the &quot;Open environment file...&quot; item from the File menu. 
+  <LI>In the dialog box (window) that comes up, select the configuration file 
+    you want (such as &quot;<code>fish.dat</code>&quot;) from the <code>DataFiles</code> 
+    folder. 
+    <p> The dialog box will come up in the program's current execution folder, 
+      so you will probably have to navigate to the <code>DataFiles</code> folder 
+      to find the initial configuration files.&nbsp; Depending on how and where 
+      you are running the program, its current directory may be the <code>JavaMBS</code> 
+      folder or one of the other folders under it, such as the <code>Code</code> 
+      folder, the <code>ExecutionInformation</code> folder, or a project folder 
+      under either <code>Code</code> or <code>ExecutionInformation</code> (or 
+      possibly some other folder altogether).&nbsp; <code>DataFiles</code> is 
+      another of the folders under the <code>JavaMBS</code> folder, so you will 
+      need to first navigate to the <code>JavaMBS</code> folder and then to the 
+      <code>DataFiles</code> folder. &nbsp; Then select the configuration file 
+      you want to open. 
+    <p>The configuration files in the <code>DataFiles</code> folder represent 
+      bounded environments. If you wish to read in a configuration file for an 
+      unbounded environment (see Chapter 5 of the MBS case study), navigate to 
+      the <code>UnboundedEnvDataFiles</code> folder in the <code>DataFiles</code> 
+      folder and select a configuration file from there. </UL>
+<p>The program will display the environment for the configuration file you chose 
+  as a rectangular grid of locations, with fish in the locations specified in 
+  the initial configuration file.</p>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<h3><a name="Step"></a>Running the simulation</h3>
+  
+<p>You can run the Marine Biology Simulation program one timestep at a time, or 
+  continuously for many timesteps.</p>
+<ul>
+  <li><b>To run the program one step at a time,</b> click on the Step button.&nbsp; 
+    Each time you click on the Step button, the program will run one timestep 
+    in the simulation, with fish moving from cell to cell in the grid.&nbsp; See 
+    Chapters 1 and 2 of the MBS case study for more information about how fish 
+    move in the simulation.</li>
+  <li><b>To run the program continuously for many timesteps,</b> click on the 
+    Run button.&nbsp; Click on the Stop button to stop the simulation.&nbsp; You 
+    can then click on either Step or Run to continue the simulation for one more 
+    timestep or for many timesteps.&nbsp; You can adjust the speed of the simulation 
+    by dragging the indicator on the Slow/Fast slider to the left or right.
+	<p>By default, the Run button will cause the simulation to run indefinitely, 
+      until you select Stop.&nbsp; You can also run the simulation for a specific 
+      number of steps.&nbsp; If you choose &quot;Use fixed number of steps...&quot; 
+      from the Run menu, you will be prompted for a certain number of steps.&nbsp; 
+      If you specify a number and click on OK, you will notice the label on the 
+      Run button change.&nbsp; For example, if you chose 10 steps, the button 
+      will read &quot;Run for 10 steps.&quot;&nbsp; When you click on the button, 
+      it will run for 10 timesteps, or until you select Stop.&nbsp; If you choose 
+      &quot;Prompt for number of steps&quot; from the Run menu, the label on the 
+      Run button will change to &quot;Run...&quot; and you will be prompted for 
+      the number of steps every time you click on it.&nbsp; Again, the program 
+      will run that number of timesteps unless you select Stop.&nbsp; To return 
+      to running the simulation continuously, choose &quot;Run Indefinitely&quot; 
+      from the Run menu.</p>
+  </li>
+</ul>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<h3><a name="Save"></a>Saving the current state as a new configuration file</h3>
+  
+<p>At any time while running the Marine Biology Simulation program, you can save 
+  the current state of the environment as a configuration file.&nbsp; You can 
+  then use this file later as an initial configuration file for a new run of the 
+  simulation, to continue the current run of the simulation, or to compare results 
+  from a different run of the simulation (see Chapters 3 and 4 of the MBS case 
+  study for more information about <i>regression testing</i>).</p>
+<UL>
+  <LI>Select &quot;Save environment as...&quot; from the File menu. 
+  <LI>A dialog box will come up in the program's current execution folder. &nbsp; 
+    Navigate to the folder where you want to save the new configuration file. 
+  <LI>Give the new file a name, such as <code>myConfigFile.dat</code>.&nbsp;( 
+    If you don't specify a <code>.dat</code> extension, the program will add it.&nbsp; 
+    Again, you may not see the <code>.dat</code> extension if your computer environment 
+    doesn't display file extensions.)&nbsp; If you try to save to a file that 
+    already exists, the program will verify that you wish to replace the existing 
+    file. 
+</UL>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<h3><a name="Create"></a>Creating and populating a new environment</h3>
+  
+<p>You can use the graphical user interface for the Marine Biology Simulation 
+  program to create new environments in several ways.&nbsp; You can open an initial 
+  configuration file, run it for several timesteps, and then save that environment 
+  to a file.&nbsp; (See &quot;<a href="#Open">Opening an existing initial configuration 
+  file</a>,&quot; &quot;<a href="#Step">Running the simulation</a>,&quot; and 
+  &quot;<a href="#Save">Saving the current state as a new configuration file</a>.&quot;)&nbsp; 
+  You can also create a new environment from scratch, specifying the size of the 
+  environment and the initial locations and directions of all the fish in it.&nbsp; 
+  Or, you can edit the current state of an environment, adding and removing fish.&nbsp; 
+  This section describes creating new environments and editing environments.</p>
+<h4>Creating a new environment:</h4>
+<UL>
+  <LI>Select &quot;Create new environment...&quot; from the File menu. 
+  <LI>Choose the environment type.&nbsp; For Chapters 1 - 4 of the Marine Biology 
+    Simulation case study, you can use the default &quot;BoundedEnv&quot; choice 
+    without doing anything.&nbsp; For Chapter 5, choose whichever environment 
+    type you want to create.&nbsp; The choices will be the &quot;BoundedEnv&quot; 
+    and &quot;UnboundedEnv&quot; types, unless you specify additional environment 
+    types in the <code>main</code> method of the <code>MBSGUI</code> class (see 
+    &quot;<a href="#Advanced">Customizing the graphical user interface</a>&quot;). 
+  <LI>If you choose the &quot;BoundedEnv&quot; environment type, you will be prompted 
+    to specify the number of rows and columns in the bounded environment.&nbsp; 
+    The program will use the default values shown in the text fields if you do 
+    not change them.
+  <LI>Click on the Create button.
+  <LI>Add and remove fish as described below. 
+</UL>
+<h4>Editing an existing environment:</h4>
+<UL>
+  <LI>Select &quot;Edit environment...&quot; from the File menu. 
+  <LI>Add and remove fish as described below.&nbsp; (You cannot change the type 
+    or size of the environment using the &quot;Edit environment...&quot; feature.) 
+</UL>
+<h4>Adding fish to, and removing them from, an environment:</h4>
+<p>When you are creating or editing an environment, a new panel appears with 
+    two pull-down menus.&nbsp; The first allows you to choose the type of the 
+    next fish to add to the environment.&nbsp; The second allows you to choose 
+    the next fish's color.
+<UL>
+	<LI>Choose the desired fish type.&nbsp; (This is only necessary once you introduce 
+    additional fish types in Chapter 4 &#8212; see &quot;<a href="#Advanced">Customizing 
+    the graphical user interface</a>&quot; below.) 
+  <LI>Choose the desired fish color.&nbsp; There are a number of colors available, 
+    or you can choose &quot;Other ...&quot; to specify your own colors.&nbsp; 
+    Every fish you add to the environment will be of that color until you choose 
+    a different color from the pull-down menu.&nbsp; If you choose &quot;Random,&quot; 
+    then every fish you add will be a different, randomly-chosen color. 
+  <LI>Click in an empty cell in the grid to add a fish to that location.
+<LI>Click on a fish to rotate it to a new direction. 
+  <LI>Rotating a fish all the way around will remove it from the environment. 
+</UL>
+<p> After you create or edit an environment, you may wish to <a href="#Save">Save</a> 
+  it to a configuration file.&nbsp; You can <a href="#Step">run the simulation</a> 
+  on the new or modified environment by clicking on the Step or Run buttons, at 
+  which time the extra panel for creating new fish will disappear.</p>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<h3><a name="Seed"></a>Seeding the random number generator</h3>
+  
+<p>You can set a seed for the random number generator when opening or creating 
+  new environments.&nbsp; If you use the same seed for several simulation runs, 
+  starting with the same initial configuration, the fish in the simulation will 
+  exhibit the same behavior each time.</p>
+<UL>
+  <LI><b>To run the simulation without seeding the random number generator,</b> 
+    select &quot;Don't reset seed&quot; from the Seed menu.&nbsp; This is the 
+    default behavior when the program starts.
+  <LI><b>To run the simulation with a specific seed,</b> select &quot;Use fixed 
+    seed...&quot; from the Seed menu, and then enter the seed value in the dialog 
+    box that comes up.&nbsp; Once you have chosen a seed, it will be used to seed 
+    the random number generator every time you open an initial configuration file 
+    or create a new environment (until you choose another alternative from the 
+    Seed menu).&nbsp; If you open or create the same environment several times 
+    using the same seed, the fish behavior will be the same each time.
+  <LI><b>To run the simulation with different seed values for each run,</b> select 
+    &quot;Prompt for seed&quot; from the Seed menu.&nbsp; When this alternative 
+    is selected, you will be prompted for a seed value every time you open a configuration 
+    file or create a new environment.
+</UL>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<h3><a name="View"></a>Viewing large environments</h3>
+<p>The environment display adjusts the size of the grid cells depending on the 
+  number of cells in the grid.&nbsp; The cells in a grid with very few cells will 
+  be quite large, whereas the cells in a grid with many cells will be much smaller.&nbsp; 
+  If, however, the cells would be too small to show fish clearly, then the graphical 
+  user interface displays only part of the environment and provides scroll bars 
+  for viewing other parts of the environment.&nbsp; There are also several options 
+  in the View menu for viewing large environments.</p>
+<UL>
+  <LI>Choose &quot;Zoom in&quot; from the View menu to view a smaller section 
+    of the environment in greater detail.&nbsp; Since the smaller section has 
+    fewer cells, each cell will be drawn larger.
+  <LI>Choose &quot;Zoom out&quot; from the View menu to view a larger section 
+    of the environment.&nbsp; Since the larger section has more cells, the cells 
+    will be smaller.
+  <LI>Choose &quot;Bring (0, 0) to upper left&quot; from the View menu if you 
+    have scrolled around the environment and want to pan quickly back to location 
+    (0, 0).&nbsp; This option will shift the display back to its original orientation, 
+    with location (0, 0) in the upper-left corner of the display.&nbsp; If the 
+    environment is bounded, this action is the same as scrolling all the way up 
+    and all the way to the left.&nbsp; If the environment is unbounded, this action 
+    will bring the scroll bars to the center.
+</UL>
+<p><a href="#Top">(Go to top of help file.</a>)</p>
+<h3><a name="Advanced"></a>Customizing the graphical user interface</h3>
+  
+<p>You can customize the MBS graphical user interface in several ways. (These 
+  are advanced features of the graphical user interface.)</p>
+<UL>
+  <LI><b>Changing the way fish are displayed:</b> Edit the <code>main</code> method 
+    in the <code>MBSGUI</code> class and look for the statement that associates 
+    a <code>FishDisplay</code> object with the <code>Fish</code> class in the 
+    display map.&nbsp; There are several other commented-out statements that illustrate 
+    how to associate a different display object (such as a <code>RoundFishDisplay</code> 
+    or a <code>FishImageDisplay</code> object) with a particular class, such as 
+    <code>Fish</code> or <code>DarterFish</code>.&nbsp; To use an image to display 
+    fish, you will need to pass the image filename and the direction the fish 
+    in the image is facing to the <code>FishImageDisplay</code> constructor.&nbsp; 
+    You will also need to put the image file in the folder where the simulation 
+    program is executed.&nbsp; This is probably the <code>Code</code> or <code>ExecutionInformation</code> 
+    folder, or a sub-folder under one of those folders.&nbsp; One image file, 
+    <code>smallfish.gif</code>, is provided in the <code>mbsgui.jar</code> file; 
+    you do not need to put that image file in the program's execution folder in 
+    order to use it. 
+  <LI><b>Changing the types of fish you can add when you create or edit an environment:</b> 
+    Edit the <code>main</code> method in the <code>MBSGUI</code> class and look 
+    for the statement that sets the <code>fishClassNames</code> variable.&nbsp; 
+    To add darter fish and slow fish to the list (see Chapter 4 of the MBS case 
+    study), comment out the existing statement and uncomment the later one that 
+    lists <code>Fish</code>, <code>DarterFish</code>, and <code>SlowFish</code>.&nbsp; 
+    If you create new <code>Fish</code> subclasses of your own, you will need 
+    to add them to this list if you want to be able to add objects of your new 
+    subclasses to environments using the graphical user interface.&nbsp; (You 
+    do not need to change the <code>fishClassNames</code> variable in order to 
+    open files or run simulations with <code>Fish</code> subclasses, just to add 
+    them to environments using the graphical user interface.) 
+  <LI><b>Changing the list of environment implementation classes available when 
+    you open or create an environment:</b> Edit the <code>main</code> method in 
+    the <code>MBSGUI</code> class and look for the statements that set the <code>boundedClassNames</code> 
+    and <code>unboundedClassNames</code> variables.&nbsp; There are several commented-out 
+    statements that illustrate how to specify additional implementation classes 
+    for either bounded or unbounded environments.&nbsp; (See the exercises at 
+    the end of Chapter 5 of the MBS case study for why this might be useful.) 
+    <p>Once you have added alternative environment implementation classes to the 
+      lists in the <code>MBSGUI</code> class, you will need to choose the bounded 
+      or unbounded implementation class you wish to use whenever you open an initial 
+      configuration file.&nbsp; An additional pull-down menu of class choices 
+      will appear in the dialog box.&nbsp;&nbsp; The new classes will also appear 
+      in the environment type pull-down menu in the dialog box for creating a 
+      new environment. 
+  <LI><b>Adding a menu to the GUI that allows you to turn breeding and dying on 
+    and off:</b> Edit your <code>Fish</code> class that has the modifications 
+    from Chapter 3 (either the file in the <code>DynamicPopulation</code> folder, 
+    or the original file in the <code>Code</code> folder to which you have added 
+    the code from <code>FishModsForChap3.txt</code>).&nbsp; Add a new class variable 
+    to the <code>Fish</code> class that specifies whether breeding and dying should 
+    be turned on or off.&nbsp; (Example: <code>private static boolean allowBreedingAndDying 
+    = true;</code>)&nbsp; Add the following method to the <code>Fish</code> class.&nbsp; 
+    Note that the signature and return type for the method must be exactly as 
+    shown below. 
+    <pre>    /** Enables or disables fish breeding and dying.  If this method
+     *  is present, MBSGUI will provide a way for users to specify
+     *  whether they want to run the program with breeding and dying
+     *  turned on or off.
+     *  @param flag     <code>true</code> if the simulation should allow
+     *                  breeding and dying; <code>false</code> otherwise.
+     **/
+    public static void enableBreedDie(boolean flag)
+    {
+        // Set class variable from flag parameter.
+        // Example: allowBreedingAndDying = flag;
+    }</pre>
+    <p>Finally, edit either the <code>act</code> method or the <code>breed</code> 
+      and <code>die</code> methods so that fish only breed and die when the class 
+      variable is set to <code>true</code>. 
+    <p>The graphical user interface looks to see if the Fish class has a <code>public 
+      static void enableBreedDie</code> method that takes a <code>boolean</code> 
+      value as a parameter. If it does, the graphical user interface adds a new 
+      menu, called Special, with two choices, &quot;Enable breed and die&quot; 
+      and &quot;Disable breed and die.&quot;&nbsp; When you enable or disable 
+      breeding and dying by choosing the appropriate menu item, the graphical 
+      user interface calls the <code>enableBreedDie</code> method in the <code>Fish</code> 
+      class, passing it <code>true</code> if breeding and dying should be enabled, 
+      or <code>false</code> if they should not be enabled.&nbsp; This advanced 
+      feature allows you to turn breeding and dying on and off from the graphical 
+      user interface as the program is running, rather than turning it on and 
+      off by changing the code or compiling with different implementations of 
+      the <code>Fish</code> class.&nbsp; For example, in Chapter 4 the MBS case 
+      study suggests running the simulation without breeding and dying to see 
+      the difference between darter and normal fish movement more clearly, without 
+      the added complexity of fish breeding and dying.</UL>
+<p><a href="#Top">(Go to top of help file.)</a></p>
+<p><font size="-1">This document describes the 1 August 2002 release of
+the Marine Biology Simulation Graphical User Interface (MBSGUI).</font></p>
+<p><font size="-1">Copyright&copy; 2002 College Entrance Examination Board 
+(www.collegeboard.com).</font></p>
+</body>
+</html>

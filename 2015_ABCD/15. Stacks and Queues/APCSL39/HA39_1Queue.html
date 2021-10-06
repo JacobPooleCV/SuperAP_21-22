@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Queue.java</title>
+</head>
+<body>
+<pre>
+<b>public</b> <b>interface</b> Queue
+{
+    // postcondition: returns true <b>if</b> queue is empty, false otherwise
+  <b>boolean</b> isEmpty();
+
+    // precondition:  queue is [e1, e2, ..., en] with n &gt;= 0
+    // postcondition: queue is [e1, e2, ..., en, x]
+  <b>void</b> enqueue(Object x);
+
+    // precondition:  queue is [e1, e2, ..., en] with n &gt;= 1
+    // postcondition: queue is [e2, ..., en]; returns e1
+    //                <b>throws</b> an unchecked exception <b>if</b> the queue is empty
+  Object dequeue();
+
+    // precondition:  queue is [e1, e2, ..., en] with n &gt;= 1
+    // postcondition: returns e1
+    //                <b>throws</b> an unchecked exception <b>if</b> the queue is empty
+  Object peekFront();
+}
+
+<b>public</b> <b>class</b> ListQueue <b>implements</b> Queue
+{
+  <b>private</b> java.util.LinkedList list;
+
+  <b>public</b> ListQueue() { list = <b>new</b> java.util.LinkedList(); }
+  <b>public</b> <b>boolean</b> isEmpty() { <b>return</b> list.size() == 0; }
+      // Or: ... isEmpty() { <b>return</b> list.isEmpty(); }
+  <b>public</b> <b>void</b> enqueue(Object obj) { list.addLast(obj); }
+  <b>public</b> Object dequeue() { <b>return</b> list.removeFirst(); }
+  <b>public</b> Object peekFront() { <b>return</b> list.getFirst(); }
+}
+</pre>
+</body>
+</html>

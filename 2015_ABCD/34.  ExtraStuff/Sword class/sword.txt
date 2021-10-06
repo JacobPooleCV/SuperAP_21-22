@@ -1,0 +1,18 @@
+sword constructor:
+
+sword a;
+a = new sword(int x_cor, int y_cor, canvas);
+the x and y position is the position of the handle
+
+
+methods:
+
+move(double x,double y)
+show()
+hide()
+removeFromCanvas()
+contains()
+moveTo(double x, double y)
+getX()
+getY()
+swing()   

@@ -1,0 +1,155 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Lab Exercise - TreeStats</title><style type="text/css">
+    <!--
+      body                 { color: #000000; background-color: #ffffff; } 
+      A                    { font-family: Verdana, Arial, Helvetica; text-decoration: none; }
+      A:visited            { color: #551a8b; }
+      A:hover              { color: #0066CC;	text-decoration: underline; }
+      dt                   { font-weight: bold; } 
+      input                { font-family: Courier New, Courier, monospace; font-size: 100% }
+      code                 { font-family: Courier New, Courier, monospace; font-size: 120% }
+      titleCode            { font-family: Courier, monospace; font-size: +4; }
+      ol.alpha             { list-style-type: lower-alpha; }
+      span.center          { text-align: center; }
+      span.right           { text-align: right; }
+      span.constant        { color: #990099; }
+      span.keyword         { color: #993333; }
+      span.function-name   { color: #666633; }
+      span.comment         { color: #666666; }
+      span.string          { color: #0000ff; }
+      span.variable-name   { color: #000066; }
+      span.type            { color: #006600; }
+      span.spacer          { font-size: 1pt; }
+      -->
+    </style></head><body bgcolor="ffffff"><script language="javascript">
+    <!-- var emailAbstract="Lab Exercise - TreeStats";
+    var justTitle="Lab Exercise - TreeStats";
+    var tutorialPrereqs="";
+    var menu1blurb="Lab Exercise - TreeStats"; 
+    
+      var browser = "x";
+      if (navigator.userAgent.indexOf("Mozilla/4") != -1) browser = "N3";
+      else if (navigator.userAgent.indexOf("Mozilla/3") != -1) browser = "N3";
+      else browser = "x";
+      
+      if (browser=="N3")
+      {
+    var menu1over=new Image(108,68); 
+    var menu1out=new Image(108,68); 
+    
+        var topmainover=new Image(77,15);
+        var topmainout=new Image(77,15);
+        var bottommainover=new Image(77,15);
+        var bottommainout=new Image(77,15);
+
+        var topfeedbackover=new Image(80,15);
+        var topfeedbackout=new Image(80,15);
+        var bottomfeedbackover=new Image(80,15);
+        var bottomfeedbackout=new Image(80,15);
+        var toppreviousover=new Image(77,15);
+        var toppreviousout=new Image(77,15);
+        var bottompreviousover=new Image(77,15);
+        var bottompreviousout=new Image(77,15);
+        var topnextover=new Image(60,15);
+        var topnextout=new Image(60,15);
+        var bottomnextover=new Image(60,15);
+        var bottomnextout=new Image(60,15);
+        var topnextsectionover=new Image(108,15);
+        var topnextsectionout=new Image(108,15);
+        var bottomnextsectionover=new Image(108,15);
+        var bottomnextsectionout=new Image(108,15);
+      
+    menu1over.src="imagemaster/himenu1.jpg"; 
+    menu1out.src="imagemaster/menu1.jpg"; 
+    
+        var mainblurb="Main menu";
+        var sectionblurb="Section menu";
+        var feedbackblurb="Give feedback on this tutorial";
+        var previousblurb="Go to previous panel";
+        var nextblurb="Go to next panel";
+        var nextsectionblurb="Go to next section";
+
+        topmainover.src="../i/h-main.gif";
+        topmainout.src="../i/main.gif";
+        bottommainover.src="../i/h-main.gif";
+        bottommainout.src="../i/main.gif";
+
+        topfeedbackover.src="../i/h-feedback.gif";
+        topfeedbackout.src="../i/feedback.gif";
+        bottomfeedbackover.src="../i/h-feedback.gif";
+        bottomfeedbackout.src="../i/feedback.gif";
+        toppreviousover.src="../i/h-previous.gif";
+        toppreviousout.src="../i/previous.gif";
+        bottompreviousover.src="../i/h-previous.gif";
+        bottompreviousout.src="../i/previous.gif";
+        topnextover.src="../i/h-next.gif";
+        topnextout.src="../i/next.gif";
+        bottomnextover.src="../i/h-next.gif";
+        bottomnextout.src="../i/next.gif";
+        topnextsectionout.src="../i/nextsection.gif";
+        topnextsectionover.src="../i/h-nextsection.gif";
+        bottomnextsectionout.src="../i/nextsection.gif";
+        bottomnextsectionover.src="../i/h-nextsection.gif";
+      }
+      function iOut(image)
+      {
+        if (browser=="N3")document[image].src=eval(image + "out.src");
+      }
+      function iOver(image)
+      {
+        if (browser=="N3")document[image].src=eval(image + "over.src");
+      }
+      // -->
+    </script><a href="#navskip"><img border="0" alt="Skip to main content" src="../i/c.gif"></a><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD width="150" height="1" bgcolor="#ffffff"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="3" bgcolor="#cc6633"><IMG alt="" height="3" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="1" bgcolor="#333333"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD width="150" height="1" bgcolor="#000000"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR></TABLE><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><img alt="" height="40" width="1" src="../i/c.gif"><font size="+1" face="Arial Bold"><b>Lab Exercise - TreeStats</b></font><br></td><td width="*" valign="bottom" align="right"><a border="0" href="APCSL37.zip"><img alt="ZIP" border="0" src="../i/icon-zip.gif"></a><a border="0" href="APCSL37-ltr.pdf"><img alt="PDF (letter)" border="0" src="../i/icon-pdf-ltr.gif"></a></td></tr><tr><td height="2" colspan="2"><img height="2" width="1" src="../i/c.gif"></td></tr></table><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD width="150" height="1" bgcolor="#000000" colspan="5"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR><TR><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topmain'); iOver('bottommain'); self.status=mainblurb; return true;" onMouseOut="iOut('topmain'); iOut('bottommain'); self.status=''; return true;" href="index.html"><img alt="Lesson Menu" border="0" src="../i/main.gif" name="topmain"></a></TD><TD background="../i/sw-gold.gif"><a border="0"></a></TD><TD width="100%" background="../i/sw-gold.gif"><img src="../i/c.gif"></TD><TD background="../i/sw-gold.gif"><img border="0" src="../i/xprevious.gif"></TD><TD background="../i/sw-gold.gif"><img border="0" src="../i/xnext.gif"></TD></TR></TABLE><table bgcolor="ffffff" cellspacing="0" cellpadding="2" border="0" height="100" width="100%"><tr><td bgcolor="ffffff" width="15">&nbsp;</td><td bgcolor="ffffff" width="12">&nbsp;</td><td valign="top" align="left" bgcolor="ffffff" width="*"><br><table cellspacing="0" cellpadding="0" border="0"><tr><td width="90%"><font size="4" face="Verdana, Arial, Helvetica"><b>L.A.37.1 - <i xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">TreeStats</i></b></font></td><td width="200" align="right"><font size="1" face="Verdana, Arial, Helvetica"><nobr>    page 1 of 1</nobr></font></td></tr></table><br><font size="2" face="Verdana, Arial, Helvetica"><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"><font size="+1"><b>Background:</b></font></p><br><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" align="center"><img src="images/la37_1img01.gif"></p><br><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">The height of a binary tree is defined as the number of nodes in the longest path from the root to a leaf of the tree.  The heights of the trees above are 5 and 6 for Tree 1 and Tree 2, respectively.
+  </p><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">The width of a binary tree is the number of nodes in the longest path in the tree.  The width of an empty tree is 0; the width of a single-node tree is 1; and the width of Tree 1 is 8 (darkened nodes) and the width of Tree 2 is 9.  The longest path may or may not include the root node.  In general, the width of an empty tree is 0 and the width of a nonempty tree is the maximum of the following three quantities:
+  </p><blockquote xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
+    <ol>
+      <li><p>The width of the left subtree
+        </p>
+      </li>
+      <li><p>The width of the right subtree
+        </p>
+      </li>
+      <li><p>The length of the longest path that includes the root (which can be calculated from the heights of the left and right subtrees).
+        </p>
+      </li>
+    </ol>
+    <br>
+  </blockquote><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">When writing these two methods (height and width), you may find it useful to use the max method from the <b>java.lang.Math</b>.
+  </p><blockquote xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"><pre><code>Math.max(<b>int</b> a, <b>int</b> b)</code></pre></blockquote><br><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"><font size="+1"><b>Assignment:</b></font></p><ol xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
+    <li><p>Write a main menu module with the following menu choices:
+      </p>
+      <blockquote><pre><code>(1) Fill the tree from a file
+(2) Preorder output
+(3) Inorder output
+(4) Postorder output
+(5) Count the nodes in the tree
+(6) Count the leaves in the tree
+(7) Find the height of the tree
+(8) Find the width of the tree
+(9) Clear the tree
+(q) Quit</code></pre></blockquote>
+    </li>
+    <li><p>Your task is to systematically code and test each of these methods.  The data stored in this tree will be a single letter (stored as a <code>String</code>).  The source of the letters will be two different files, each consisting of one line of capital letters:  (<i>fileA.txt</i>) and (<i>fileB.txt</i>).
+      </p>
+    </li>
+    <li><p>Clearing the tree must also dispose of the nodes as the tree is cleared.
+      </p>
+    </li>
+    <li><p>You should also print appropriate messages, labeling each output.
+      </p>
+    </li>
+  </ol><br><p xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"><font size="+1"><b>Instructions:</b></font></p><ol xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
+    <li><p>Either you or your instructor should prepare these two text files:
+      </p>
+      <blockquote><pre><code>(<i><a target="blank" href="fileA.txt">fileA.txt</a></i>) = KECAJGHOSRV
+
+(<i><a target="blank" href="fileB.txt">fileB.txt</a></i>) = QJHBADFKNLMPTW
+</code></pre></blockquote>
+    </li>
+    <li><p>The two files above will generate binary trees having the distinctive shape of the front side of this lab.  This will allow you to test your program and verify the correctness of your answers.
+      </p>
+    </li>
+    <li><p>For each file, turn in your source code and answers for menu choices 2-8, appropriately labeled.
+      </p>
+    </li>
+  </ol><br></font></td></tr></table><TABLE border="0" cellpadding="0" cellspacing="0" width="100%"><TR><TD background="../i/sw-gold.gif"><a border="0" onMouseOver="iOver('topmain'); iOver('bottommain'); self.status=mainblurb; return true;" onMouseOut="iOut('topmain'); iOut('bottommain'); self.status=''; return true;" href="index.html"><img alt="Lesson Menu" border="0" src="../i/main.gif" name="bottommain"></a></TD><TD background="../i/sw-gold.gif"><a border="0"></a></TD><TD width="100%" background="../i/sw-gold.gif"><img src="../i/c.gif"></TD><TD background="../i/sw-gold.gif"><img border="0" src="../i/xprevious.gif"></TD><TD background="../i/sw-gold.gif"><img border="0" src="../i/xnext.gif"></TD></TR><TR><TD width="150" height="1" bgcolor="#000000" colspan="6"><IMG alt="" height="1" width="150" src="../i/c.gif"></TD></TR></TABLE><TABLE cellpadding="0" cellspacing="0" border="0"><TR><TD width="62"><TABLE cellpadding="0" cellspacing="0" border="0" width="62"><TR bgcolor="#006699"><TD width="1" bgcolor="#959595"><img alt="" border="0" height="20" width="1" src="../i/c.gif"></TD><TD align="center" width="60" class="mast"><a style="text-decoration: none; color: #ffffff;" class="nav" target="_blank" href="http://www.ict.org"><font face="Arial, Verdana" size="2">Contact</font></a></TD><TD width="1" bgcolor="#959595"><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD><TD width="100%"><TABLE cellpadding="0" cellspacing="0" border="0" width="100%"><TR height="21" bgcolor="#006699"><TD><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD><TD><TABLE cellpadding="0" cellspacing="0" border="0"><TR bgcolor="#006699"><TD width="1" bgcolor="#959595"><img alt="" border="0" height="20" width="1" src="../i/c.gif"></TD><TD align="center" class="mast"><a style="text-decoration: none; color: #ffffff;" class="nav" target="_blank" href="http://www.ict.org/javalicense.pdf"><font face="Arial Narrow" size="1"><nobr>&nbsp;&copy;ICT&nbsp;2003,&nbsp;All&nbsp;Rights&nbsp;Reserved.</nobr></font></a></TD><TD width="1" bgcolor="#959595"><img alt="" border="0" height="21" width="1" src="../i/c.gif"></TD></TR><TR bgcolor="#ffffff"><TD><img alt="" border="0" height="1" width="1" src="../i/c.gif"></TD></TR></TABLE></TD></TR></TABLE></body></html>

@@ -1,0 +1,262 @@
+
+<!-- saved from url=(0056)http://www.cs.auckland.ac.nz/software/AlgAnim/heaps.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Data Structures and Algorithms: Heaps</title>
+
+<meta name="description" content="Data Structures and Algorithms Course Notes,
+PLDS210 University of Western Australia">
+<meta name="keywords" content="data structures,algorithms,abstract data types,
+heap, complete tree">
+</head>
+<body bgcolor="#ffffff">
+<table bgcolor="#00c0f0" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr bgcolor="#00f0f0"><td align="right">
+<font face="helvetica" size="+1"><i>Data Structures and Algorithms</i></font>
+</td></tr>
+
+<tr><td><font face="helvetica" size="+2"><b>6.2 Heaps</b></font>
+</td></tr>
+</tbody></table>
+<p>
+
+Heaps are based on the notion of a 
+<font color="#fa0000"><b>complete tree</b></font>,
+for which we gave an informal definition earlier.
+</p><p>
+Formally:
+</p><p>
+A binary tree is 
+<font color="#fa0000"><b>completely full</b></font>
+if it is of
+height, <i>h</i>, and has 2<sup><i>h</i>+1</sup>-1 nodes.
+</p><p>
+<a name="complete_tree">
+A binary tree of height, <i>h</i>, is 
+<font color="#fa0000"><b>complete</b></font> <i>iff</i>
+</a></p><ol type="a"><a name="complete_tree">
+<li> it is empty <i>or</i>
+</li><li> its left subtree is complete of height <i>h</i>-1 and its
+right subtree is completely full of height <i>h</i>-2 <i>or</i>
+</li><li> its left subtree is completely full of height <i>h</i>-1 and its
+right subtree is complete of height <i>h</i>-1.
+</li></a></ol><a name="complete_tree">
+A complete tree is filled from the left:
+<ul>
+<li> all the leaves are on
+<ul>
+<li> the same level <i>or</i>
+</li><li> two adjacent ones <i>and</i>
+</li></ul>
+</li><li> all nodes at the lowest level are as far to the left
+as possible.
+</li></ul>
+
+<h3>Heaps</h3>
+
+A binary tree has the 
+<font color="#fa0000"><b>heap property</b></font> <i>iff</i>
+<ol type="a">
+<li> it is empty <i>or</i>
+</li><li> the key in the root is larger than that in either
+child and both subtrees have the heap property.
+</li></ol>
+A heap can be used as a priority
+queue: the highest priority item is at the root and is trivially
+extracted.
+But if the root is deleted, we are left with two sub-trees
+and we must <i>efficiently</i>
+re-create a single tree with the heap property.
+<blockquote>
+The value of the heap structure is that we can both extract
+the highest priority item and insert a new one in <b>O(log<i>n</i>)</b>
+time.
+</blockquote>
+<p>
+How do we do this?
+</p><p>
+<table>
+<tbody><tr><td>Let's start with this heap.
+<p>
+A deletion will remove the T<br>
+at the root.
+</p></td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap.gif"></td></tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+To work out how we're going to maintain the heap property,
+use the fact that a complete tree is filled from the left.
+So that the position which must become empty is the one
+occupied by the M.
+<p>
+Put it in the vacant root position.
+</p></td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap1.gif"></td></tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+This has violated the condition that the
+root must be greater than each of its 
+children.
+<p>
+So interchange the M with the larger
+of its children.
+</p><p>
+</p></td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap2.gif"></td></tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+The left subtree has now lost the
+heap property.
+<p>
+So again interchange the M with the larger
+of its children.
+</p><p>
+</p></td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap3.gif"></td></tr>
+</tbody></table>
+This tree is now a heap again, so we're finished.
+</p><p>
+We need to make at most <i>h</i> interchanges of a
+root of a subtree with one of its children to
+fully restore the heap property.
+Thus deletion from a heap is <b>O(<i>h</i>)</b> 
+or <b>O(log<i>n</i>)</b>.
+
+</p><h3>Addition to a heap</h3>
+<table>
+<tbody><tr>
+<td>
+To add an item to a heap, we follow the reverse
+procedure.
+<p>
+Place it in the next leaf position and
+move it <b>up</b>.
+</p><p>
+Again, we require <b>O(<i>h</i>)</b> 
+or <b>O(log<i>n</i>)</b>
+exchanges.
+</p></td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap4.gif"></td></tr>
+</tbody></table>
+<hr>
+<h3>Storage of complete trees</h3>
+The properties of a complete tree lead to a very efficient
+storage mechanism using <i>n</i> sequential locations in an
+array.
+<table>
+<tbody><tr>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap5.gif"></td>
+<td>
+If we number the nodes from 1 at the root and
+place:
+<ul>
+<li>the left child of node <i>k</i> at position 2<i>k</i>
+</li><li>the right child of node <i>k</i> at position 2<i>k</i>+1
+</li></ul>
+<p>
+Then the 'fill from the left' nature of the complete 
+tree ensures that the heap can be stored in
+consecutive locations in an array.
+</p></td>
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+Viewed as an array, we can see that the <i>n</i>th
+node is always in index position <i>n</i>.
+</td>
+<td><img src="./Data Structures and Algorithms  Heaps_files/heap6.gif"></td>
+</tr>
+</tbody></table>
+
+<p>
+The code for extracting the highest priority item from a 
+heap is, naturally, recursive. Once we've extracted the
+root (highest priority) item and swapped the last item
+into its place, we simply call <tt><font color="green">MoveDown</font></tt> recursively
+until we get to the bottom of the tree.
+</p></a><p><a name="complete_tree">
+</a><a href="http://www.cs.auckland.ac.nz/software/AlgAnim/source/heap_delete.c" target="heap_delete.c">Click
+here to load heap_delete.c</a>
+</p><p>
+Note the macros <tt><font color="green">LEFT</font></tt>
+and <tt><font color="green">RIGHT</font></tt> which simply encode
+the relation between the index of a node and its left
+and right children.
+Similarly the <tt><font color="green">EMPTY</font></tt> macro encodes
+the rule for determining whether a sub-tree is empty or not.
+</p><p>
+Inserting into a heap follows a similar strategy,
+except that we use a <tt><font color="green">MoveUp</font></tt> function to 
+move the newly added item to its correct place.
+(For the <tt><font color="green">MoveUp</font></tt> function,
+a further macro which defines the
+<tt><font color="green">PARENT</font></tt> of a node would normally be added.)
+
+</p><p>
+Heaps provide us with a method of sorting,
+known as <a href="http://www.cs.auckland.ac.nz/software/AlgAnim/heapsort.html">heapsort</a>.
+However, we will examine and analyse the simplest
+method of sorting first.
+
+
+</p><p>
+<a name="p_queue_anim">
+</a></p><h3><a name="p_queue_anim">Animation</a></h3><a name="p_queue_anim">
+In the animation, note that both the array representation (used in
+the implementation of the algorithm) and the (logical) tree representation
+are shown. 
+This is to demonstrate how the tree is restructured to make a heap again
+after every insertion or deletion.
+<p>
+<table bgcolor="#00f0f0" width="100%"> 
+<tbody><tr><td>
+<font color="blue" face="helvetica">
+<b>Priority Queue Animation</b><br>
+This animation was written by Woi Ang.</font></td>
+<td align="center">
+  <table border="0">
+  <tbody><tr><td>
+    <applet codebase="http://www.cs.auckland.ac.nz/software/AlgAnim/Java/p_queue" code="AlgAnimApp.class" width="200" height="35">
+    <param name="filename" value="AlgThread.java">
+    <param name="buttonname" value="Run the Animation">
+    <param name="algname" value="Priority Queue">
+    </applet>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+<td><font face="helvetica">Please email comments to:<br>
+<img src="./Data Structures and Algorithms  Heaps_files/john_email.gif">
+</font></td></tr>
+</tbody></table>
+</p><p>
+<table width="100%" bgcolor="#00c0f0">
+<tbody><tr><td><h3>Key terms</h3></td></tr></tbody></table>
+<table><tbody><tr><td>
+<dl>
+<dt><font color="#fa0000"><b>Complete Tree</b></font>
+   </dt><dd>A balanced tree in which the distance from the root to any leaf
+       is either <i><b>h</b></i> or <i><b>h</b></i>-1.
+</dd></dl>
+</td></tr></tbody></table>
+
+</p><p>
+
+<table cellpadding="5" width="100%" bgcolor="#00f0f0" cellspacing="0">
+<tbody><tr><td width="50%">
+Continue on to <a href="http://www.cs.auckland.ac.nz/software/AlgAnim/sorting.html">Sorting</a></td>
+<td>Back to the <a href="http://www.cs.auckland.ac.nz/software/AlgAnim/ds_ToC.html">Table of Contents</a>
+</td></tr></tbody></table>
+<small>
+© <img src="./Data Structures and Algorithms  Heaps_files/john_email.gif">, 1998
+</small>
+
+
+</p></a></body></html>

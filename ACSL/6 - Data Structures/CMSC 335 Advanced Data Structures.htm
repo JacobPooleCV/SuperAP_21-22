@@ -1,0 +1,987 @@
+
+<!-- saved from url=(0059)http://www.academic.marist.edu/~jzbv/ads/L5BinaryTrees1.htm -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="http://www.academic.marist.edu/~jzbv/ads/L5BinaryTrees1_files/filelist.xml">
+<link rel="Edit-Time-Data" href="http://www.academic.marist.edu/~jzbv/ads/L5BinaryTrees1_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>CMSC 335  Advanced Data Structures</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Marist User</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>James Ten Eyck</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>398</o:TotalTime>
+  <o:Created>2001-10-05T18:07:00Z</o:Created>
+  <o:LastSaved>2001-10-05T18:07:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>1155</o:Words>
+  <o:Characters>6585</o:Characters>
+  <o:Company>Marist College</o:Company>
+  <o:Lines>54</o:Lines>
+  <o:Paragraphs>13</o:Paragraphs>
+  <o:CharactersWithSpaces>8086</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:582646822;
+	mso-list-type:simple;
+	mso-list-template-ids:-1095609452;}
+@list l0:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:958994671;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1628134368;}
+@list l1:level1
+	{mso-level-start-at:6;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:1621064984;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1588054938;}
+@list l2:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang="EN-US" style="tab-interval:.5in">
+
+<div class="Section1">
+
+<p class="MsoTitle">CMSC 335<span style="mso-spacerun: yes">&nbsp; </span>Advanced
+Data Structures</p>
+
+<p class="MsoNormal" align="center" style="text-align:center"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></b></p>
+
+<p class="MsoSubtitle">Lecture # 4</p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Introduction To Binary Trees<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l0 level1 lfo1;
+tab-stops:list .25in"><!--[if !supportLists]--><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Definition</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"> –<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">A binary tree is either NULL or consists of a root
+that holds some item or items of data and has a left and a right subtree which
+are themselves binary trees.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l0 level1 lfo1;
+tab-stops:list .25in"><!--[if !supportLists]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">External and Internal Path
+Length<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Consider the binary tree (2-tree) where all paths
+terminate in a special external node (all leaves have left and right subtrees
+which are external nodes)<o:p></o:p></span></p>
+
+<p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:6in;
+ height:369pt' fillcolor="window">
+ <v:imagedata src="./L5BinaryTrees1_files/image001.png" o:title="Tree1"/>
+</v:shape><![endif]--><!--[if !vml]--><img width="576" height="492" src="./CMSC 335 Advanced Data Structures_files/image002.jpg" v:shapes="_x0000_i1025"><!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Define <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:.25in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">E = external path length =
+the total distance of all external nodes from the root<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:.25in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">I = internal path length =
+the total distance of all internal nodes from the root<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Then,<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>E = I + 2n<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>where n is the number of internal nodes<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Proof (by induction)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; </span>Step
+1.<span style="mso-spacerun: yes">&nbsp; </span>Show that<span style="mso-spacerun:
+yes">&nbsp; </span>P(n): E = I + 2n<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>is
+true for the base case (n= 1)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Then the tree consists
+of a single internal node, the root, and its two <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">(external node) children. <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">I = 0,<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>n = 1,<span style="mso-spacerun: yes">&nbsp;
+</span>and E = 2<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>and the
+statement P(1) is correct.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Step 2.<span style="mso-spacerun:
+yes">&nbsp; </span>The inductive hypothesis – show P(n) </span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:Wingdings;
+mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;;
+mso-char-type:symbol;mso-symbol-font-family:Wingdings"><span style="mso-char-type:
+symbol;mso-symbol-font-family:Wingdings">à</span></span><span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt"> P(n+1)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Assume P(n) is true.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Replace any one of the
+external nodes – say the one at a distance d from <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">the root with an internal
+node (and its two external children).<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Then E’ the external path
+length of the new tree (with n+1 nodes) is<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;mso-ansi-language:ES">E’ = E – d + 2(d + 1)<span style="mso-spacerun:
+yes">&nbsp; </span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">since the original tree lost
+an external node at depth d but gained two new <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">ones at depth d + 1.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">And similarly,<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>I’ = I + d<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Since one additional
+internal node was added at depth d.<span style="mso-spacerun: yes">&nbsp;
+</span>Then<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>E’ = E – d + 2(d+1) = I’ + 2(n + 1)<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>?<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>E + d + 2 = I + d + 2(n + 1)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Which reduces to <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>E = I + 2n<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:.5in"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Which is assumed true.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l0 level1 lfo1;
+tab-stops:list .25in"><!--[if !supportLists]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Binary Search tree<o:p></o:p></span></b></p>
+
+<p class="MsoBodyTextIndent">A binary search tree is a binary tree, one of whose
+data elements is a comparable object called a key, whose left subtree is a
+binary search tree all with all of its keys less than the key of the root, and
+whose right subtree is a binary search tree with all of its<span style="mso-spacerun: yes">&nbsp; </span>keys greater than the key of the root.</p>
+
+<p class="MsoBodyTextIndent"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></p>
+
+<p class="MsoBodyTextIndent">Given the recursive definition of a binary tree, we
+will distinguish between a tree object and its nodes.<span style="mso-spacerun:
+yes">&nbsp; </span>We will locate the recursion in the node objects.<span style="mso-spacerun: yes">&nbsp; </span>The bstnode objects will enforce the
+constraint on the keys of its children, and will have a tree of nodes as its
+subtrees.</p>
+
+<p class="MsoBodyTextIndent" align="center" style="margin-left:0in;text-align:center"><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:6in;height:369pt'
+ fillcolor="window">
+ <v:imagedata src="./L5BinaryTrees1_files/image003.png" o:title="BSTree"/>
+</v:shape><![endif]--><!--[if !vml]--><img width="576" height="492" src="./CMSC 335 Advanced Data Structures_files/image004.jpg" v:shapes="_x0000_i1029"><!--[endif]--></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l0 level1 lfo1;
+tab-stops:list .25in"><!--[if !supportLists]--><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Determine the number of
+compares to find a key in a binary search tree of size n nodes</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Consider the 2-tree where an unsuccessful search
+terminates at an external leaf node.<span style="mso-spacerun: yes">&nbsp; </span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Let S(n) = number of compares done in an average
+successful search of a 2-tree with n internal nodes.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Let U(n) = number of compares for an average
+unsuccessful search of the same 2-tree.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">The average number of comparisons in a successful
+search is equal to the average of the internal path length plus 1 (the initial
+comparison with the root)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>S(n) =
+I/n<span style="mso-spacerun: yes">&nbsp; </span>+ 1<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">And the average number of comparisons for an
+unsuccessful search would be equal to <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">U(n) = E/(n + 1)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Since in a 2-tree with n internal nodes, there are
+always n + 1 external nodes.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Using the theorem stating E = I + 2n<span style="mso-spacerun: yes">&nbsp; </span>that we proved earlier, we can now
+demonstrate that<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">S(n) = (1 + 1/n) U(n) – 1<span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(1)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Where<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>E = (n +
+1) U(n)<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>I<span style="mso-spacerun: yes">&nbsp; </span>= n S(n) - n<span style="mso-spacerun:
+yes">&nbsp; </span>from above, and plugging into E = I + 2n<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">(n + 1) U(n) = n S(n) - n + 2n<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">S(n)
+= (1 + 1/n) U(n) – 1<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>the desired
+result.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;</span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">The number of comparisons to find a node in the tree
+is exactly 1 more than the number of comparisons needed to insert it.<span style="mso-spacerun: yes">&nbsp; </span>An insertion would involve a traversal down
+to an external node (an unsuccessful search).<span style="mso-spacerun: yes">&nbsp;
+</span>Therefore<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>S(n) = 1
++ (U(0) + U(1) + … </span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;mso-ansi-language:ES">+ U(n-1)) /n<span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(2)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">since the node to be found is equally likely to be
+the first node inserted {where number of compares is U(0) since insertion is
+into an empty tree} or the k<sup>th</sup> node<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">inserted {U(k-1) since there are k – 1 nodes already
+in the tree when this node is inserted} for k = 1, n.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Combining formulae (1) and (2) we obtain:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">(n + 1) U(n) = 2n + U(0) + U(1) + … </span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">+ U(n-1)<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(3)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Write this recurrence for n –1<span style="mso-spacerun: yes">&nbsp; </span>{replace n with n-1 everywhere it appears in
+(3)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">n U(n – 1) = 2(n – 1) + U(0) + … </span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">+ U(n –2)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">and subtract from equation (3) to obtain:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">(n + 1) U(n) – n U(n – 1) = U(n – 1)<span style="mso-spacerun: yes">&nbsp;
+</span>+ 2<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(n + 1)U(n) = (n + 1)U(n – 1) + 2<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>U(n) = U(n – 1) + 2/(n + 1)<span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>where
+U(0) = 0<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span lang="ES" style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:ES"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">The solution to this recurrence is <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span lang="ES" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+ES">U(n) = 2(1/(n+1) + 1/n + 1/(n-1) + … </span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">+ ½ + 1)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">And for n </span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:Wingdings;mso-ascii-font-family:&quot;Times New Roman&quot;;
+mso-hansi-font-family:&quot;Times New Roman&quot;;mso-char-type:symbol;mso-symbol-font-family:
+Wingdings"><span style="mso-char-type:symbol;mso-symbol-font-family:Wingdings">à</span></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"> </span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:Symbol;
+mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;;
+mso-char-type:symbol;mso-symbol-font-family:Symbol"><span style="mso-char-type:
+symbol;mso-symbol-font-family:Symbol">¥</span></span><span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>this
+sum goes to 2ln(n), the natural log of n<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">And converting to base 2 logs, this becomes 2(ln
+2)(lg n) = 1.39 lg(n)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Thus U(n) </span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:Symbol;mso-ascii-font-family:&quot;Times New Roman&quot;;
+mso-hansi-font-family:&quot;Times New Roman&quot;;mso-char-type:symbol;mso-symbol-font-family:
+Symbol"><span style="mso-char-type:symbol;mso-symbol-font-family:Symbol">@</span></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"> 2ln(2)lg(n) = 1.39 lg(n)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>The average number of comparisons needed
+needed in the average binary search tree <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="text-indent:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">with n nodes is approximately 1.39 lg(n)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l0 level1 lfo1;
+tab-stops:list .25in"><!--[if !supportLists]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Insertion into a Binary
+Search Tree<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">All new keys are inserted into a binary search tree
+at a leaf.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">There can be no duplicate keys in a BST.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;class Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">void</b> binstree&lt;Comparable&gt;::add(<b style="mso-bidi-font-weight:normal">const</b> Comparable &amp;<span style="mso-spacerun: yes">&nbsp; </span>item)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(!root)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>root = new bstnode&lt;Comparable&gt; (item);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>root -&gt; add (item);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;<b style="mso-bidi-font-weight:
+normal">class</b> Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;
+</span>bstnode&lt;Comparable&gt; * bstnode&lt;Comparable&gt;::add(<b style="mso-bidi-font-weight:normal">const</b> Comparable &amp; value)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bstnode&lt;Comparable&gt; * newNode = new
+bstnode&lt;Comparable&gt; (value);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>insert (newNode);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+newNode;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;<b style="mso-bidi-font-weight:
+normal">class</b> Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">void</b> bstnode&lt;Comparable&gt;::insert
+(bstnode&lt;Comparable&gt; * newNode)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>assert(newNode != 0);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(newNode -&gt; data &lt; data ) {<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(leftptr != 0)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>leftptr -&gt; insert (newNode);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>leftptr = newNode;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b>
+<b style="mso-bidi-font-weight:normal">if</b> (newNode -&gt; data &gt; data) {<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(rightptr != 0)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>rightptr -&gt; insert (newNode);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>rightptr = newNode;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>//else do nothing if key already appears in
+the tree<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-indent:-.25in;mso-list:l1 level1 lfo3;
+tab-stops:list .25in"><!--[if !supportLists]--><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">6.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Deleting from a Binary
+Search Tree</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">If the key to be removed is in a leaf node, simply
+delete the node<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">If the key to be removed is in a node with no right
+child, make that node's left child, the parent's right child and delete the
+node.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">Else, replace the node holding the key with the
+leftmost descendant of the right child, and delete the node.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></b></p>
+
+<p class="MsoNormal" align="center" style="text-align:center"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_i1028" type="#_x0000_t75" style='width:6in;height:369pt'>
+ <v:imagedata src="./L5BinaryTrees1_files/image005.png" o:title="Tree delete 1"/>
+</v:shape><![endif]--><!--[if !vml]--><img width="576" height="492" src="./CMSC 335 Advanced Data Structures_files/image006.jpg" v:shapes="_x0000_i1028"><!--[endif]--><o:p></o:p></span></b></p>
+
+<p class="MsoNormal" align="center" style="text-align:center"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;mso-bidi-font-weight:bold">The remove method in a </span><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt">binstree</span></b><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;mso-bidi-font-weight:bold"> object delegates the actual working of
+removing the node to the </span><b style="mso-bidi-font-weight:normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">bstnode</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-bidi-font-weight:bold">
+objects beginning with the root.<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>A
+pointer to the deleted node will be returned to </span><b style="mso-bidi-font-weight:
+normal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">junknode</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-bidi-font-weight:bold">
+which is then deleted.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-bidi-font-weight:bold"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;<b style="mso-bidi-font-weight:
+normal">class</b> Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">void</b> binstree&lt;Comparable&gt;::remove
+(Comparable &amp;<span style="mso-spacerun: yes">&nbsp; </span>item)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(root)<span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bstnode&lt;Comparable&gt; * junknode = 0;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bstnode&lt;Comparable&gt; * hold;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>hold = root -&gt; remove (item, junknode);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(junknode) {<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(root == junknode)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>root = hold;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">delete</b>
+junknode;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt">The remove method in <b>bstnode</b> will return a
+pointer to the node to be reattached, and a reference parameter to a pointer to
+the node to be junked.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;<b style="mso-bidi-font-weight:
+normal">class</b> Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;
+</span>bstnode&lt;Comparable&gt; *<span style="mso-tab-count:1">&nbsp; </span>bstnode&lt;Comparable&gt;::remove(Comparable
+&amp; value,<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>bstnode&lt;Comparable&gt;<span style="mso-tab-count:1"> </span>* &amp; bst)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(value == data) { // we're the one<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bst = <b style="mso-bidi-font-weight:normal">this</b>;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>if (!right ())<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+left ();<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// else find and remove the leftmost
+descendant of the right child<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bstnode&lt;Comparable&gt; * newroot;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>right(right() -&gt;
+removeLeftmostDescendant(newroot) );<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// connect the new root<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>//make the left child of this node the left
+child of<span style="mso-spacerun: yes">&nbsp; </span>newroot<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>newroot -&gt; left(left() );<span style="mso-spacerun: yes">&nbsp; </span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>newroot -&gt; right(right() );<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b><span style="mso-spacerun: yes">&nbsp; </span>newroot;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;
+</span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b>
+<b style="mso-bidi-font-weight:normal">if</b> (value &lt; data) {<span style="mso-spacerun: yes">&nbsp; </span>// remove from left child<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(!left() )<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+this;<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>// no left child<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// do the deletion<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>left(left()-&gt; remove(value, bst));<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+this;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">else</b>
+{ // remove from right child<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(!right() )<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+this;<span style="mso-spacerun: yes">&nbsp; </span>// no right child<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// do deletion<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>right(right() -&gt; remove(value, bst));<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+this;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><!--[if !supportEmptyParas]-->&nbsp;<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">template</b> &lt;<b style="mso-bidi-font-weight:
+normal">class</b> Comparable&gt;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp;
+</span>bstnode&lt;Comparable&gt; *
+bstnode&lt;Comparable&gt;::removeLeftmostDescendant<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span><span style="mso-tab-count:12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(bstnode&lt;Comparable&gt;
+* &amp; childptr)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>{<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// see if we are the leftmost node<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>bstnode&lt;Comparable&gt; * leftchild =
+left();<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">if</b>
+(!leftchild)<span style="mso-spacerun: yes">&nbsp; </span>{ // we are<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>childptr = this;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+right(); // remove self<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>// else do the deletion<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span>left(leftchild -&gt; removeLeftmostDescendant
+(childptr) );<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp; </span><b style="mso-bidi-font-weight:normal">return</b>
+this;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt"><span style="mso-spacerun: yes">&nbsp; </span>}<o:p></o:p></span></p>
+
+</div>
+
+
+
+
+</body></html>

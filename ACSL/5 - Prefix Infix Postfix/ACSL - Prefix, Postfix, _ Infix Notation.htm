@@ -1,0 +1,87 @@
+
+<!-- saved from url=(0057)http://www.minich.com/education/wyo/acsl/prefix/index.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ACSL - Prefix, Postfix, &amp; Infix Notation</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="center"><big><strong>Prefix, Postfix, &amp; Infix Notation</strong></big></p>
+
+<p>Prefix/Postfix <a href="http://www.minich.com/education/wyo/acsl/prefix/prefixpostfixwksht1.pdf">Wksheet #1</a>, <a href="http://www.minich.com/education/wyo/acsl/prefix/prefixpostfixwksht2.pdf">Worksheet 
+  #2</a>, <a href="http://www.minich.com/education/wyo/acsl/prefix/prefixpostfixwksht3.pdf">Worksheet #3</a></p>
+<p>We normally learn mathematics via <strong>in</strong>fix notation. That is, 
+  math teachers write binary operators (such as '+') surrounded by two operands 
+  like this: &nbsp;&nbsp; <font color="#008000"><strong>A + B</strong></font>.&nbsp; 
+  We compute the expression by knowing that somehow the values A and B must be 
+  added (isn't it obvious?) This is only natural because of our math development. 
+</p>
+
+<p>In some areas of computer science (such as compiler design), it makes much 
+  more sense to order expressions with prefix notation. In that case, the earlier 
+  example would be written as:&nbsp;&nbsp;&nbsp; <font color="#008000"><strong>+AB</strong></font>.&nbsp; 
+  The operator, +, precedes (comes before) the operands hence it is called <strong>pre</strong>fix 
+  notation. Doesn't it really make sense to know first what operation that you 
+  will be computing so that you can sort of get ready for the right kind of problem 
+  and then to be told what the two values are. Prefix notation is sometimes called 
+  Polish notation because it was created by Jan Lukasiwicz.</p>
+
+<p>Sometimes computer scientists use <strong>post</strong>fix notation. With postfix 
+  notation, you place the operator AFTER the operands so the example above would 
+  be written as:&nbsp;&nbsp;&nbsp; <font color="#008000"><strong>AB+</strong></font>. 
+  Postfix notation is sometimes called Reverse Polish notation. Note that prefix 
+  (or Polish notation) is sometimes called RPN which stands for Registered Parameter 
+  Numbers (see the <a href="http://www.educ.kent.edu/~compclub/inquiry/math/topics/97-98/RPN.html">Kent 
+  City High School Computer Club</a> for details).</p>
+
+<p>Examples:</p>
+
+<table border="1" width="100%" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td width="33%" align="center"><strong>Infix</strong></td>
+    <td width="33%" align="center"><strong>Prefix</strong></td>
+    <td width="34%" align="center"><strong>Postfix</strong></td>
+  </tr>
+  <tr>
+    <td width="33%">(A + B) / D</td>
+    <td width="33%">/ + A B D</td>
+    <td width="34%">A B + D /</td>
+  </tr>
+  <tr>
+    <td width="33%">(A + B) / (D + E)</td>
+    <td width="33%">/ + A B + D E</td>
+    <td width="34%">A B + D E + /</td>
+  </tr>
+  <tr>
+    <td width="33%">(A - B / C + E)/(A + B)</td>
+    <td width="33%">/ + - A / B C E + A B</td>
+    <td width="34%">A B C / - E + A B + /</td>
+  </tr>
+  <tr>
+    <td width="33%">B <sup><sup>^ 2</sup></sup> - 4 * A * C</td>
+    <td width="33%">- ^ B 2 * * 4 A C</td>
+    <td width="34%">B 2 ^ 4 A * C * -</td>
+  </tr>
+</tbody></table>
+
+<p>Let A = 2, B = 3, D = 4, and E = 5. Answer the following:</p>
+
+<p>1. What is the final value of the prefix expression:&nbsp;&nbsp; + * A B - 
+  C D</p>
+
+<p>2. What is the final value of the postfix expression:&nbsp;&nbsp; B C D A D 
+  - + - +</p>
+
+<p>3. Which of the following is a valid expression (either postfix or prefix)?<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B C * D - 
+  +<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * A B C -<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B B B * *</p>
+
+<hr>
+
+<p align="center"><a href="http://www.minich.com/education/wyo/acsl/index.htm">ACSL Home Page</a> | <a href="http://www.minich.com/education/wyo/index.htm">Mr.
+Minich's Wyo Home Page</a> | <a href="http://www.minich.com/">Minich.com Web Design</a></p>
+
+
+</body></html>

@@ -1,0 +1,12 @@
+void insert (TreeNode node, Object data)
+// Will insert data into an ordered binary tree.
+// The solution is recursive.
+{
+   if
+      node points to null, insert data as a new TreeNode pointed to by node
+   else
+      if (data < node.getValue())
+         recursively insert data to the left
+      else if (data > node.getValue())
+         recursively insert data to the right
+}

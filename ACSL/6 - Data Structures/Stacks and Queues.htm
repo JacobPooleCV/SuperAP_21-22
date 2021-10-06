@@ -1,0 +1,370 @@
+
+<!-- saved from url=(0096)http://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/Stacks%20and%20Queues.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Stacks and Queues
+</title></head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<link rel="stylesheet" href="./Stacks and Queues_files/course.css" type="text/css">
+
+
+<center><h1><font color="green">Stacks and Queues</font></h1></center>
+
+<p>An array is a <i>random access</i> data structure, where each element can be
+accessed directly and in constant time. A typical illustration of random access
+is a book - each page of the book can be open independently of others. Random access
+is critical to  many algorithms, for example binary search.
+
+</p><p>A linked list is a <i>sequential access</i> data structure, where each element
+can be accesed only in particular order. A typical illustration of sequential access
+is a roll of paper or tape - all prior material must be unrolled in order to get to
+data you want.
+
+</p><p>In this note we consider a subcase of sequential data structures, so-called
+<i>limited access</i> data sturctures.
+
+
+</p><h2>Stacks</h2>
+<table bordercolor="" cellpadding="2">
+<tbody><tr align="left">
+<td>A stack is a container of objects that are inserted and removed according to the last-in
+first-out (LIFO) principle. In the pushdown stacks only two operations are allowed: <b>push</b>
+the item into the stack, and <b>pop</b> the item out of the stack. A stack is a limited access
+data structure - elements can be added and
+removed from the stack only at the top. <b>push</b> adds an item to the top of the stack,
+<b>pop</b> removes the item from the top. A helpful analogy is to think of a stack of books; you can remove only
+the top book, also you can add a new book on the top.
+
+<p>A stack is a <b>recursive</b> data
+structure. Here is a structural definition of a Stack:
+</p><ul>
+	a stack is either empty or<br>
+	it consistes of a top and the rest which is a stack;
+</ul>
+</td>
+<td>&nbsp; <img src="./Stacks and Queues_files/stack.bmp"> &nbsp;</td>
+</tr>
+</tbody></table>
+
+
+
+
+
+
+
+<h3>Applications</h3>
+<ul>
+<li>The simplest application of a stack is to reverse a word. You push a given word to stack -
+letter by letter - and then pop letters from the stack.
+
+</li><li>Another application is an "undo" mechanism in text editors; this operation is accomplished
+by keeping all text changes in a stack.
+
+
+<table bordercolor="" cellpadding="2">
+<tbody><tr align="left">
+<td>&nbsp; <img src="./Stacks and Queues_files/maze.bmp" height="180" width="200"> &nbsp;</td>
+
+<td><b>Backtracking</b>. This is a process when you need to access the most recent data element in a
+series of elements. Think of a labyrinth or maze - how do you find a way from an entrance to an exit?
+
+<p>Once you reach a dead end, you must backtrack. But backtrack to where? to the previous choice
+point. Therefore, at each choice point you store on a stack all possible choices. Then backtracking
+simply means popping a next choice from the stack.
+</p></td>
+</tr>
+</tbody></table>
+
+
+</li><li>
+
+</li><li>Language processing:
+<ul>
+<li>space for parameters and local variables is created internally using a stack.
+</li><li>compiler's syntax check for matching braces is implemented by using stack.
+</li><li>support for recursion
+</li></ul>
+</li></ul>
+
+
+<h3>Implementation</h3>
+In the standard library of classes, the data type stack is an <i>adapter</i> class, meaning that
+a stack is
+built on top of other data structures. The underlying structure for a stack could be an array,
+a vector, an ArrayList, a linked list, or any other collection. Regardless of the type of the
+underlying data structure, a Stack must implement the same functionality. This is achieved by
+providing a unique interface:
+
+<dir><pre>public interface StackInterface&lt;AnyType&gt;
+{
+   public void push(AnyType e);
+
+   public AnyType pop();
+
+   public AnyType peek();
+
+   public boolean isEmpty();
+}
+</pre></dir>
+
+
+The following picture demonstrates the idea of implementation <i>by composition</i>.
+<center><img src="./Stacks and Queues_files/stack_abstraction1.bmp"></center>
+
+<p>Another implementation requirement (in addition to the above interface) is that all stack
+operations must run in <b><font color="green">constant time O(1)</font></b>. Constant time means
+that there is some constant k such that an operation takes k nanoseconds of computational time
+regardless of the stack size.
+
+</p><h4>Array-based implementation</h4>
+
+<table bordercolor="" cellpadding="2">
+<tbody><tr align="left">
+<td>&nbsp; <img src="./Stacks and Queues_files/array_stack.bmp"> &nbsp;</td>
+<td>In an array-based implementation we maintain the following fields:  an array A of a default size
+(&#8805; 1), the variable <i>top</i> that refers to the top
+element in the stack and the <i>capacity</i> that refers to the array size.
+The variable  <i>top</i> changes from -1  to <code>capacity - 1</code>. We say that a stack is
+empty when <code>top = -1</code>, and the stack is full when <code>top = capacity-1</code>.
+<p> In a fixed-size stack abstraction, the capacity stays unchanged, therefore when <i>top</i>
+reaches <i>capacity</i>, the stack object throws an exception.
+See <a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/code/ArrayStack.java">ArrayStack.java</a> for a complete implementation of the stack class.
+
+</p><p> In a dynamic stack abstraction when <i>top</i> reaches <i>capacity</i>, we double up
+the stack size.
+</p></td>
+</tr>
+</tbody></table>
+
+
+
+
+
+<h4>Linked List-based implementation</h4>
+
+<table bordercolor="" cellpadding="2">
+<tbody><tr align="left">
+<td>Linked List-based implementation provides the best (from the efficiency point of view)
+dynamic stack implementation. <p>See <a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/code/ListStack.java">ListStack.java</a> for a complete implementation of the stack class.
+</p><p>&nbsp;</p><p>&nbsp;
+</p></td>
+<td>&nbsp; <img src="./Stacks and Queues_files/LL-stack.bmp"> &nbsp;</td>
+</tr>
+</tbody></table>
+
+
+<h2>Queues</h2>
+<table bordercolor="" cellpadding="2">
+<tbody><tr align="left">
+<td>A queue is a container of objects (a linear collection) that are inserted and removed according to
+the first-in first-out (FIFO) principle. An excellent example of a queue is a line of students in the food court of
+the UC. New additions to a line made to the back of the queue, while removal (or serving) happens in
+the front. In the queue only two operations are allowed  <b>enqueue</b> and <b>dequeue</b>. Enqueue
+means to insert an item into the back of the queue, dequeue means removing the front item. The picture
+demonstrates the FIFO access.
+<p>The difference between stacks and queues is in removing. In a stack we remove the item the most
+recently added; in a queue, we remove the item the least recently added.
+</p><p>&nbsp;
+</p><p>&nbsp;
+</p></td>
+<td>&nbsp; <img src="./Stacks and Queues_files/queue.bmp"> &nbsp;</td>
+</tr>
+</tbody></table>
+
+
+
+
+
+<h3>Implementation</h3>
+In the standard library of classes, the data type queue is an <i>adapter</i> class, meaning that a
+queue is
+built on top of other data structures. The underlying structure for a queue could be an array,
+a Vector, an ArrayList, a LinkedList, or any other collection. Regardless of the type of the
+underlying data structure, a queue must implement the same functionality. This is achieved by
+providing a unique interface.
+<dir><pre>interface QueueInterface‹AnyType&gt;
+{
+   public boolean isEmpty();
+
+   public AnyType getFront();
+
+   public AnyType dequeue();
+
+   public void enqueue(AnyType e);
+
+   public void clear();
+}
+</pre></dir>
+<p>Each of the above basic operations must run at constant time O(1). The following picture
+demonstrates the idea of implementation by composition.
+
+</p><center><img src="./Stacks and Queues_files/queue_abstraction1.bmp"></center>
+
+
+<h4>Circular Queue</h4>
+Given an array A of a default size (&#8805; 1) with two references <i>back</i> and <i>front</i>,
+originally set to -1 and 0 respectively. Each time we insert (enqueue) a new item, we increase the back
+index; when we remove (dequeue) an item  - we increase the front index. Here is a
+picture that illustrates the model after a few steps:
+
+<center><img src="./Stacks and Queues_files/array_queue_1.bmp"></center>
+
+As you see from the picture, the queue logically moves in the array from left to right. After several
+moves <i>back</i> reaches the end, leaving no space for adding new
+elements
+<center><img src="./Stacks and Queues_files/array_queue_2.bmp"></center>
+
+
+<p>However, there is a free space before the front index. We shall use that space for enqueueing new
+items, i.e.  the next entry will be stored at index 0, then 1, until <i>front</i>. Such a model is
+called a <b><font color="green">wrap around queue</font></b> or a <b><font color="green">circular queue</font></b>
+</p><center><img src="./Stacks and Queues_files/array_queue_3.bmp"></center>
+<p>Finally, when <i>back</i> reaches <i>front</i>, the queue is full. There are two choices to handle
+a full queue:a) throw an exception; b) double the array size.
+
+
+</p><p>The circular queue implementation is done by using the modulo operator (denoted %),
+which is computed by taking the remainder of division (for example, 8%5 is 3). By using the
+modulo operator, we can view the queue as a circular array, where the "wrapped around" can
+be simulated as "back % array_size". In addition to the back and front indexes, we maintain another index: <i>cur</i> - for counting
+the number of elements in a queue. Having
+this index simplifies a logic of implementation.
+
+</p><p>See <a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/code/ArrayQueue.java">ArrayQueue.java</a> for a complete implementation of a circular queue.
+
+
+
+</p><h2>Applications</h2>
+
+<p>The simplest two search techniques are known as Depth-First Search(DFS) and Breadth-First
+Search (BFS). These two searches are described by looking at how the search tree
+(representing all the possible paths from the start) will be traversed.
+
+</p><h3>Deapth-First Search with a Stack</h3>
+<p>In depth-first search
+we go down a path until we get to a dead end; then we <i>backtrack</i> or back up (by popping a stack) to get an alternative path.
+</p><ul>
+<li>Create a stack
+</li><li>Create a new choice point
+</li><li>Push the choice point onto the stack
+</li><li>while (not found and stack is not empty)
+<ul>
+	<li>Pop the stack
+	</li><li>Find all possible choices after the last one tried
+	</li><li>Push these choices onto the stack
+</li></ul>
+</li><li>Return
+</li></ul>
+
+
+<h3>Breadth-First Search with a Queue</h3>
+<p>In breadth-first search we explore all the nearest possibilities by finding all possible successors and enqueue them to a queue.
+
+</p><ul>
+<li>Create a queue
+</li><li>Create a new choice point
+</li><li>Enqueue the choice point onto the queue
+</li><li>while (not found and queue is not empty)
+<ul>
+	<li>Dequeue the queue
+	</li><li>Find all possible choices after the last one tried
+	</li><li>Enqueue these choices onto the queue
+</li></ul>
+</li><li>Return
+</li></ul>
+
+<p>We will see more on search techniques later in the course.
+
+</p><h3>Arithmetic Expression Evaluation</h3>
+An important application of stacks is in parsing. For example, a compiler must parse arithmetic
+expressions written using infix notation:
+<dir><pre>1 + ((2 + 3) * 4 + 5)*6
+</pre></dir>
+We break the problem of parsing infix expressions into two stages. First, we convert from infix
+to a different representation called postfix. Then we parse the postfix expression, which is a
+somewhat easier problem than directly parsing infix.
+
+
+<p> <b>Converting from Infix to Postfix.</b> Typically, we deal with expressions in infix notation
+</p><dir><pre>2 + 5
+</pre></dir>
+where the operators (e.g. +, *) are written between the operands (e.q, 2 and 5). Writing the
+operators after the operands gives a postfix expression
+
+2 and 5 are called operands, and the '+' is operator. The above arithmetic expression is called
+infix, since the operator is in between operands. The expression
+<dir><pre>2 5 +
+</pre></dir>
+Writing the operators before the operands gives a prefix expression
+<dir><pre>+2 5
+</pre></dir>
+Suppose you want to compute the cost of your shopping trip. To do so, you add a list of numbers
+and multiply them by the local sales tax (7.25%):
+<dir><pre>70 + 150 * 1.0725
+</pre></dir>
+Depending on the calculator, the answer would be either 235.95 or 230.875. To avoid this
+confusion we shall use a postfix notation
+<dir><pre>70  150 + 1.0725 *
+</pre></dir>
+Postfix has the nice property that parentheses are unnecessary.
+<p>Now, we describe how to convert from infix to postfix.
+</p><ol>
+<li>Read in the tokens one at a time
+</li><li>If a token is an integer, write it into the output
+</li><li>If a token is an operator, push it to the stack, if the stack is empty. If the stack is not
+empty, you pop entries with higher or equal priority and only then you push that token to the
+stack.
+</li><li>If a token is a left parentheses '(', push it to the stack
+</li><li>If a token is a right parentheses ')', you pop entries until you meet '('.
+</li><li>When you finish reading the string, you pop up all tokens which are left there.
+</li><li>Arithmetic precedence is in increasing order: '+',  '-',  '*',  '/';
+</li></ol>
+Example. Suppose we have an infix expression:<code>2+(4+3*2+1)/3</code>.  We read the string by characters.
+<dir><pre>'2' - send to the output.
+'+' - push on the stack.
+'(' - push on the stack.
+'4' - send to the output.
+'+' - push on the stack.
+'3' - send to the output.
+'*' - push on the stack.
+'2' - send to the output.
+</pre></dir>
+
+
+<p><b>Evaluating a Postfix Expression.</b> We describe how to parse and evaluate a postfix expression.
+</p><ol>
+<li>We read the tokens in one at a time.
+</li><li>If it is an integer, push it on the stack
+</li><li>If it is a binary operator, pop the top two elements from the stack, apply the operator, and
+push the result back on the stack.
+</li></ol>
+Consider the following postfix expression
+<dir><pre>5 9 3 + 4 2 * * 7 + *
+</pre></dir>
+Here is a chain of operations
+<dir><pre>Stack Operations              Output
+--------------------------------------
+push(5);                        5
+push(9);                        5 9
+push(3);                        5 9 3
+push(pop() + pop())             5 12
+push(4);                        5 12 4
+push(2);                        5 12 4 2
+push(pop() * pop())             5 12 8
+push(pop() * pop())             5 96
+push(7)                         5 96 7
+push(pop() + pop())             5 103
+push(pop() * pop())             515
+</pre></dir>
+Note, that division is not a commutative operation, so 2/3 is not the same as 3/2.
+
+<hr>
+<p>Victor S.Adamchik, CMU, 2009
+
+
+
+
+
+
+
+
+</p></body></html>

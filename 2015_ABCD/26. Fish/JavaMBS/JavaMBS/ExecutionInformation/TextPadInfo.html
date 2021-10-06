@@ -1,0 +1,90 @@
+<html><head><title>MBS: TextPad Instructions</title>
+</head>
+
+<body bgcolor="#ffffff">
+<center>
+  <h1>Marine Biology Simulation</h1>
+  <p>&nbsp;</p>
+</center>
+
+<h3>Information on compiling and running the Marine Biology Simulation using TextPad: 
+</h3>
+<p>This file assumes that you have already downloaded and installed
+TextPad, and used it to compile simple programs.
+
+<p>The easiest way to compile and run the Marine Biology Simulation program, copy 
+  the <code>compMBS.bat</code> and <code>runMBS.bat</code> files (for "Compile 
+  MBS" and "Run MBS") from the <code>DOSandWindows</code> folder to the <code>JavaMBS\Code</code> 
+  folder. If your system cannot find the javac and java commands (if they are 
+  not in a folder in your <code>PATH</code> environment variable), edit the two 
+  batch files and fully specify where javac.exe and java.exe can be found. You 
+  can then run <code>compMBS</code> directly in a DOS or Command Prompt window 
+  (you must move to the <code>Code</code> directory first), or run it from within 
+  Textpad by choosing Tools -> Run. (You can open a file in the <code>Code</code> 
+  directory first to make sure you're in the right directory.) Type in 
+<pre>  compMBS</pre>
+as the Command, and leave the Parameters and Initial folder fields blank. Click 
+on OK. The command will compile all the Java source files in the current directory 
+(<code>Code</code>). You can also compile the files individually (see below), 
+but then you need to keep track of which source files have been modified. 
+<p>To run the Marine Biology Simulation program, choose Tools -> Run
+again, but this time type
+<pre>  runMBS</pre>
+as the Command and one of the following class names in the Parameters
+field:
+<pre>    MBSGUI            <i>program with full graphical user interface</i>
+                        <i>(from beginning of Chapter 1)</i>
+    SimpleMBSDemo1    <i>simple demo program (end of Chapter 1)</i>
+    SimpleMBSDemo2    <i>second demo program (end of Chapter 1)</i></pre>
+If you do not specify the target, <code>runMBS</code> will use <code>MBSGUI</code>. 
+<p>When you go to open an environment data file, the file chooser window should 
+  come up in the <code>Code</code> folder, where the program is running. You will 
+  need to go up to the <code>JavaMBS</code> folder and then down to the <code>DataFiles</code> 
+  folder to find the initial configuration files. 
+<p>For Chapter 3 (and later chapters), if you are using the <code>Fish.java</code> 
+  file from the <code>DynamicPopulation</code> folder rather than modifying the 
+  file in the <code>Code</code> folder (see <code>FishModsForChap3.txt</code> 
+  in the <code>Code</code> folder for more details), copy the <code>compDPop.bat</code> 
+  file from the <code>DOSandWindows</code> folder to the <code>JavaMBS\Code</code> 
+  folder. Correct the full path name for the javac command as you did in <code>compMBS.bat</code> 
+  (if necessary). Run <code>compDPop</code> from the <code>Code</code> folder. 
+  (You can open a file in the <code>Code</code> folder to make sure you're in 
+  the right folder.) This command will compile the <code>Fish</code> class in 
+  the <code>DynamicPopulation</code> folder and then copy the compiled class file 
+  to the <code>Code</code> folder. Then run the Marine Biology Simulation as usual. 
+<h3>Compiling Java Source Files Individually</h3>
+
+<p>To compile source files individually from within TextPad, you will first
+need to set your "classpath" to find the jar files containing the
+black box and graphical user interface classes.
+
+<p>One way to do this is to set the classpath within the TextPad
+preferences.  Go to Configure -> Preferences and click on
+"Compile Java" under the Tools topic.  The input field for
+Parameters: should say "$File".  Modify this field so that it
+has
+<pre>   -classpath .;.\mbsbb.jar;.\mbsgui.jar $File</pre>
+Then click on OK.  You can modify the Parameters for "Run Java
+Application" by inserting the same classpath information before
+$BaseName.  [Warning: The disadvantage of this technique is
+that you will now be using this classpath whenever you compile or run
+Java files within TextPad, at least until you change the preferences
+again.  This should not create problems for you, though, unless
+you compile other programs that use the same class names as the
+MBS black box and GUI code.]
+
+<p>You can also set the CLASSPATH environment variable through
+AUTOEXEC.BAT or through the control panel.  In either case,
+first check whether CLASSPATH is already defined.
+<pre>  - <i>Yes:  prepend</i>     .;.\mbsbb.jar;.\mbsgui.jar;
+  - <i>No:   set it to</i>   .;.\mbsbb.jar;.\mbsgui.jar</pre>
+[Warning: The disadvantage of this technique is that you will now
+be using this classpath whenever you compile a Java file.  This
+should not create problems for you, though, unless you compile
+other programs that use the same class names as the MBS black box
+and GUI code.]
+
+<p>Once you have set your classpath, you can compile individual Java
+source files using the Compile Java option in the Tools menu.
+
+</body></html>

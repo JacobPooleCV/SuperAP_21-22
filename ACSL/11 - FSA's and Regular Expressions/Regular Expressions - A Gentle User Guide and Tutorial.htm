@@ -1,0 +1,1655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0040)http://www.zytrax.com/tech/web/regex.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+
+<meta name="GENERATOR" content="ZyTrax">
+<link rel="SHORTCUT ICON" href="http://www.zytrax.com/favicon.ico">
+
+<meta name="keywords" content="CSS, XHTML, HTML, CSS2, FreeBSD, MySQL, Cron, Postfix, SSL, SSL self-signing, Sed, Regular Expressions, DOM, SQL, FreeBSD buildworld, FreeBSD archiving, FreeBSD backup, FreeBSD commands,browser ids, browser identification, browser id guide, user agent strings, user agent ids,PHP, PHP4, Server Side Includes (SSI), Javascript, Javascript libraries, DHTML, CSS, CSS2, CSS3, DOM, Regular Expressions, regex, Web 2.0">
+
+<title>Regular Expressions - A Gentle User Guide and Tutorial</title>
+
+<!-- this page originated from http://www.zytrax.com/tech/web/regex.htm -->
+<!-- HTTP_USER_AGENT=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.112 Safari/534.30 -->
+<style type="text/css">
+<!--
+/* ZYTRAX STYLE SHEET */
+/* google maps */
+v\:* {behavior:url(#default#VML);}
+a {text-decoration:none;}
+body {background-color:white;color:black;margin:0px;padding:0px;font:normal 10pt Verdana,Arial, Helvetica, sans-serif;}
+div.l-f table{width:100%;padding:4px;}
+h1 {font-size:14pt;background:#EEE;border-width:0 0 5px 0;border-style:solid;border-color:#9bf;padding:4px;color:#336}
+h2 {border-width:0 0 5px 0;border-color:#9bf;border-style:solid;font-size:12pt;font-weight:bold;padding:4px;color:#336}
+h3 {border-width:0 0 3px 0;border-color:#9BF;border-style:solid;font-size:12pt;padding:4px;color:#336;}
+h4 {border-width:0 0 2px 0;border-color:#9BF;border-style:solid;font-size:10pt;padding:2px;color:#336;}
+h5 {border-width:0 0 2px 0;border-color:silver;border-style:solid;font-size:10pt;font-weight:bold;padding:4px;}
+h6 {border-width:0 0 1px 0;border-color:silver;border-style:solid; font-size:10pt;color:silver;padding:4px;}
+form {border:1px solid #ccc;}
+input {border:1px solid #999;background:#acf;}
+textarea {border:1px solid #999;background:#acf;}
+/* Printer friendly */
+
+div.l-r #layout {visibility:visible;}
+div.l-l-fp #layout {visibility:visible;}
+.l-l {position:absolute;top:60px;left:6px;width:110px;font:10pt Verdana,Helvetica, Arial, sans-serif;z-index:1;}
+.l-c {margin:45px 170px 0px 125px;padding:4px 20px;font:1.0em Verdana,Helvetica, Arial, sans-serif;border-width:0 1px; border-style:solid; border-color:#336; z-index:5; line-height:1.3em;}
+.l-r {font:10pt Verdana,Arial, Helvetica, sans-serif;position:absolute;top:60px;right:6px;width:160px;background:#eee;z-index:2;}
+#popups {visibility:visible;}
+
+/* end printer friendly - begin divs - generic */
+.button {background:#ddd;border:3px outset black;}
+.l-f {margin:0 200px 0 125px;}
+.l-c-fp {margin:0 160px 0 125px;padding:4px;font:10pt Verdana,Helvetica, Arial, sans-serif;border-width:0 1px;border-style:solid;border-color:#336;z-index:5;}
+.l-p {margin:10px;padding:4px;font:10pt Verdana,Helvetica, Arial, sans-serif;}
+.l-100 {width:100%;margin:0;}
+/* end divs - nav pop-outs */
+.n-l1 {padding:0;margin:0;list-style:none;width:100px;}
+.n-l1-e {text-align:right;margin:0;padding:2px;position:relative;}
+.n-t1-e,.n-t2-e,.n-t3-e {text-align:left;margin:0;padding:2px 5px;border:1px solid blue;border-width:1px 1px 0 1px;position:relative;}
+.n-t1-es,.n-t2-es,.n-t3-es {text-align:left;margin:0;padding:2px 5px;border:1px solid blue;border-width:1px 1px 0 1px;position:relative;background:#ccf;}
+.n-t1-v {position:absolute;display:none;padding:0;margin:0;list-style:none;top:100%;right:0;width:100px;border-bottom:1px solid blue;background:#EEE;}
+.n-t1-vr {position:absolute;display:none;padding:0;margin:0;list-style:none; top:100%;right:0;width:100px;border-bottom:1px solid blue;background:#EEE;}
+.n-t2,.n-t3 {position:absolute;display:none;padding:0;margin:0;list-style:none;top:0;right:100%;width:120px;border-bottom:1px solid blue;background:#EEE;}
+/* end pop-up styles - nav effects */
+a:hover {text-decoration:underline;}
+a:hover.p-f-s {color:black}
+.g-c-n:hover {background:#eee;}
+.g-c-s:hover {background:#eee;}
+.g-t-n:hover {background:#acf;}
+div.n-l a:hover {color:#336;}
+div.g-sb a:hover {background-color:#DDD;}
+/* W3c pop-ups - ignored by MSIE 6- */
+div.n-t0:hover > ul {display:block;}
+li.n-t1-e:hover > ul {display:block;}
+li.n-t1-es:hover > ul {display:block;}
+li.n-t1-e:hover, li.n-t1-es:hover,li.n-t2-e:hover,li.n-t2-es:hover,li.n-t3-e:hover {background:#ccc;}
+li.n-t2-e:hover > ul {display:block;}
+li.n-t2-es:hover > ul {display:block;}
+.n-l1-e:hover > ul {display:block;}
+.n-l1-es:hover > ul {display:block;}
+.n-l2-e:hover > ul {display:block;}
+.n-l2-es:hover > ul {display:block;}
+.n-l3-e:hover > ul {display:block;}
+.n-l3-es:hover > ul {display:block;}
+li.n-l1-e:hover,li.n-l2-e:hover,li.n-l2-es:hover, li.n-l3-e:hover, li.n-l3-es:hover,li.n-l4-e:hover  {background:#ccc;}
+/* end pop-out effects - generic alpha */
+.adv {}
+.at {font-family:Verdana,sans-serif;font-size:9pt;margin:0px;text-indent:8px;}
+.b-1 {font-family:Verdana, sans-serif;}
+.b-r {border-width:0 0 0 1px;border-color:#336;border-style:solid;width:150px;}
+.b-l	{border-width:0 1px 0 0;border-color:#336;border-style:solid;width:110px;}
+.b-b {list-style:none;margin:2px;font: 9pt Verdana,Arial,sans-serif;padding:0 1.0em;}
+.b-b-s {border:1px solid black;}
+li.b-b-l {visibility:hidden;margin:10px 0;}
+.b-b-a {background:#336;color:white; text-decoration:none;border:1px solid black;padding:0 0.25em 0 0;}
+a.b-b-a span {color:#336;background:white;padding:0 0.25em 0 0.33em;text-decoration:none;}
+.d {font-family:Verdana,sans-serif;font-size:9pt;margin:0px;}
+.dd {position:absolute;left:0;top:0; font-family:Tahoma,sans-serif;font-size:9pt; visibility:hidden;background:cyan;color:black;margin:0px;border:black solid 1px;padding:2px;}
+.f-d {font-weight:bold;}
+.f-bd {font-weight:bold;font-size: 12pt;}
+.g-c-n {font:10pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px;background-color:#acf;padding:5px; color:black;}
+.g-c-nm {font: 10pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px;background-color:#ddd;padding:5px;color:black;margin:0 0 0 40px;}
+.g-c-s,.codegray {font: 8pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px; background-color:#acf;padding:5px; color:black;width:inherit;}
+.g-e-t {font-weight:normal;}
+.g-e-d {font-weight:normal;}
+.g-f-n {font:10pt "Courier New", monospace;}
+.g-h-n {background:#336;color:white;padding:4px; font-size:10pt;font-weight:normal;}
+.g-h-ng,.section {background:#9bf;color:#336;font:bold Verdana,sans-serif;padding:4px; text-decoration:none;}
+.g-h-s {background:#336;color:white;padding:4px; font-size:8pt;font-weight:bold;}
+.g-n {text-decoration:none;color:white;}
+.g-i1-n {margin:5px 5px 5px 20px;}
+.g-i2-n {margin:5px 5px 5px 30px;}
+.g-i3-n {margin:5px 5px 5px 40px;}
+.g-l-n {list-style:none;}
+.g-s-b {border-width:1px 5px;	border-color:black;border-style:solid;background:#EEE;color:black; font-family:Verdana,sans-serif;font-size:14pt;font-weight:bold; text-decoration:none;}
+.g-sb-h1 {background:#336;color:white;padding:4px; font-size:14pt;font-weight:bold;}
+.g-sb-h2 {background:#336;color:white;font-size:10pt;font-weight:bold;padding:2px;}
+.g-sb-n {color:blue;font-size:8pt;line-height:150%;margin:2px;}
+.g-s-n {background-color:#EEEEEE;color:black;font-size:10pt; text-decoration:none;}
+.g-s-nr {font-family:Verdana,sans-serif;background-color:red;color:white;font-size:10pt;font-weight:bold; text-decoration:none;}
+.g-s-gn {font-family:Verdana,sans-serif;background-color:silver;color:black;font-size:10pt;font-weight:bold; text-decoration:none;}
+.g-t-n {font-size:9pt;border-style:solid;border-color:#bbb;border-width: 1px 1px 1px 5px;margin:7px;padding:3px;background-color:#eee; color:black;}
+.gs-h {font-family:Verdana,sans-serif;color:black;font-size:28pt;font-weight:bold;text-decoration:none;}
+.gs-m {font-family:Verdana,sans-serif;color:black;font-size:22pt;font-weight:bold;text-decoration:none; margin-left:100px;}
+.gs-f {font-family:Verdana,sans-serif;color:black;font-size:12pt; font-weight:normal;text-decoration:none;}
+.h-b {background:#ddd;color:black;font-weight:bold;}
+.i-2 {background: url(../../images/info.gif) no-repeat top left;}
+.i-3 {background: url(../../../images/info.gif) no-repeat top left;}
+.i-n {border-width: 3px 0 3px 0; border-style:solid;border-color:#bbb;font-size:10pt;margin:10px 10px 10px 60px;padding:10px;}
+.i-h {margin:5px 5px 10px 60px;padding:5px;}
+.i-m-s {padding:2px;margin:0;}
+.i-s {border-width: 3px 0 3px 0; border-style:solid;border-color:#bbb;font-size:8pt;margin:10px 10px 10px 60px;padding:10px;}
+.n-b-l {font:1pt Verdana, Arial, Helvetica, sans-serif;border-width:0 0 1px 0;border-style:solid;border-color:#CCF;margin:0px;padding:0px;}
+.n-l-s {font:8pt Verdana, Arial, Helvetica, sans-serif;visibility:hidden;}
+.n-t0 {float:right;position:relative;}
+.n-t-t {text-align:right;padding:1px 1px 8px 1px;margin:0;}
+.p-b {background:#eee;text-indent:3em;}
+.p-m-ni {font-family:Verdana,sans-serif;font-size:10pt;font-style:italic;}
+.navback {background:white;color:black;font-family:Verdana,sans-serif; text-decoration:none;font-weight:bold;font-size:10pt;}
+.nav-top {background:blue;color:white;font-family:Verdana,sans-serif; text-decoration:none;font-weight:bold;font-size:10pt;}
+.p-m-n,.norm {font-size: 100%;font-family: Verdana, Helvetica, Arial, sans-serif;}
+.p-m-s { font:80% Verdana,Helvetica, Arial, sans-serif;}
+.p-m-si {font:italic 8pt Verdana, Helvetica, Arial, sans-serif;}
+.p-m-sp { background:white;font:8pt Verdana,Helvetica, Arial, sans-serif;}
+.q-i-2 {background: url(../../images/quotes-open.gif) no-repeat top left;}
+.q-s {border-width: 0 0 0 6px;border-style:solid;border-color:#acf;font-size:8pt;margin:10px 10px 10px 60px;padding:10px;}
+.smallbold { font-family: Verdana, sans-serif; font-size: 8pt; font-weight:bold;}
+.t-b-s {font:8pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px;background-color:#acf;padding:5px; color:black;}
+.t-b-n {font:10pt "Courier New",monospace;border-style:solid;border-color:black;border-width: 1px;background-color:#acf;padding:5px; color:black;}
+/* link styles */
+.t-dd:hover {background:#ddd;}
+.t-ba {color:#aaa;font-weight:bold;}
+.t-gb {color:blue;background:#eee;}
+.t-dr {color:red;text-decoration:none;}
+.t-dw {color:#666;text-decoration:none;}
+.t-td1-l,.t-td1 {border-style:solid;border-width:5px 0 0 0;border-color:#ddd;padding:3px 3px 8px 5px;}
+.t-td2-l,.t-td2 {border-style:solid;border-width:5px 0 0 0;border-color:#acf;padding:3px 3px 8px 5px;}
+.t-m {background:#ccc;color:blue;text-decoration:none;}
+.vital {font-family:Tahoma,Arial, sans-serif;font-size:12pt;background-color:#ddd; color:black;border-color:red;}
+.w-2 {background: url(../../images/warning.gif) no-repeat top left;}
+.w-3 {background: url(../../../images/warning.gif) no-repeat top left;border-width: 3px 0 3px 0; border-style:solid;border-color:#bbb;}
+
+/* Gecko/W3C specific */
+abbr[title]:after {content:"";}
+abbr[title]:hover:after {content:" (" attr(title)")";}
+/* W3C pop-ups */
+.n-l2,.n-l3,.n-l4 {position:absolute;display:none;padding:0;margin:0;list-style:none;top:0;left:100%;width:120px;border-bottom:1px solid blue;background:#EEE;font:8pt Verdana,Helvetica, Arial, sans-serif}
+.n-l2-e,.n-l3-e,.n-l4-e {text-align:left;margin:0;padding:2px 5px;border:1px solid blue;border-width:1px 1px 0 1px;position:relative;}
+.n-l2-es,.n-l3-es,.n-l4-es {text-align:left;margin:0;padding:2px 5px;border:1px solid blue;border-width:1px 1px 0 1px;position:relative;background:#ccf;}
+/* end - start expand divs */
+.v-f {display:none;}
+.v-o {display:block;}
+/* end expand divs */
+.n-l-f a {color:#336;}
+#toplogo {float:left;vertical-align:bottom;}
+.g-b-n {font:10pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px;padding:5px;background:#eee;}
+.g-b-s {font:8pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px;padding:5px;background:#eee;}
+.g-ci-s {font:8pt "Courier New",monospace;border-style:solid;border-color:#ccc;border-width: 1px 1px 1px 5px; background-color:#acf;color:black;}
+.g-sb {font-family:Verdana, sans-serif;width:150px;}
+.jp-h-n {position:absolute;left:50%;top:50%;text-indent:4px;font-family:Verdana,sans-serif;font-size:10pt; visibility:hidden;background:#EEEEEE;color:blue;text-decoration:none;}
+.l-b {position:absolute;top:0px;left:0px;font:8pt Verdana, Arial, Helvetica, sans-serif;border:0;background:#336;color:white;height:44px;z-index:9;width:100%;}
+.l-b-s {position:absolute;top:0;left:0;font:8pt Verdana, Arial, Helvetica, sans-serif;border:0;background:white;color:#336;height:44px;z-index:9;width:100%;}
+.l-b-fp {font:8pt Verdana, Arial, Helvetica, sans-serif;background:white;color:#336;height:88px;padding:5px 5px 0 5%;margin:0 0 5px 0;z-index:2;}
+.l-c-i {padding:10px;}
+.l-l-fp {position:absolute;top:95px;left:6px;width:120px;z-index:10;text-align:right;}
+.l-r-fp {position:absolute;top:95px;right:6px;width:150px;z-index:2;}
+.n-l {font-family:Verdana,sans-serif;position:fixed;top:60px;left:6px;width:110px;background:white;}
+.n-l-u {font-family:Verdana,sans-serif;top:60px;left:6px;width:110px;background:#eee;}
+.n-l-l {font-size: 9pt;color:black;text-align:right;line-height:150%;}				
+.n-l-f {font-size: 9pt;text-align:right;line-height:1.2em;}
+.n-p-f {color:#336;font:9pt/16pt Verdana,sans-serif;text-decoration:none;text-indent:6px;}
+.n-p-n {background:#EEE;color:#336;font:9pt Verdana,sans-serif;text-indent:6px;}
+.n-p-n a {text-indent:6px;display:block;}
+.n-p-o {font:10pt Verdana,sans-serif; background:#DDD;color:blue;text-decoration:none;height:16pt;}
+.n-t-n {color:#336;font:10pt Verdana,sans-serif;text-decoration:none;margin:0;padding:0;}
+.n-t-s {color:white;font: 8pt Verdana,sans-serif;text-decoration:none;padding:0 3px 0 0}
+.n-t-sr {color:#336;font: 8pt Verdana,sans-serif;text-decoration:none;padding:0 3px 0 0}
+.p-b-h {visibility:hidden;}
+.p-n-h {position:absolute;left:0;top:0;text-indent:4px;font-family:Verdana,sans-serif;font-size:small; visibility:hidden;background:#EEE;color:blue;text-decoration:none;border:1px blue solid;width:110px;}
+.p-f-s {font-family: Verdana, sans-serif; font-size:8pt; color:silver; background:white;text-decoration:none;}
+.t-db,.t-dd,.t-dn,.w-db {color:blue;text-decoration:none;}
+
+-->
+</style>
+<style type="text/css" media="print">
+<!--
+/* ZYTRAX STYLE SHEET PRINT TEMPLATE */
+.l-l {display:none;}
+.l-r {display:none;}
+.l-c {width:600px;margin:0;padding:30px 10px 5px 10px; border-width:0;}
+.l-f {margin:5px;}
+.n-t-t {display:none;}
+.n-t0 {display:none;}
+.adv {display:none;}
+-->
+</style>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// copyright ZYTRAX, Inc. 1994 - 2003
+// you may use this javascript code at your own risk.
+// we would like you to keep the copyright statement intact but don't insist on it.
+// If you make improvements mail us a copy or make it available on your own web site.
+// global variables
+		var topall = new Array(2);
+		var lownav = new Array(2);
+		var lowpop = new Array(2);
+		var rightnav = new Array(2);
+		var rightpop = new Array(2);
+		var x = 0;	// global menu level
+		var way = 'h';
+		var menu = null;
+		var menus = null;
+		var pop1 = new Array(2);
+		var fs = 1.0;
+
+// -- W3C DOM specific code - first choice always
+function lock(num){
+  // lock relies on a style which end with -l
+	rollover = document.getElementById("l" + num);
+	if(rollover){
+  	cn = rollover.className
+  	if((pos = cn.lastIndexOf("-")) != -1){
+  		bcn = cn.substring(0,pos + 1);
+  		scn = cn.substring(pos +1);
+  		if(scn == "f" || scn == "o"){
+  			rollover.className = bcn + "l";
+  		}
+  	}
+	}
+}
+function fontchange(fix)
+{
+  x = document.getElementsByTagName("div");
+	for(i = 0; i < x.length; i++)
+  {
+	 if(x[i].className == "l-c"){
+	  if(x[i].style.fontSize == ""){
+		 fs = 1.0;
+		 x[i].style.fontSize = "1.0em";
+		}
+		if(fix == "d"){
+		 if(fs <= 0.8){
+		 	break;
+		 }else{
+		  fs = parseFloat(fs - 0.1);
+			x[i].style.fontSize = fs + "em";
+		 }
+		}else{
+		 if(fs >= 1.5){
+		 	break;
+		 }else{
+		  fs = parseFloat(fs + 0.1);
+			x[i].style.fontSize = fs + "em";
+		 }
+		}
+	 	break;
+	 }
+  }
+}
+
+function toggle(tid){
+  var dis;
+  var disa; 
+  if(document.getElementById){
+    dis = document.getElementById(tid);
+    disa = document.getElementById(tid + 'a');
+  }else{
+    dis = document.all.tid;
+    disa = document.all.tid + 'a';
+  }
+  if(dis.style.display == 'block'){
+    dis.style.display = 'none';
+    disa.style.display = 'block';
+  }else{
+    dis.style.display = 'block';
+    disa.style.display = 'none';
+  }
+}
+function gotourl($url)
+{
+	window.location = $url;
+}
+function mailus(mbox,stub,subject)
+{
+	mail = "mailto:"+mbox+"@"+stub;
+	if(subject != ""){
+		mail = mail+"?SUBJECT="+"A-Z: "+subject;
+	}
+	window.location = mail;
+	return;
+}
+
+// W3C compliant uses CSS popups not JS
+
+
+
+//-->
+</script>
+
+
+
+<script src="./Regular Expressions - A Gentle User Guide and Tutorial_files/nonSecureAnonymousFramework"></script><style type="text/css">* html #li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link{height:1% !important;}#li_ui_li_gen_1369236423319_0{position:relative !important;overflow:visible !important;display:block !important;}#li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link{border:0 !important;height:20px !important;text-decoration:none !important;padding:0 !important;margin:0 !important;display:inline-block !important;}#li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link:link, #li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link:visited, #li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link:hover, #li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link:active{border:0 !important;text-decoration:none !important;}#li_ui_li_gen_1369236423319_0 a#li_ui_li_gen_1369236423319_0-link:after{content:"." !important;display:block !important;clear:both !important;visibility:hidden !important;line-height:0 !important;height:0 !important;}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-logo{background:url(http://static.licdn.com/scds/common/u/img/sprite/sprite_connect_v13.png) 0px -276px no-repeat !important;cursor:pointer !important;border:0 !important;text-indent:-9999em !important;overflow:hidden !important;padding:0 !important;margin:0 !important;position:absolute !important;left:0px !important;top:0px !important;display:block !important;width:20px !important;height:20px !important;float:right !important;}#li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-logo{background-position:-20px -276px !important;}#li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-logo, #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-logo{background-position:-40px -276px !important;}.IN-shadowed #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-logo{}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title{color:#333 !important;cursor:pointer !important;display:block !important;white-space:nowrap !important;float:left !important;margin-left:1px !important;vertical-align:top !important;overflow:hidden !important;text-align:center !important;height:18px !important;padding:0 4px 0 23px !important;border:1px solid #000 !important;border-top-color:#E2E2E2 !important;border-right-color:#BFBFBF !important;border-bottom-color:#B9B9B9 !important;border-left-color:#E2E2E2 !important;border-left:0 !important;text-shadow:#FFFFFF -1px 1px 0 !important;line-height:20px !important;border-radius:0 !important;-webkit-border-radius:0 !important;border-top-right-radius:2px !important;border-bottom-right-radius:2px !important;-webkit-border-top-right-radius:2px !important;-webkit-border-bottom-right-radius:2px !important;background-color:#ECECEC !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#ECECEC)) !important; background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #ECECEC 100%) !important;}#li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title{border:1px solid #000 !important;border-top-color:#ABABAB !important;border-right-color:#9A9A9A !important;border-bottom-color:#787878 !important;border-left-color:#04568B !important;border-left:0 !important;background-color:#EDEDED !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#EDEDED), color-stop(100%,#DEDEDE)) !important; background-image: -webkit-linear-gradient(top, #EDEDED 0%, #DEDEDE 100%) !important;}#li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title, #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title{color:#666 !important;border:1px solid #000 !important;border-top-color:#B6B6B6 !important;border-right-color:#B3B3B3 !important;border-bottom-color:#9D9D9D !important;border-left-color:#49627B !important;border-left:0 !important;background-color:#DEDEDE !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#E3E3E3), color-stop(100%,#EDEDED)) !important; background-image: -webkit-linear-gradient(top, #E3E3E3 0%, #EDEDED 100%) !important;}.IN-shadowed #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title{}.IN-shadowed #li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title{}.IN-shadowed #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title, .IN-shadowed #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title{}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text, #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text *{color:#333 !important;font-size:11px !important;font-family:Arial, sans-serif !important;font-weight:bold !important;font-style:normal !important;display:inline-block !important;background:transparent none !important;vertical-align:baseline !important;height:18px !important;line-height:20px !important;float:none !important;}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text strong{font-weight:bold !important;}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text em{font-style:italic !important;}#li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title-text, #li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title-text *{color:#000 !important;}#li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title-text, #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title-text, #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title-text *, #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title-text *{color:#666 !important;}#li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title #li_ui_li_gen_1369236423319_0-mark{display:inline-block !important;width:0px !important;overflow:hidden !important;}.success #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title{color:#333 !important;border-top-color:#E2E2E2 !important;border-right-color:#BFBFBF !important;border-bottom-color:#B9B9B9 !important;border-left-color:#E2E2E2 !important;background-color:#ECECEC !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#ECECEC)) !important; background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #ECECEC 100%) !important;}.success #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text, .success #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title-text *{color:#333 !important;}.IN-shadowed .success #li_ui_li_gen_1369236423319_0 #li_ui_li_gen_1369236423319_0-title{}.success #li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title{color:#000 !important;border-top-color:#ABABAB !important;border-right-color:#9A9A9A !important;border-bottom-color:#787878 !important;border-left-color:#04568B !important;background-color:#EDEDED !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#EDEDED), color-stop(100%,#DEDEDE)) !important; background-image: -webkit-linear-gradient(top, #EDEDED 0%, #DEDEDE 100%) !important;}.success #li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title-text, .success #li_ui_li_gen_1369236423319_0.hovered #li_ui_li_gen_1369236423319_0-title-text *{color:#000 !important;}.success #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title, .success #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title{color:#666 !important;border-top-color:#B6B6B6 !important;border-right-color:#B3B3B3 !important;border-bottom-color:#9D9D9D !important;border-left-color:#49627B !important;background-color:#DEDEDE !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#E3E3E3), color-stop(100%,#EDEDED)) !important; background-image: -webkit-linear-gradient(top, #E3E3E3 0%, #EDEDED 100%) !important;}.success #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title-text, .success #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title-text, .success #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title-text *, .success #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title-text *{color:#666 !important;}.IN-shadowed .success #li_ui_li_gen_1369236423319_0.clicked #li_ui_li_gen_1369236423319_0-title, .IN-shadowed .success #li_ui_li_gen_1369236423319_0.down #li_ui_li_gen_1369236423319_0-title{}</style></head>
+<body>
+<!-- Page Header plus top nav bar -->
+
+
+<div class="l-b">
+<a href="http://www.zytrax.com/"><img id="toplogo" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/zytrax-info-dark.gif" border="0" alt="ZYTRAX Info Logo"></a>
+
+<p class="n-t-t"><a href="http://www.zytrax.com/feedback.htm" class="n-t-s">mail us</a>
+&nbsp;|&nbsp;
+		<a href="http://www.zytrax.com/run/mailpage.php" class="n-t-s">mail this page</a></p>
+		<div class="n-t0">
+    <a href="http://www.zytrax.com/Company/contacts.html" class="n-t-s">contact us</a>
+		</div>
+		<div class="n-t0">
+    <a href="http://www.zytrax.com/training/" class="n-t-s">training</a>
+		&nbsp;|&nbsp;
+		</div>
+		<div class="n-t0">
+    <a id="p5" href="http://www.zytrax.com/Company/" class="n-t-s">company</a>
+		&nbsp;|&nbsp;
+<ul class="n-t1-vr">
+  <li class="n-t1-e"><a href="http://www.zytrax.com/Company/contacts.html" class="t-db">Contact Us</a></li>
+ 	<li class="n-t1-e"><a href="http://www.zytrax.com/Company" class="t-db">Background</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/Company/maps.html" class="t-db">Map</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/press/" class="t-db">Media Center</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/feedback.htm" class="t-db">Feedback</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/open/" class="t-db">Open Source</a></li>
+</ul>
+</div>
+<div class="n-t0">
+	<a id="p3" href="http://www.zytrax.com/products/" class="n-t-s">products</a>
+		&nbsp;|&nbsp;
+		<ul class="n-t1-v">
+		<li class="n-t1-e"><a href="http://www.zytrax.net/" class="t-db">Air-Frame</a></li>
+	<li class="n-t1-e"><a href="http://www.lite-eco.com/" class="t-db">Lite-Eco (Solar)</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/consulting/" class="t-db">Consulting</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/training/" class="t-db">Training</a></li>
+	</ul>
+</div>
+<div class="n-t0">
+	<a href="http://www.zytrax.com/support/" class="n-t-s">support</a>
+	&nbsp;|&nbsp;
+	<ul class="n-t1-v">
+	<li class="n-t1-es"><a href="http://www.zytrax.com/tech/" class="t-db">Tech Info</a>
+	<!-- tertiary pop-outs -->
+		<ul class="n-t2">
+      	<li class="n-t2-es"><a title="collection of web based technology stuff" href="http://www.zytrax.com/tech/web/" class="t-db">web stuff</a>
+					<ul class="n-t3">
+			<li class="n-t3-e"><a title="collection of UA strings for most browsers" href="http://www.zytrax.com/tech/web/browser_ids.htm" class="t-db">browser ids</a></li>
+			<li class="n-t3-e"><a title="collection of mobile UA strings" href="http://www.zytrax.com/tech/web/mobile_ids.html" class="t-db">mobile ids</a></li>
+			<li class="n-t3-e"><a title="how we do server-side browser sniffing with apache" href="http://www.zytrax.com/tech/web/browser_sniffing.html" class="t-db">browser sniffing</a></li>
+			<li class="n-t3-e"><a title="apache server side includes - extensive notes and examples" href="http://www.zytrax.com/tech/web/ssi.htm" class="t-db">apache ssi</a></li>
+			<li class="n-t3-e"><a title="Decimal to Hexidecimal to Binary conversion" href="http://www.zytrax.com/tech/protocols/hex.html" class="t-db">Dec&gt;Hex&gt;Bin</a></li>
+			<li class="n-t3-e"><a title="our css pop-up/pop-down/flyout menus for Gecko/Opera and now for MSIE" href="http://www.zytrax.com/tech/css/workarounds.html#popout" class="t-db">pop-outs (css)</a></li>
+			<li class="n-t3-e"><a title="most of those annoying HTML entity codes that we forget all the time" href="http://www.zytrax.com/tech/web/entities.html" class="t-db">html entities</a></li>
+			<li class="n-t3-e"><a title="collection of HTML and CSS notes, workarounds and kluges" href="http://www.zytrax.com/tech/web/really.html" class="t-db">oh really</a></li>
+				</ul>
+				</li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/dom/" class="t-db">dom stuff</a></li>
+				<li class="n-t2-e"><a title="Pages about Digital Audio, Primaers, Calculator, Equalization" href="http://www.zytrax.com/tech/audio/" class="t-db">audio stuff</a></li>
+    		<li class="n-t2-es"><a title="collection of css notes and experiences including css menus and css liquid layout" href="http://www.zytrax.com/tech/css/" class="t-db">css stuff</a>
+				<ul class="n-t3">
+					<li class="n-t3-e"><a title="Notes on our experience with converting to css based liquid layouts - including blow by blow css" href="http://www.zytrax.com/tech/css/layoutnotes.html" class="t-db">css liquid design</a></li>
+					<li class="n-t3-e"><a title="we have used css menus since mid-2003 - blow-by-blow implementation notes" href="http://www.zytrax.com/tech/css/workarounds.html#popout" class="t-db">css menus</a></li>
+					<li class="n-t3-e"><a title="some practical solutions on using css" href="http://www.zytrax.com/tech/css/workarounds.html" class="t-db">css notes</a></li>
+					<li class="n-t3-e"><a title="css shortforms at a glance" href="http://www.zytrax.com/tech/css/shortcut.html" class="t-db">css short-forms</a></li>
+					<li class="n-t3-e"><a title="css selectors and quick overview with links to the W3C specs" href="http://www.zytrax.com/tech/css/syntax.html" class="t-db">css overview</a></li>
+					</ul>
+</li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/lang/" class="t-db">language stuff</a></li>
+    		<li class="n-t2-e"><a href="./Regular Expressions - A Gentle User Guide and Tutorial_files/Regular Expressions - A Gentle User Guide and Tutorial.htm" class="t-db">regex stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/rfcs/" class="t-db">rfc stuff</a></li>
+    		<li class="n-t2-es"><a href="http://www.zytrax.com/tech/layer_1/" class="t-db">cable stuff</a>
+					<ul class="n-t3">
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/tech_lan.htm" class="t-db">lan wiring</a></li>
+<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/mixed.html" class="t-db">lan &amp; telephone</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/tech_rs232.htm" class="t-db">rs232 stuff</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/heavy.htm" class="t-db">serial primer</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/soup.htm" class="t-db">rs alphabet</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/cables_faq.htm" class="t-db">cable faq</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/layer_1/cables/cables_jacks.htm" class="t-db">modular jacks</a></li>
+					</ul>
+				</li>
+    		<li class="n-t2-es"><a href="http://www.zytrax.com/tech/protocols/" class="t-db">protocol stuff</a>
+					<ul class="n-t3">
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/protocols/tcp.html" class="t-db">tcp-udp-icmp</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/protocols/ip-classes.html" class="t-db">ipv4 and cidr</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/protocols/ipv6.html" class="t-db">ipv6 format</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/protocols/isdn">isdn-bri</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/protocols/lan" class="t-db">802 lan</a></li>
+					<li class="n-t3-e"><a href="http://www.zytrax.com/tech/ss7" class="t-db">ss7 &amp; sigtran</a></li>
+					</ul>
+				</li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/pc/" class="t-db">pc stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/wireless/" class="t-db">wireless stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/codes.htm" class="t-db">ascii codes</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/data_rates.htm" class="t-db">data rate stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/telephony/" class="t-db">telephony stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/mech/" class="t-db">mechanical stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/protocols/hex.html" class="t-db">Dec&gt;Hex&gt;Bin</a></li>
+<li class="n-t2-e"><a href="http://www.zytrax.com/tech/survival/" title="a series of survival guides for popular open source software" class="t-db">survival stuff</a></li>
+    		<li class="n-t2-e"><a href="http://www.zytrax.com/tech/electronics/" class="t-db">electronic stuff</a></li>
+        <li class="n-t2-es"><a href="http://www.zytrax.com/books/" class="t-db">open guides</a>
+					<ul class="n-t3">
+				<li class="n-t3-e"><a href="http://www.zytrax.com/books/dns" class="t-db">dns guide</a></li>
+				<li class="n-t3-e"><a href="http://www.zytrax.com/books/ldap" class="t-db">ldap guide</a></li>
+				</ul>
+				</li>
+    		</ul>
+
+	</li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/security/" class="t-db">Security</a></li>
+ 	<li class="n-t1-e"><a href="http://www.zytrax.com/help/user_man/troubleshoot/w2_troubleshoot.htm" class="t-db">Troubleshoot</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/help/" class="t-db">On-Line Help</a></li>
+	<li class="n-t1-e"><a href="http://www.zytrax.com/faqs/" class="t-db">FAQ</a></li>
+	</ul>
+	</div>
+
+</div>
+
+
+
+	
+
+<!-- begin body table -->
+<div class="l-c">
+<p class="adv" align="center">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9419480011552853";
+/* Regular Expression Leaderboard */
+google_ad_slot = "2421258623";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</p>
+<h1>Regular Expressions - User Guide</h1>
+<p>A Regular Expression is the term used to describe a codified method of searching <i>invented</i>, or <i>defined</i>, by the American mathematician Stephen Kleene.</p>
+<p>The syntax (language format) described on this page is compliant with <b>extended regular expressions (EREs)</b> defined in IEEE POSIX 1003.2 (Section 2.8). <b>EREs</b> are now commonly supported by Apache, PERL, PHP4, Javascript 1.3+, MS Visual Studio, most visual editors, vi, emac, the GNU family of tools (including grep, awk and sed) as well as many others. <b>Extended Regular Expressions (EREs)</b> will support <b>Basic Regular Expressions</b> (BREs are essentially a subset of EREs). Most applications, utilities and laguages that implement RE's, especially PERL, extend the capabilities defined and this has become, mostly, the <i>de facto</i> standard. The appropriate documentation should always be consulted.</p>
+<p><b>Translation:</b> The page has been <a href="http://www.fatcow.com/edu/zytrax-regex-bl/" class="t-db">translated into Bulgarian</a>, courtesy of Albert Ward - thanks.</p>
+<h3><a name="contents"></a>Contents</h3>
+<blockquote>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#intro" class="t-db">A Gentle Introduction:</a> - the Basics<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#simple" class="t-db"> Simple Searches</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#brackets" class="t-db"> Brackets, Ranges and Negation</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#positioning" class="t-db"> Search Positioning (aka Anchors)</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#iteration" class="t-db"> Iteration (aka Quantifiers)</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#more" class="t-db"> Parenthesis and Alternation (OR)</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#special" class="t-db">POSIX Standard Character Classes:</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#common" class="t-db">Commonly Available extensions:</a> - \w etc<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#submatches" class="t-db">Subexpressions, Submatches, Groups and Backreferences:</a><br>
+
+<a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Regular Expression Tester:</a> - Experiment with your own target strings and search expressions in your browser<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#browser" class="t-db">Some Examples:</a> - A worked example and some samples<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#notes" class="t-db">Notes:</a> - general notes when using utilities and lanuages<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#vs" class="t-db">Utility notes:</a> - using Visual Studio regular expressions<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#sed" class="t-db">Utility notes:</a> - using sed for file manipulation (not for the faint hearted)<br>
+</p>
+</blockquote>
+<h1><a name="intro"></a>A Gentle Introduction: The Basics</h1>
+<p>The title is deceptive. There is no gentle beginning to regular expressions. You are either into hieroglyphics big time - in which case you will love this stuff - or you need to use regular expression, in which case your only reward may be a headache. But they are jolly useful. Sometimes.</p> 
+<h2>Some Definitions before we start</h2>
+<p>We are going to be using the terms <b>literal</b>, <b>metacharacter</b>, <b>target string</b>, 
+<b>escape sequence</b> and <b>search expression</b> (aka regular expression) in this overview. Here is a definition of our terms:</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td width="150"><b>literal</b></td>
+<td>A <b>literal</b> is any character we use in a search or matching expression, for example, to find <b>ind</b> in w<b>ind</b>ows the <b>ind</b> is a <b>literal</b> string - each character plays a part in the search, it is <b>literally</b> the string we want to find.</td>
+</tr>
+<tr valign="top">
+<td><b>metacharacter</b></td>
+<td>A <b>metacharacter</b> is one or more special characters that have a unique meaning and are NOT used as <b>literals</b> in the search expression, for example, the character ^ (circumflex or caret) is a <b>metacharacter</b>. </td>
+</tr>
+
+<tr valign="top">
+<td width="100"><b>target string</b></td>
+<td>This term describes the string that we will be searching, that is, the string in which we want to find our match or search pattern.</td>
+</tr>
+<tr valign="top">
+<td width="100"><b>search expression</b></td>
+<td>Most commonly called the regular expression. This term describes the search expression that we will be using to search our target string, that is, the pattern we use to find what we want.</td>
+</tr>
+<tr valign="top">
+<td width="100"><b>escape sequence</b></td>
+<td>An <b>escape sequence</b> is a way of indicating that we want to use one of our <b>metacharacters</b> as a <b>literal</b>. In a regular expression an <b>escape sequence</b> involves placing the <b>metacharacter</b> \ (backslash) in front of the <b>metacharacter</b> that we want to use as a <b>literal</b>, for example, if we want to find <b>(s)</b> in the target string <b>window(s)</b> then we use the search expression <b>\(s\)</b> and if we want to find <b>\\file</b> in the target string <b>c:\\file</b> then we would need to use the search expression <b>\\\\file</b> (each \ we want to search for as a <b>literal</b> (there are 2) is preceded by an <b>escape sequence</b> \).</td>
+</tr>
+</tbody></table>
+
+<h2><a name="search"></a>Our Example Target Strings</h2>
+<p>Throughout this guide we will use the following as our target strings:</p>
+<blockquote>
+<pre class="g-b-s"><b>STRING1</b>   Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)
+<b>STRING2</b>   Mozilla/4.75 [en](X11;U;Linux2.2.16-22 i586)
+</pre>
+</blockquote>
+<p>These are <a href="http://www.zytrax.com/tech/web/browser_ids.htm" class="t-db">Browser ID Strings</a> and appear as the Apache Environmental variable HTTP_USER_AGENT (<a href="http://www.zytrax.com/tech/web/env_var.htm" class="t-db">full list of Apache environmental variables</a>).</p>
+<h3><a name="simple"></a>Simple Matching</h3>
+<p>We are going to try some simple matching against our example target strings: </p>
+<p><b>Note:</b> You can also <a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">experiment as you go through the examples</a>.</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="130"><b><u>Search for</u></b><br>
+(search expression)</td>
+<td width="50"></td>
+<td width="100"></td>
+<td></td>
+</tr>
+<tr valign="top">
+<td align="center">m</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds the <b>m</b> in co<b>m</b>patible</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>There is no lower case <b>m</b> in this string. Searches are case sensitive unless you take special action.</td>
+</tr>
+<tr valign="top">
+<td align="center">a/4</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Found in Mozill<b>a/4</b>.0 - any combination of characters can be used for the match</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Found in same place as in STRING1</td>
+</tr>
+<tr valign="top">
+<td align="center">5 [</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>The search is looking for a pattern of '5 [' and this does NOT exist in STRING1. Spaces are valid in searches.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Found in Mozilla/4.7<b>5 [</b>en]</td>
+</tr>
+<tr valign="top">
+<td align="center">in</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>found in W<b>in</b>dows</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Found in L<b>in</b>ux</td>
+</tr>
+<tr valign="top">
+<td align="center">le</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>found in compatib<b>le</b></td>
+</tr>
+
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>There is an l and an e in this string but they are not adjacent (or contiguous).</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Check the results in our Regular Expression Tester</a>.</p>
+
+<h3><a name="brackets"></a>Brackets, Ranges and Negation</h3>
+<p>Bracket expressions introduce our first <b>metacharacters</b>, in this case the square brackets which allow us to define list of things to test for rather than the single characters we have been checking up until now. These lists can be grouped into what are known as Character Classes typically comprising well know groups such as all numbers etc.</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="100"><h4>Metacharacter</h4></td>
+<td><h4>Meaning</h4></td>
+</tr>
+<tr valign="top">
+<td align="center"><p>[ ]</p></td>
+<td><p>Match anything inside the square brackets for ONE character position once and only once, for example, [12] means match the target to 1 and if that does not match then match the target to 2 while [0123456789] means match to any character in the range 0 to 9.</p></td>
+</tr>
+<tr valign="top">
+<td align="center">-</td>
+<td><p>The - (dash) <b>inside square brackets</b> is the 'range separator' and allows us to define a range, in our example above of [0123456789] we could rewrite it as [0-9].</p>
+<p>You can define more than one range inside a list, for example, [0-9A-C] means check for 0 to 9 and A to C (but not a to c).</p>
+<p><b>NOTE:</b> To test for - inside brackets (as a <b>literal</b>) it must come first or last, that is, [-0-9] will test for - and 0 to 9.</p>
+</td>
+</tr>
+<tr valign="top">
+<td align="center">^</td>
+<td><p>The ^ (circumflex or caret) <b>inside square brackets</b> negates the expression (we will see an alternate use for the circumflex/caret <b>outside</b> square brackets later), for example, [^Ff] means anything except upper or lower case F and [^a-z] means everything except lower case a to z.</p>
+<p><b>Notes:</b></p>
+<ol>
+<li><p>There are no spaces between the range delimiter values, if there was, depending on the range, it would be added to the possible range or rejected as invalid. Be very careful with spaces.</p></li>
+<li><p>Some regular expression systems, notably VBScript, provide a negation operator (!) for use with strings. This is a non-standard feature and therefore the resulting expressions are not portable.</p></li>
+<li><p>Negation can be very tricky - you may want to read <a href="http://www.zytrax.com/tech/web/regex.htm#more-notes" class="t-db">these additional notes</a> on this and other topics.</p></li>
+</ol>
+</td>
+</tr>
+</tbody></table>
+<p><b>NOTE:</b> There are some special <a href="http://www.zytrax.com/tech/web/regex.htm#special" class="t-db">range values (Character Classes)</a> that are built-in to most regular expression software and have to be if it claims POSIX 1003.2 compliance for either BRE or ERE.</p>
+<p>So lets try this new stuff with our target strings.</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="130"><b><u>Search for</u></b><br>
+(search expression)</td>
+<td width="50"></td>
+<td width="100"></td>
+<td></td>
+</tr>
+<tr valign="top">
+<td align="center">in[du]</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>finds ind in W<b>ind</b>ows</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>finds <b>inu</b> in L<b>inu</b>x</td>
+</tr>
+<tr valign="top">
+<td align="center">x[0-9A-Z]</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>Again the tests are case sensitive to find the xt in DigE<b>xt</b> we would need to use [0-9a-z] or [0-9A-Zt]. We can also use this format for testing upper and lower case e.g. [Ff] will check for lower and upper case F.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds x2 in Linu<b>x2</b></td>
+</tr>
+<tr valign="top">
+<td align="center">[^A-M]in</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds Win in <b>Win</b>dows</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>We have excluded the range A to M in our search so Linux is not found but linux (if it were present) would be found.</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Check the results in our Regular Expression Tester</a>.</p>
+
+<h3><a name="positioning"></a>Positioning (or Anchors)</h3>
+<p>We can control where in our target strings the matches are valid. The following is a list 
+of <b>metacharacters</b> that affect the position of the search:</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="100"><h4>Metacharacter</h4></td>
+<td><h4>Meaning</h4></td>
+</tr>
+<tr valign="top">
+<td align="center">^</td>
+<td>The ^ (circumflex or caret) <b>outside square brackets</b> means look only at the beginning of the target string, for example, <b>^Win</b> will not find Windows in <b>STRING1</b> but <b>^Moz</b> will find <b>Moz</b>illa.</td>
+</tr>
+<tr valign="top">
+<td align="center">$</td>
+<td>The $ (dollar) means look only at the end of the target string, for example, fox$ will find a match in 'silver <b>fox</b>' since it appears at the end of the string but not in 'the fox jumped over the moon'.</td>
+</tr>
+<tr valign="top">
+<td align="center">.</td>
+<td>The . (period) means any character(s) in this position, for example, <b>ton.</b> will find <b>tons</b>, <b>tone</b> and <b>tonneau</b> but not <b>wanton</b> because it has no following character.</td>
+</tr>
+</tbody></table>
+<p><b>NOTE:</b> Many systems and utilities, but not all, support special positioning macros, for example \&lt; match at beginning of word, \&gt; match at end of word, \b match at the begining OR end of word , \B except at the beginning or end of a word. <a href="http://www.zytrax.com/tech/web/regex.htm#common" class="t-db">List of the common values</a>.</p>
+<p>So lets try this lot out with our example target strings..</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="130"><b><u>Search for</u></b><br>
+(search expression)</td>
+<td width="50"></td>
+<td width="100"></td>
+<td></td>
+</tr>
+<tr valign="top">
+<td align="center">[a-z]\)$</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>finds t) in DigiEx<b>t)</b> <b>Note:</b> The \ is an escape character and is required to treat the ) as a literal</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>We have a numeric value at the end of this string but we would need [0-9a-z]) to find it.</td>
+</tr>
+<tr valign="top">
+<td align="center">.in</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds <b>Win</b> in <b>Win</b>dows.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds Lin in <b>Lin</b>ux.</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Check the results in our Regular Expression Tester</a>.</p>
+
+<h3><a name="iteration"></a>Iteration 'metacharacters'</h3>
+<p>The following is a set of <b>iteration metacharacters</b> (a.k.a. quantifiers) that can control the number of times the preceding <b>character</b> is found in our searches. The iteration meta characters can also be used in conjunction with <a href="http://www.zytrax.com/tech/web/regex.htm#more" class="t-db">parenthesis</a> meta characters.</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="100"><h4>Metacharacter</h4></td>
+<td><h4>Meaning</h4></td>
+</tr>
+<tr valign="top">
+<td align="center">?</td>
+<td>The ? (question mark) matches when the preceding character occurs 0 or 1 times only, for example, colou?r will find both color (u is found 0 times) and colour (u is found 1 time).</td>
+</tr>
+<tr valign="top">
+<td align="center">*</td>
+<td>The * (asterisk or star) matches when the preceding character occurs 0 or more times, for example, tre* will find tree (e is found 2 times) and tread (e is found 1 time) and trough (e is found 0 times).</td>
+</tr>
+<tr valign="top">
+<td align="center">+</td>
+<td>The + (plus) matches when the preceding character occurs 1 or more times, for example, tre+ will find tree (e is found 2 times) and tread (e is found 1 time) but NOT trough (0 times).</td>
+</tr>
+<tr valign="top">
+<td align="center">{n}</td>
+<td>Matches when the preceding character, or character range, occurs n times exactly, for example, to find a local phone number we could use [0-9]{3}-[0-9]{4} which would find any number of the form 123-4567.
+<p><b>Note:</b> The - (dash) in this case, because it is outside the square brackets, is a <b>literal</b>. Value is enclosed in braces (curly brackets).</p></td>
+</tr>
+<tr valign="top">
+<td align="center">{n,m}</td>
+<td>Matches when the preceding character occurs at least n times but not more than m times, for example, 'ba{2,3}b' will find 'baab' and 'baaab' but NOT 'bab' or 'baaaab'. Values are enclosed in braces (curly brackets).</td>
+</tr>
+<tr valign="top">
+<td align="center">{n,}</td>
+<td>Matches when the preceding character occurs at least n times, for example, 'ba{2,}b' will find 'baab', 'baaab' or 'baaaab' but NOT 'bab'. Values are enclosed in braces (curly brackets).</td>
+</tr>
+</tbody></table>
+<p><b>Note:</b> While it may be obvious to some, it is also worth emphasizing what characters play a role in iteration. In all the above examples <b>only the character immediately preceding the iteration character or expression</b> takes part in the iteration, all other characters in the search expression (regular expression) are <b>literals</b>. Thus, in the first example search expression <b>colou?r</b>, the string <b>colo</b> is a literal and must be found before the iteration sequence (<b>u?</b>) is triggered which, if satisfied, must also be followed by the literal <b>r</b> for a match to occur.</p>
+<p>So lets try them out with our example target strings.</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="130"><b><u>Search for</u></b><br>
+(search expression)</td>
+<td width="50"></td>
+<td width="100"></td>
+<td></td>
+</tr>
+<tr valign="top">
+<td align="center">\(.*l</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>finds the ( and l in <b>(</b>compatib<b>l</b>e. The opening \ is an escape character used to indicate the ( it precedes is a literal (search character) not a metacharacter.
+<p><b>Note:</b> If you use the <a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">tester</a> with <b>STRING1</b> and the above expression it will return the match <b>(compatibl</b>. The literal ( essentially anchors the search - it simply says start the search only when an ( is found. The following <b>.*</b> says the ( may be followed by any character (.), zero or more times (*) (thus <b>compatib</b> are essentially random characters that happen to appear in this string - they were not part of the search) and terminate the search on finding an <b>l</b> literal. Only the <b>(</b> and <b>l</b> are truly part of the search expression.</p>
+</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>Mozilla contains lls but not preceded by an open parenthesis (no match) and Linux has an upper case L (no match).</td>
+</tr>
+<tr valign="top">
+<td colspan="4">
+<p>We had previously defined the above test using the search value <b>l?</b> (thanks to David Werner Wiebe for pointing out our error). The search expression l? actually means find anything, even if it has no l (l  0 or 1 times), so would match on both strings. We had been looking for a method to find a single l and exclude ll which, without lookahead (a relatively new extension to regular expressions pioneered by PERL) is pretty difficult. Well, that is our excuse.</p>
+</td>
+</tr>
+<tr valign="top">
+<td align="center">W*in</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds the Win in <b>Win</b>dows.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds <b>in</b> in L<b>in</b>ux preceded by W zero times - so a match.</td>
+</tr>
+<tr valign="top">
+<td align="center">[xX][0-9a-z]{2}</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>Finds x in DigExt but only one t.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds X and 11 in X11.</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Check the results in the Regular Expression Tester</a>.</p>
+
+<h3><a name="more"></a>More 'metacharacters'</h3>
+<p>The following is a set of additional <b>metacharacters</b> that provide added power to our searches:</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="100"><h4>Metacharacter</h4></td>
+<td><h4>Meaning</h4></td>
+</tr>
+<tr valign="top">
+<td align="center">()</td>
+<td>The ( (open parenthesis) and ) (close parenthesis) may be used to group (or bind) parts of our search expression together. Officially this is called a subexpression (a.k.a. a submatch or group) and subexpressions may be nested to any depth. Parentheses (subexpresions) also capture the matched element into a variable that may be used as a backreference. <a href="http://www.zytrax.com/tech/web/regex.htm#parenthesis" class="t-db">See this example for its use in binding</a> OR <a href="http://www.zytrax.com/tech/web/regex.htm#submatches" class="t-db">more about subexpressions (aka grouping or submatching) and their use as backreferences</a>.</td>
+</tr>
+<tr valign="top">
+<td align="center">|</td>
+<td>The | (vertical bar or pipe) is called <b>alternation</b> in techspeak and means find the left hand OR right values, for example, <b>gr(a|e)y</b> will find 'gray' or 'grey' and has the sense that - having found the literal characters 'gr' - if the first test is not valid (a) the second will be tried (e), if the first is valid the second will not be tried. Alternation can be nested within each expression, thus <b>gr((a|e)|i)y</b> will find 'gray', 'grey' and 'griy'.</td>
+</tr>
+</tbody></table>
+<p><b>&lt;humblepie&gt;</b> In our examples, we blew this expression ^([L-Z]in), we incorrectly stated that this would negate the tests [L-Z], the '^' only performs this function <b>inside</b> square brackets, here it is <b>outside</b> the square brackets and is an <b>anchor</b> indicating 'start from first character'. Many thanks to Mirko Stojanovic for pointing it out and apologies to one and all.<b>&lt;/humblepie&gt;</b></p>
+<p>So lets try these out with our example strings..</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="130"><b><u>Search for</u></b><br>
+(search expression)</td>
+<td width="50"></td>
+<td width="100"></td>
+<td></td>
+</tr>
+<tr valign="top">
+<td align="center"><a name="correct"></a>^([L-Z]in)</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>The '^' is an anchor (because it lies outside any square brackets) indicating first position. <b>Win</b> does not start the string so no match.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">no match</a></td>
+<td>The '^' is an anchor (because it lies outside any square brackets) indicating first position.  <b>Lin</b>ux does not start the string so no match.</td>
+</tr>
+<tr valign="top">
+<td align="center"><a name="correct"></a>((4\.[0-3])|(2\.[0-3]))</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds the <b>4.0</b> in Mozilla/<b>4.0</b>. The '\.' sequence uses the escape metacharacter (\) to ensure that the '.' (dot) is used as a literal in the search.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds the <b>2.2</b> in Linux<b>2.2</b>.16-22.</td>
+</tr>
+<tr valign="top">
+<td align="center">(W|L)in</td>
+<td><b>STRING1</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds <b>Win</b> in <b>Win</b>dows.</td>
+</tr>
+<tr valign="top">
+<td align="center"></td>
+<td><b>STRING2</b></td>
+<td><a href="http://www.zytrax.com/tech/web/regex.htm#search" class="t-db">match</a></td>
+<td>Finds <b>Lin</b> in <b>Lin</b>ux.</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Check the results in the Regular Expression Tester</a>.</p>
+
+<h2>More Stuff</h2>
+<h3><a name="contents"></a>Contents</h3>
+<blockquote>
+<a href="http://www.zytrax.com/tech/web/regex.htm#special" class="t-db">POSIX Standard Character Classes</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#browser" class="t-db">Apache browser recognition</a> - a worked example<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#common" class="t-db">Commonly Available extensions</a> - \w etc<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#submatches" class="t-db">Submatches, Groups and Backreferences</a><br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">Regular Expression Tester</a> - Experiment with your own strings and expressions in your browser<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#examples" class="t-db">Common examples</a> - regular expression examples<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#notes" class="t-db">Notes</a> - general notes when using utilities and lanuages<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#vs" class="t-db">Utility notes</a> - using Visual Studio regular expressions<br>
+<a href="http://www.zytrax.com/tech/web/regex.htm#sed" class="t-db">Utility notes</a> - using sed for file manipulation (not for the faint hearted)<br>
+<p></p>
+</blockquote>
+<p>For more information on regular expressions go to our <a href="http://www.zytrax.com/links/" class="t-db">links pages</a> under Languages/regex. There are lots of folks who get a real buzz out of making any search a 'one liner' and they are incredibly helpful at telling you how they did it. Welcome to the wonderful, if arcane, world of Regular Expressions. You may want to play around with your new found knowledge <a href="http://www.zytrax.com/tech/web/regex.htm#experiment" class="t-db">using this tool</a>.</p>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="special"></a>POSIX Character Class Definitions</h2>
+<p>POSIX 1003.2 section 2.8.3.2 (6) defines a set of character classes that denote certain common ranges. They tend to look very ugly but have the advantage that also take into account the 'locale', that is, any variant of the <a href="http://www.zytrax.com/tech/characters" class="t-db">local language/coding system</a>. Many utilities/languages provide <a href="http://www.zytrax.com/tech/web/regex.htm#common" class="t-db">short-hand</a> ways of invoking these classes. Strictly the names used and hence their contents reference the LC_CTYPE POSIX definition (1003.2 section 2.5.2.1).</p>
+<table summary="" border="0" cellspacing="4" cellpadding="4" class="norm">
+<tbody><tr valign="top">
+<td align="center" width="100"><h4>Value</h4></td>
+<td><h4>Meaning</h4></td>
+</tr>
+<tr valign="top">
+<td align="center">[:digit:]</td>
+<td>Only the digits 0 to 9</td>
+</tr>
+<tr valign="top">
+<td align="center">[:alnum:]</td>
+<td>Any alphanumeric character 0 to 9 OR A to Z or a to z.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:alpha:]</td>
+<td>Any alpha character A to Z or a to z.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:blank:]</td>
+<td>Space and TAB characters only.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:xdigit:]</td>
+<td>Hexadecimal notation 0-9, A-F, a-f.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:punct:]</td>
+<td>Punctuation symbols . , " ' ? ! ; : # $ % &amp; ( ) * + - / &lt; &gt; = @ [ ] \ ^ _ { } | ~ </td>
+</tr>
+<tr valign="top">
+<td align="center">[:print:]</td>
+<td>Any printable character.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:space:]</td>
+<td>Any whitespace characters (space, tab, NL, FF, VT, CR). Many system abbreviate as \s.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:graph:]</td>
+<td>Exclude whitespace (SPACE, TAB). Many system abbreviate as \W.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:upper:]</td>
+<td>Any alpha character A to Z.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:lower:]</td>
+<td>Any alpha character a to z.</td>
+</tr>
+<tr valign="top">
+<td align="center">[:cntrl:]</td>
+<td>Control Characters NL CR LF TAB VT FF NUL SOH STX EXT EOT ENQ ACK SO SI DLE DC1 DC2 DC3 DC4 NAK SYN ETB CAN EM SUB ESC IS1 IS2 IS3 IS4 DEL.</td>
+</tr>
+</tbody></table>
+<p>These are always used <b>inside square brackets</b> in the form [[:alnum:]] or combined as [[:digit:]a-d]</p>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="common"></a>Common Extensions and Abbreviations</h2>
+<p>Some utitlities and most languages provide extensions or abbreviations to simplify(!) regular expressions. These tend to fall into <a href="http://www.zytrax.com/tech/web/regex.htm#special" class="t-db">Character Classes</a> or position extensions and the most common are listed below. In general these extensions are defined by PERL and implemented in what is called PCRE's (Perl Compatible Regular Expressions) which has been implemented in the form of a libary that has been ported to many systems. Full <a href="http://www.pcre.org/pcre.txt" target="_blank" class="t-dd">details of PCRE</a>. <a href="http://perldoc.perl.org/perlre.html" target="_blank" class="t-dd">PERL 5.8.8 regular expression documentation</a>.</p>
+<p>While the \x type syntax for can look initially confusing the backslash precedes a character that does not normally need escaping and hence can be interpreted correctly by the utility or language - whereas we simple humans tend to become confused more easily. The following are supported by: .NET, PHP, PERL, RUBY, PYTHON, Javascript as well as many others.</p>
+<table border="1" cellspacing="0" cellpadding="4" class="p-m-s">
+<tbody><tr valign="top">
+<td colspan="2"><b>Character Class Abbreviations</b></td>
+</tr>
+<tr valign="top">
+<td>\d</td>
+<td>Match any character in the range 0 - 9 (equivalent of POSIX [:digit:])</td>
+</tr>
+<tr valign="top">
+<td>\D</td>
+<td>Match any character NOT in the range 0 - 9 (equivalent of POSIX [^[:digit:]])</td>
+</tr>
+<tr valign="top">
+<td>\s</td>
+<td>Match any whitespace characters (space, tab etc.). (equivalent of POSIX [:space:] EXCEPT VT is not recognized)</td>
+</tr>
+<tr valign="top">
+<td>\S</td>
+<td>Match any character NOT whitespace (space, tab). (equivalent of POSIX [^[:space:]])</td>
+</tr>
+<tr valign="top">
+<td>\w</td>
+<td>Match any character in the range 0 - 9, A - Z and a - z (equivalent of POSIX [:alnum:])</td>
+</tr>
+<tr valign="top">
+<td>\W</td>
+<td>Match any character NOT the range 0 - 9, A - Z and a - z (equivalent of POSIX [^[:alnum:]])</td>
+</tr>
+<tr valign="top">
+<td colspan="2"><b>Positional Abbreviations</b></td>
+</tr>
+<tr valign="top">
+<td>\b</td>
+<td>Word boundary. Match any character(s) at the beginning (\bxx) and/or end (xx\b) of a word, thus \bton\b will find ton but not tons, but \bton will find tons.</td>
+</tr>
+<tr valign="top">
+<td>\B</td>
+<td>Not word boundary. Match any character(s) NOT at the beginning(\Bxx) and/or end (xx\B) of a word, thus \Bton\B will find wantons but not tons, but ton\B will find both wantons and tons.</td>
+</tr>
+</tbody></table>
+
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+
+<h2><a name="submatches"></a>Subexpressions, Submatches, Groups and Backreferences</h2>
+<p>All regular expression implementations that claim BRE (or higher) compatibility provide the last results of each separate match enclosed in parenthesis (officially called a <b>subexpression</b> but frequently called a <b>submatch</b> or group) in <b>variables</b> that may subsequently (after the regular expression has been executed) be used or substituted in an expression by using a <b>backreference</b>. There may be one or more such groupings in any regular expression. These variables are usually numbered $1 to $9. Where $1 will contain the first <b>submatch</b>, $2 will contain the second <b>submatch</b> and so on. The $x value typically persists until another regular expression is encountered. Examples:</p>
+<pre class="g-b-s"># assume target string = "cat"
+search expression = (c|a)(t|z)
+$1 will contain "a"
+# the 'c' is found but the next character fails (t|z)
+# the search advances by one character
+# the 'c' is not found but 'a' is and the 
+# next character finds 't' in (t|z) - match  
+# if the target string was "act"
+# $1 would contain "c"
+$2 will contain "t" in both cases 
+
+# OpenLDAP 'access to' directive example: assume target dn 
+# is "ou=something,cn=my name,dc=example,dc=com"
+# then $1 = 'my name' at end of match below
+# because first regular expression does not use ()
+access to dn.regex="ou=[^,]+,cn=([^,]+),dc=example,dc=com"
+# subsequent expression contains backreference
+ by dn.exact,expand="cn=$1,dc=example,dc=com"
+
+# However, in the following directive
+access to dn.regex="ou=([^,]+),cn=([^,]+),dc=example,dc=com"
+# subsequent expression contains backreference
+ by dn.exact,expand="cn=$2,dc=example,dc=com"
+# $1 will contain 'something' and 
+# $2 will contain 'my name' because
+# both regular expressions use ()
+</pre>
+
+<p>When used within a single expression these submatches (subexpressions) are typically called groups and are placed in numeric variables addressed using a <b>backreference</b> of the form \1 to \9. These groups or backreferences (variables) may be substituted within the regular expression. The following example demonstrates usage:</p>
+<pre class="g-b-s"># the following expression finds any occurrence of double characters
+(.)\1
+# the parenthesis creates the grouping (or submatch or subexpression) 
+# in this case it is the first (only), so is backreferenced by \1
+# the . (dot) finds any character and the \1 backrefence substitutes whatever 
+# character was found by the dot in the next character position, 
+# thus to match it must find two consecutive characters which are the same
+</pre>
+<p>It is possible to suppress the capture of any subexpression or group (enclosed in parenthesis) into a backreference by adding the string '?:' immediately after the opening parenthesis (. The following example illustrates this behaviour:</p>
+<pre class="g-b-s"># in both cases assume target dn 
+# is "ou=something,cn=my name,dc=example,dc=com"
+
+# all groups capture to backreference variables
+access to dn.regex="ou=([^,]+),cn=([^,]+),dc=example,dc=com"
+# subsequent expression contains backreference
+ by dn.exact,expand="cn=$2,dc=example,dc=com"
+# $1 will contain 'something' and 
+# $2 will contain 'my name' because
+# both regular expressions use ()
+
+# first group capture to backreference variable is suppressed
+access to dn.regex="ou=(?:[^,]+),cn=([^,]+),dc=example,dc=com"
+# subsequent expression contains backreference
+ by dn.exact,expand="cn=$1,dc=example,dc=com"
+# $1 will contain 'my name' 
+
+</pre> 
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+window.onerror=function(msg,url,line){
+document.getElementById("search-result").value = "Invalid - " + msg;
+return true;
+}
+function zapre(){
+document.getElementById("search-string").value = "";
+document.getElementById("search-re").value = "";
+document.getElementById("search-result").value = "";
+}
+function dore(){
+var sre = document.getElementById("search-string").value;
+var oci = document.getElementById("opts-ci");
+var ores = document.getElementById("opts-res");
+var fgs = "g";
+if (oci.checked == true) fgs += "i";
+var re = new RegExp(document.getElementById("search-re").value,fgs);
+var res = re.exec(sre);
+if(res == null){
+	res = "no match";
+}else{
+	var ts = "";
+	var mnum = res[0].length;
+	var num = res.index;
+	if(mnum != 0){
+		if(ores.checked == false){
+			ts = sre.substring(0,(num));
+			ts +="<"+res[0]+">";
+			ts += sre.substring(num+mnum);
+			ts += "\n";
+		}
+		ts += "First match: "+res[0]+ " at position "+ (num+1);
+		tb = "";
+		for(i = 1; i < res.length; i++){
+		 tb += " $" + i + " = " + res[i];
+		}
+		if(tb != ""){
+			ts += "\n" + "Backreferences:";
+			ts += tb;
+		}
+		tt = "";
+		while ((ta = re.exec(sre)) != null){
+   	tt += "\n"+"Found: " + ta[0] + " at position "+(ta.index+ 1);
+  	}
+		if (tt != ""){
+	 		ts += "\n" + "Additional matches:" + tt;
+		}
+		}else{
+			ts = "Match(es) = zero length";
+		}
+	res = ts;
+}
+document.getElementById("search-result").value = res;
+}
+//-->
+</script>
+<h2><a name="experiment"></a>Regular Expression - Experiments and Testing</h2>
+<p>This simple regular expression tester lets you experiment using your browser's regular expression Javascript function (use View Source in your browser for the Javascript source code).</p>
+<p>Enter or copy/paste the string you want to search in the box labled <b>String:</b> and the regular expression in the box labeled <b>RE:</b>, click the <b>Search</b> button and results will appear in the box labeled <b>Results:</b>. If you are very lucky the results may even be what you expect. This tester displays the whole searched string in the &lt;&gt;Results field and encloses in &lt; &gt; the first found result. That may not be terribly helpful if you are dealing with HTML - but our heart is in the right place. All matches are then displayed separately showing the found text and its character position in the string. Checking the <b>Case Insensitive:</b> box makes the search case insensitive thus [AZ] will find the "a" in "cat", whereas without checking the box [aZ] would be required to find the "a" in "cat". <b>Note:</b> Not all regular expression systems provide a case insensitivity feature and therefore the regular expression may not be portable. Checking <b>Results only</b> will supress display of the marked up original string and only show the results found, undoing all our helpful work, but which can make things a little less complicated especially if dealing with HTML strings or anything else with multiple &lt; &gt; symbols. <b>Clear</b> will zap all the fields - including the regular expression that you just took 6 hours to develop. <b>Use with care.</b> See the notes below for limitations, support and capabilities.</p>
+<p><b>Notes:</b></p>
+<ol>
+<li><p>If the regular expression is invalid or syntactically incorrect the tester will display in the <b>Results</b> field exactly what your browser thought of your attempt - sometimes it might even be useful.</p></li>
+<li><p>The <b>Results</b> field now shows (assuming your syntax is valid) the value of any backreference variables (in the range $1 - $9). These backreferences can either be accessed by the use of the variables $1 to $9 in subsequent expressionss or by \1 to \9 within the same regular expression. If none exist (there were no subexpressions or groups in the regular expression) then, surprisingly, none will be displayed.</p></li>
+</ol>
+<p><b>&lt;ouch&gt;</b> We had an error such that if the match occurred in the first position the enclosing &lt;&gt; was incorrectly displayed.<b>&lt;/ouch&gt;</b></p>
+<p>If you plan to experiment with the target strings used to illustrate usage of the various meta characters we have thoughtfully replicated them below to save you all that scrolling. Just copy and paste into the <b>String</b> box. Are we  helpful or not?</p>
+<pre class="g-b-s"><b>STRING1</b>   Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)
+<b>STRING2</b>   Mozilla/4.75 [en](X11;U;Linux2.2.16-22 i586)
+</pre> 
+<table border="0" cellspacing="4" cellpadding="4" class="p-m-s">
+<tbody><tr valign="top">
+<td width="80"><b>String:</b></td>
+<td><textarea id="search-string" cols="100" rows="10"></textarea></td>
+</tr>
+<tr valign="top">
+<td width="80"><b>RE:</b></td>
+<td><input type="text" id="search-re" size="80"></td>
+</tr>
+<tr valign="top">
+<td width="80"><b>Options:</b></td>
+<td><b>Case Insensitive:</b><input type="checkbox" id="opts-ci">&nbsp;&nbsp;<b>Results Only:</b><input type="checkbox" id="opts-res"></td>
+</tr>
+<tr valign="top">
+<td width="80">&nbsp;</td>
+<td><input type="button" value="Clear" onclick="zapre();">&nbsp;&nbsp;
+<input type="button" value="Search" onclick="dore();"></td>
+</tr>
+<tr valign="top">
+<td width="80"><b>Results:</b></td>
+<td><textarea id="search-result" cols="100" rows="10"></textarea></td>
+</tr>
+</tbody></table>
+<p><b>Notes:</b></p>
+<ol>
+<li><p>Javascript implementations may vary from browser to browser. This feature was tested with MSIE 6.x, Gecko (Firefox 2.something) and Opera 9 (email indicates it works in Google's Chrome - so will likely work with any WebKit based browser, which obviously includes Safari (and now even Opera!)). If the tester does not work for you we are very, very sad - but yell at your browser supplier not us.</p></li>
+<li><p>The ECMA-262 (Javascript 1.2'ish) spec defines the regex implementation to be based on Perl 5 which means that submatches/backreferences and short forms, such as \d, should be supported in addition to standard BRE and ERE functionality.</p></li>
+<li><p>In Opera and MSIE the following backreference/submatch worked:</p>
+<pre class="g-c-s">(.)\1
+</pre>
+<p>Which finds any occurence of double characters, such as, oo in spoon. Using Gecko (Firefox 2.something) it did not work. Since, at least, Gecko/20100228 (possibly even before that) the expression now works.</p>
+</li>
+<li><p>If you get the message <b>Match(es) = zero length</b> in the results field this implies your browser's Javascript engine has choked on executing the regular expression. It has returned a valid match (there may be others in the string) but has (incorrectly) returned a length of 0 for the number of characters in the match. This appears to happen (Moz/FF and IE tested) when searching for a single character in a string when using the meta characters ? and *. For example, the regular expression <b>e?</b> on any string will generate the error (this expression will yield a match on every character in the string and is probably not what the user wanted).</p>
+</li>
+<li><p>For those of you familiar with Javascript's regular expressions there is no need to add the enclosing //, just enter the raw regular expression. Those of you not familiar with Javascript regular expressions - ignore the preceding sentence.</p></li>
+</ol>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="browser"></a>Some Examples</h2>
+<p>The following sections show a number of worked examples which may help to clarify regular expression. Most likely they will not.</p>
+<h3><a name="browser"></a>Apache Browser Identification - a Worked Example</h3>
+<p>All we ever wanted to do with Regular Expressions was to find enough about visiting browsers arriving at our Apache powered web site to decide what HTML/CSS to supply or not for our pop-out menus. The Apache <b>BrowserMatch</b> directives will set a variable if the expression matches the USER_AGENT string.</p>
+<p>We want to know:</p>
+<ul>
+<li>If we have any browser that supports Javascript (isJS).</li>
+<li>If we have any browser that supports the MSIE DHTML Object Model (isIE).</li>
+<li>If we have any browser that supports the W3C DOM (isW3C).</li>
+</ul>
+<p>Here in their glory are the Apache regular expression statements we used (maybe you can understand them now)</p>
+<blockquote>
+<pre class="g-c-n">BrowserMatchNoCase [Mm]ozilla/[4-6] isJS
+BrowserMatchNoCase MSIE isIE
+BrowserMatchNoCase [Gg]ecko isW3C
+BrowserMatchNoCase MSIE.((5\.[5-9])|([6-9]|1[0-9])) isW3C
+BrowserMatchNoCase W3C_ isW3C
+</pre>
+</blockquote>
+<p><b>Notes:</b></p>
+<ul>
+<li>Line 1 checks for any upper or lower case variant of Mozilla/4-6 (MSIE also sets this value). This test sets the variable isJS for all version 4-6 browsers (we assume that version 3 and lower do not support Javascript or at least not a sensible Javascript).</li>
+<li>Line 2 checks for MSIE only (line 1 will take out any MSIE 1-3 browsers even if this variable is set.</li>
+<li>Line 3 checks for any upper or lower case variant of the Gecko browser which includes Firefox, Netscape 6, 7 and now 8 and the Moz clones (all of which are Mozilla/5).</li>
+<li><a name="parenthesis"></a><p>Line 4 checks for MSIE 5.5 (or greater) OR MSIE 6 - 19 (future proofing - though at the rate MS is updating MSIE it will probably be out-of-date next month).<br>
+<b>NOTE about binding:</b>This expression does not work:</p>
+<pre class="g-c-n">BrowserMatchNoCase MSIE.(5\.[5-9])|([6-9]) isW3C
+</pre>
+<p>It incorrectly sets variable isW3C if the number 6 - 9 appears in the string. Our guess is the binding of the first parenthesis is directly to the MSIE expression and the OR and second parenthesis is treated as a separate expression. Adding the inner parenthesis fixed the problem.</p></li>
+<li><p>Line 5 checks for W3C_ in any part of the line. This allows us to identify the W3C validation services (either CSS or HTML/XHTML page validation).</p></li>
+</ul>
+<p>Some of the above checks may be a bit excessive, for example, is Mozilla ever spelled mozilla?, but it is also pretty silly to have code fail just because of this 'easy to prevent' condition. There is apparently no final consensus that all Gecko browsers will have to use Gecko in their 'user-agent' string but it would be extremely foolish not to since this would force guys like us to make huge numbers of tests for branded products and the more likely outcome would be that we would not.</p>
+
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+<h2><a name="examples"></a>Common Examples</h2>
+<p>The following examples may be useful, they are particularly aimed at extracting parameters but cover some other ground as well. If anyone wants to email us some more examples we'd be happy to post with an appropriate credit.</p>
+<pre class="g-c-s"># split on simple space 
+string "aaa bbb ccc"
+re = \S+ 
+result = "aaa", "bbb", "ccc"
+# Note: If you want the location of the whitespace (space) use \s+
+
+# css definition split on space or comma but keep "" enclosed items
+string = '10pt "Times Roman",Helvetica,Arial,sans-serif'
+re = \s*("[^"]+"|[^ ,]+)
+result = "10pt", "\"Times Roman\"", "Helvetica", "Arial", "sans-serif"
+
+# extract HTML &lt;&gt; enclosed tags
+string = '&lt;a href="#"&gt;A link&lt;/a&gt;'
+re = &lt;[^&gt;]*&gt;
+result = '&lt;a href="#"&gt;', "&lt;/a&gt;"
+
+# find all double characters
+string = 'aabcdde'
+re = (.)\1
+result = "aa", "dd"
+
+# separate comma delimted values into groups (submatches or backreferences)
+string = ou=people,cn=web,dc=example,dc=com
+re = ou=[^,]+,cn=([^,]+),dc=example,dc=com
+result $1 variable will contain "web" - first expression has no grouping ()
+However, using
+re = ou=([^,]+),cn=([^,]+),dc=example,dc=com
+$1 will contain "people" and $2 will contain "web"
+</pre>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="notes"></a>Utility and Language Notes - General</h2>
+<ol>
+<li><p>Certain utilities, notably grep, suggest that it is a good idea to enclose any complex search expression inside single quotes. In fact it is not a good idea - it is absolutely essential! Example:</p>
+<pre class="g-b-s">grep 'string\\' *.txt # this works correctly
+grep string\\ *.txt # this does not work
+</pre>
+</li>
+<li><p>Some utilities and most languages use / (forward slash) to start and end (de-limit or contain) the search expression others may use single quotes. This is especially true when there may be optional following arguments (see the grep example above). These characters do not play any role in the search itself.</p>
+</li>
+
+</ol>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="vs"></a>Utility Notes - Using Visual Studio</h2>
+<p>For reasons best know to itself MS Visual Studio (VS.NET) uses a bizarre set of extensions to regular expressions. (<a href="http://msdn2.microsoft.com/en-us/library/2k3te2cs(VS.80).aspx" target="_blank" class="t-dd">MS VS standard documentation</a>) But there is a <a href="http://www.codeproject.com/csharp/SearcherAddIn.asp" target="_blank" class="t-dd">free regular expression add-in</a> if you want to return to sanity.</p>
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+
+<h2><a name="sed"></a>Utility Notes - Using sed</h2>
+<p>Stream editor (sed) is one of those amazingly powerful tools for manipulating files that are simply horrible when you try to use them - unless you get a buzz out of ancient Egyptian hieroglyphics. But well worth the effort. So if you are hieroglyphically-challenged, like us, these notes may help. There again they may not. There is also a useful series of <a href="http://www.ibm.com/developerworks/linux/library/l-sed1.html" target="_blank" class="t-dd">tutorials on sed</a> and <a href="http://www.student.northpark.edu/pemente/sed/sed1line.txt" target="_blank" class="t-dd">this list of sed one liners</a>.</p>
+<ol>
+<li><p><b>not all seds are equal:</b> Linux uses GNU sed, the BSDs use their own, slightly different, version.
+</p></li>
+<li><p><b>sed on windows:</b> <a href="http://gnuwin32.sourceforge.net/packages/sed.htm" target="_blank" class="t-dd">GNU sed has been ported to windows</a>.
+</p></li>
+<li><p><b>sed is line oriented:</b> sed operates on lines of text within the file or input stream.
+</p></li>
+<li><p><b>expression quoting:</b> To avoid shell expansion (in BASH especially) quote all expressions in single quotes as in a 'search expression'.
+</p></li>
+<li><p><b>sed defaults to BRE:</b> The default behaviour of sed is to support Basic Regular Expressions (BRE). To use all the features described on this page set the -r (Linux) or -E (BSD) flag to use Extended Regular Expressions (ERE) as shown:</p>
+<pre class="g-c-s"># use ERE on Linux (GNU sed)
+sed -r 'search expression' file
+# use ERE on BSD
+sed -E 'search expression' file
+</pre>
+</li>
+<li><p><b>in-situ editing:</b> By default sed outputs to 'Standard Out' (normally the console/shell). There are two mutually exclusive options to create modified files. Redirect 'standard out' to a file or use in-situ editing with the -i option. The following two lines illustrate the options:</p>
+<pre class="g-c-s"># in-situ: saves the unmodified file to file.bak BEFORE
+# modifying
+sed -i .bak 'search expression' file
+
+# redirection: file is UNCHANGED the modified file is file.bak
+sed 'search expression' file &gt; file.bak
+</pre>
+</li>
+<li><p><b>sed source:</b> Sed will read from a file or 'Standard In' and therefore may be used in piped sequences. The following two lines are functionally equivalent:</p>
+<pre class="g-c-s">cat file |sed 'search expression' &gt; file.mod
+sed 'search expression' file &gt; file.mod
+</pre>
+</li>
+<li><p><b>sed with substitution:</b> sed's major use for most of us is in changing the contents of files using the substitution feature. Subsitution uses the following expression:</p>
+<pre class="g-c-s"># substitution syntax
+sed '[position]s/find/change/flag' file &gt; file.mod
+# where 
+# [position] - optional - normally called address in most documentation
+#  s         - indicates substitution command
+#  find      - the expression to be changed
+#  change    - the expression to be substituted
+#  flag      - controls the actions and may be
+#              g = repeat on same line
+#              N = Nth occurence only on line
+#              p = output line only if find was found!
+#              (needs -n option to suppress other lines)
+#              w ofile = append line to ofile only if find 
+#                        was found
+# if no flag given changes only the first occurrence of 
+# find on every line is substituted
+
+# examples
+# change every occurrence of abc on every line to def
+sed 's/abc/def/g' file &gt; file.mod
+
+# change only 2nd occurrence of abc on every line to def
+sed 's/abc/def/2' file &gt; file.mod
+
+# creates file changed consisting of only lines in which
+# abc was changed to def
+sed 's/abc/def/w changed' file
+# functionally identical to above
+sed -n 's/abc/def/p' file &gt; changed
+</pre>
+</li>
+<li><p><b>Line deletion:</b> sed provides for simple line deletion. The following examples illustrate the syntax and a trivial example:</p>
+<pre class="g-c-s"># line delete syntax
+sed '/find/d' file &gt; file.mod
+# where
+# find - find regular expression
+# d    - delete command
+
+# delete every comment line (starting with #) in file
+sed '/^#/d' file &gt; file.mod
+</pre>
+</li>
+<li><p><b>Delete vs Replace with null:</b> If you use the delete feature of sed it deletes the entire line on which 'search expression' appears, which may not be the desired outcome. If all you want to do is delete the 'search expression' from the line then use replace with null. The following examples illustrate the difference:</p>
+<pre class="g-c-s"># delete (substitute with null) every occurrence of abc in file
+sed 's/abc//g' file &gt; file.mod
+
+# delete every line with abc in file
+sed '/abc/d' file &gt; file.mod
+</pre>
+</li>
+<li><p><b>Escaping:</b> You need to escape certain characters when using them as literals using the standard \ technique. This removes the width attribute from html pages that many web editors annoyingly place on every line. The " are used as literals in the expression and are escaped by using \:</p>
+<pre class="g-c-s"># delete (substitue with null) every occurrence of width="x" in file
+# where x may be pure numeric or a percentage
+sed 's/width=\"[0-9.%]*\"//g' file.html &gt; file.mod
+</pre>
+</li>
+<li><p><b>Delimiters:</b> If you use sed when working with, say, paths which contain / it can be a royal pain to escape them all so you can use any sensible delimiter that minimizes visual confusion for the expresssions. The following example illustrates the principle:</p>
+<pre class="g-c-s"># use of / delimiter with a path containing /
+# replaces all occurences of /var/www/ with /var/local/www/
+sed 's/\/var\/www\//\/var\/local\/www\//g' file &gt; file.mod
+
+# functionally identical but less confusing using : as a 'sensible' delimiter
+sed 's:/var/www/:/var/local/www/:g' file &gt; file.mod
+</pre>
+</li>
+<li><p><b>Positioning with sed:</b> sed documentation uses, IOHO, the confusing term address for what we call [position]. Positional expressions can optionally be placed before sed commands to position the execution of subsequent expressions/commands. Commands may take 1 or 2 positional expressions which may be line or text based. The following are simple examples:</p>
+<pre class="g-c-s"># delete (subsitute with null) every occurrence of abc 
+# in file only on lines starting with xyz (1 positional expression)
+sed '/^xyz/s/abc//g' file &gt; file.mod
+
+# delete (subsitute with null) every occurrence of abc 
+# only in lines 1 to 50
+# 2 positional expression separated by comma
+sed '1,50s/abc//g' file &gt; file.mod
+
+# delete (subsitute with null) every occurrence of abc 
+# except lines 1 - 50 
+# 2 positional expression separated by comma
+sed '1,50!s/abc//g' file &gt; file.mod
+
+# delete (subsitute with null) every occurrence of abc 
+# between lines containing aaa and xxx
+# 2 positional expression separated by comma
+sed '/aaa/,/xxx/s/abc//g' file &gt; file.mod
+
+# delete first 50 lines of file
+# 2 positional expression separated by comma
+sed '1,50d' file &gt; file.mod
+
+# leave first 50 lines of file - delete all others
+# 2 positional expression separated by comma
+sed '1,50!d' file &gt; file.mod
+</pre>
+</li>
+
+<li><p><b>when to use -e:</b> you can use -e (indicating sed commands) with any search expression but when you have multiple command sequences you must use -e. The following are functionality identical:</p>
+<pre class="g-c-s"># delete (substitute with null) every occurrence of width="x" in file
+sed 's/width=\"[0-9.%]*\"//g' file.html &gt; file.mod
+sed -e 's/width=\"[0-9.%]*\"//g' file.html &gt; file.mod
+</pre>
+</li>
+<li><p><b>Strip HTML tags:</b> Regular expressions take the longest match and therefore when stripping HTML tags may not yield the desired result:</p>
+<pre class="g-c-s"># target line
+&lt;b&gt;I&lt;/b&gt; want you to &lt;i&gt;get&lt;/i&gt; lost.
+
+# this command finds the first &lt; and last &gt; on line
+sed 's/&lt;.*&gt;//g' file.html
+# and yields
+lost.
+
+# instead delimit each &lt; with &gt;
+sed 's/&lt;[^&gt;]*&gt;//g' file.html
+# yields
+I want you to get lost.
+
+# finally to allow for multi-line tags you must use
+# following (attributed to S.G Ravenhall)
+sed -e :aloop -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//bloop'
+[see explantion below]
+</pre>
+</li>
+<li><p><b>labels, branching and multiple commands:</b> sed allows mutiple commands on a single line separated by semi-colons (;) and the definition of labels to allow branching (looping) within commands. The following example illustrates these features:</p>
+<pre class="g-c-s"># this sequence strips html tags including multi-line ones
+sed -e :aloop -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//bloop'
+
+# Explanation:
+# -e :aloop consists of :a which creates a label followed by its name 
+# in this case 'loop' that can be branched to by a later command 
+# next -e s/&lt;[^&gt;]*&gt;//g; removes tags on a single line and
+# the ; terminates this command when the current line is exhausted.
+# At this point the line buffer (called the search space) holds the 
+# current line text with any transformations applied, so &lt;&gt; 
+# sequences within the line have been removed from the search space.
+# However we may have either an &lt; or no &lt; left in the current
+# search space which is then processed by the next command which is:
+# /&lt;/N; which is a positioning command looking for &lt;
+# in any remaining part of the search space. If &lt; is found, the N  
+# adds a NL char to the search space (a delimiter) and tells sed
+# to ADD the next line in the file to the search space, control 
+# then passes to the next command.
+# If &lt; was NOT found the search buffer is cleared (output normally) 
+# and a new line read into the search space as normal. Then control
+# passes to the next command, which is:
+# //bloop which comprises // = do nothing, b = branch to and loop
+# which is the label to which we will branch and was created 
+# with -e :aloop. This simply restarts the sequence with EITHER just
+# the next line of input (no &lt; was left in the search space)
+# or with the next line ADDED to the search space (there was a &lt; 
+# left in the search space but no corresponding &gt;)
+# all pretty obvious really!
+</pre>
+</li>
+<li><p><b>adding line numbers to files:</b> Sometimes it's incredibly useful to be able to find the line number within a file, say, to match up with error messages for example a parser outputs the message 'error at line 327'. The following adds a line number followed by a single space to each line in file:</p>
+<pre class="g-c-s"># add the line number followed by space to every line in file
+sed = file|sed 's/\n/ /' &gt; file.lineno
+# the first pass (sed = file) creates a line number and 
+# terminates it with \n (creating a new line)
+# the second piped pass (sed 's/\n/ /') substitutes a space 
+# for \n making a single line
+</pre>
+<p><b>Note:</b> We got email asking why the above does not also remove the real end of line (EOL) as well. OK. When any data is read into the buffer for processing the EOL is removed (and appended again only if written to a file). The line number created by the first command is pre-pended (with an EOL to force a new line if written to file) to the processing buffer and the whole lot piped to the second command and thus is the only EOL found.</p>
+</li>
+</ol>
+
+<p><a href="http://www.zytrax.com/tech/web/regex.htm#contents"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/go_up.gif" alt="go to contents"></a></p>
+	<!-- end body table -->
+<hr>
+<p class="p-m-n"><br>Problems, comments, suggestions, corrections (including broken links) or something to add? Please take the time from a busy life to 'mail us' (at top of screen), the webmaster (below) or <a href="javascript:mailus('info-support','zytrax.com','Support Issue')" class="t-db">info-support at zytrax</a>. You will have a warm inner glow for the rest of the day.</p>
+<p class="adv" align="center">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9419480011552853";
+/* Browser Leaderboard */
+google_ad_slot = "9281933980";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</p>
+</div>
+	<div class="l-l">
+<!-- left hand navigation -->
+<div class="n-l">
+<h2 align="right">Tech</h2>
+<p class="n-l-f">
+<a href="http://www.zytrax.com/tech">tech home</a><br>
+<a title="Digital Audio - primers, calculators, equalization, frequency tables, file formats, glossary - a mere splash in the ocean" href="http://www.zytrax.com/tech/audio/">audio stuff</a><br>
+<a title="Browser IDs, SSIs, Apache Configuration, regular expressions" href="http://www.zytrax.com/tech/web/">web stuff</a><br>
+<a href="http://www.zytrax.com/tech/dom/">dom stuff</a><br>
+<a title="CSS is about a lot more than STYLE. Wheezes, table-less layouts, CSS pop-ups, CSS Shortcuts" href="http://www.zytrax.com/tech/css/">css stuff</a><br>
+<a title="includes PHP and Ruby (our language of choice)" href="http://www.zytrax.com/tech/lang/">language stuff</a><br>
+<a title="quick overview &#39;cos we always forget - not that we ever knew much - now includes a nifty tester" href="./Regular Expressions - A Gentle User Guide and Tutorial_files/Regular Expressions - A Gentle User Guide and Tutorial.htm">regex stuff</a><br>
+<a href="http://www.zytrax.com/tech/rfcs/">rfc stuff</a><br>
+<a title="TCP/IP, ISDN, LAN, VoIP, ITU Multi-Media" href="http://www.zytrax.com/tech/protocols/">protocol stuff</a><br>
+<a title="PC Parallel Ports, LAN wiring, RS232, Centronics, DIN" href="http://www.zytrax.com/tech/layer_1/">cable stuff</a><br>
+<a href="http://www.zytrax.com/tech/layer_1/cables/tech_lan.htm">lan wiring</a><br>
+<a title="DB9, DB25 pinouts, RJ45 serial, RS standards" href="http://www.zytrax.com/tech/layer_1/cables/tech_rs232.htm">rs232 wiring</a><br>
+<a title="A collection of detailed howtos including Samba3 as PDC, FreeBSD firewalls" href="http://www.zytrax.com/tech/howtos/">howto stuff</a><br>
+<a title="A collection of survival guides - quick overviews - to popular software" href="http://www.zytrax.com/tech/survival/">survival stuff</a><br>
+<a title="Our wireless overview, Calculators, links to &#39;heavy&#39; stuff, some early 802.11 stuff" href="http://www.zytrax.com/tech/wireless/">wireless stuff</a><br>
+<a href="http://www.zytrax.com/tech/codes.htm">ascii  codes</a><br>
+<a title="Decimal to Hex and Binary conversion table - even a description of Octal!" href="http://www.zytrax.com/tech/protocols/hex.html">Dec &gt; Hex &gt; Bin</a><br>
+<a href="http://www.zytrax.com/tech/data_rates.htm">data rate stuff</a><br>
+<a href="http://www.zytrax.com/tech/telephony/">telephony stuff</a><br>
+<a title="Even electronic guys gotta know how to screw it together, if you get our drift" href="http://www.zytrax.com/tech/mech/">mechanical stuff</a><br>
+<a title="Pinouts - USB, DIN, Firewire, VGA, DVI, HDMI, DisplayPort and Thunerbolt, I/O interface speeds, Screen sizes including HD" href="http://www.zytrax.com/tech/pc/">pc stuff</a><br>
+<a href="http://www.zytrax.com/tech/electronics/">electronic stuff</a><br>
+<a href="http://www.zytrax.com/links">tech links</a><br>
+<a href="http://www.zytrax.com/books">open guides</a><br>
+<a title="RSS (2.0) Feed - right click on icon, select &#39;Copy Link URL&#39; or &#39;Copy Shortcut&#39;, paste into RSS Feed Reader, or drag and drop into RSS Feed Reader" href="http://www.zytrax.com/zytrax.rss"><img border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/feed-icon-14x14.png" alt="RSS Feed Icon">&nbsp;RSS Feed</a>
+</p>
+<p align="right" class="p-b-h">If you are happy it's OK - but your browser is giving a less than optimal experience on our site. You could, at no charge, upgrade to a W3C STANDARDS COMPLIANT browser such as <a href="http://www.mozilla.org/" class="t-db">Mozilla</a></p>
+</div>
+
+</div>
+<div class="l-r">
+<!-- right menu  -->
+<div class="g-sb">
+<!-- SiteSearch Google -->
+<form method="get" action="http://www.google.com/custom" target="_top">
+<table border="0">
+<tbody><tr>
+<td nowrap="nowrap">
+<input type="hidden" name="domains" value="www.zytrax.com">
+<input type="text" name="q" size="20" maxlength="255" value="">
+</td></tr>
+<tr>
+<td nowrap="nowrap">
+<table>
+<tbody><tr>
+<td>
+<input type="radio" name="sitesearch" value="" checked="checked">
+<font size="-2" color="#000000">web</font>
+</td>
+<td>
+<input type="radio" name="sitesearch" value="www.zytrax.com">
+<font size="-2" color="#000000">zytrax.com</font>
+</td>
+</tr>
+</tbody></table>
+<input type="submit" name="sa" value="Google Search">
+<input type="hidden" name="client" value="pub-9419480011552853">
+<input type="hidden" name="forid" value="1">
+<input type="hidden" name="ie" value="ISO-8859-1">
+<input type="hidden" name="oe" value="ISO-8859-1">
+<input type="hidden" name="safe" value="active">
+<input type="hidden" name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;LH:50;LW:355;L:http://www.zytrax.com/images/zytrax-info-google.gif;S:http://www.zytrax.com/tech;FORID:1;">
+<input type="hidden" name="hl" value="en">
+</td></tr></tbody></table>
+</form>
+<!-- SiteSearch Google -->
+<h4>Share Page</h4>
+<div class="b-b-s">
+<a href="http://www.facebook.com/share.php?u=http://www.zytrax.com/tech/web/regex.htm&h=Regular%20Expressions%20-%20A%20Gentle%20User%20Guide%20and%20Tutorial"><img class="i-m-s" title="add page to facebook" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/f_logo.png" alt="share page via facebook"></a>
+<a href="http://twitter.com/home/?status=Useful%20page%20http://www.zytrax.com/tech/web/regex.htm"><img class="i-m-s" title="tweet this page" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/twitter-bird.png" alt="tweet this page"></a>
+<script src="./Regular Expressions - A Gentle User Guide and Tutorial_files/in.js" type="text/javascript"></script>
+<span style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center; " class="IN-widget"><span style="padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; margin-top: 0px !important; margin-right: 0px !important; margin-bottom: 0px !important; margin-left: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important; "><span id="li_ui_li_gen_1369236423319_0"><a id="li_ui_li_gen_1369236423319_0-link" href="javascript:void(0);"><span id="li_ui_li_gen_1369236423319_0-logo">in</span><span id="li_ui_li_gen_1369236423319_0-title"><span id="li_ui_li_gen_1369236423319_0-mark"></span><span id="li_ui_li_gen_1369236423319_0-title-text">Share</span></span></a></span></span></span><script type="IN/Share+init"></script>
+<a href="https://www.stumbleupon.com/submit?url=http://www.zytrax.com/tech/web/regex.htm&title=Regular%20Expressions%20-%20A%20Gentle%20User%20Guide%20and%20Tutorial"><img class="i-m-s" title="submit page to stumbleupon" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/stumbleupon.gif" alt="submit page to stumbleupon"></a>
+<a href="http://reddit.com/submit?url=http://www.zytrax.com/tech/web/regex.htm&title=Regular%20Expressions%20-%20A%20Gentle%20User%20Guide%20and%20Tutorial"><img class="i-m-s" title="submit page to reddit.com" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/reddit.gif" alt="submit page to reddit.com"></a>
+</div>
+<h4>Page Features</h4>
+<div class="b-b-s">
+<a href="http://www.zytrax.com/run/mailpage.php"><img class="i-m-s" title="Page comment feature" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/mail.gif" alt="Page comment feature"></a>
+<a href="http://www.zytrax.com/run/mailpage.php"><img class="i-m-s" title="Send to a friend feature" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/mailfriend.gif" alt="Send to a friend feature"></a>
+<a href="http://www.zytrax.com/tech/web/regex.htm#" onclick="window.print();return false;"><img class="i-m-s" title="print this page" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/pf.gif" alt="print this page"></a>
+<a href="http://www.zytrax.com/tech/web/regex.htm#" onclick="fontchange(&#39;d&#39;);return false;"><img class="i-m-s" title="Decrease font size" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/smaller.gif" alt="Decrease font size"></a>
+<a href="http://www.zytrax.com/tech/web/regex.htm#" onclick="fontchange(&#39;i&#39;);return false;"><img class="i-m-s" title="Increase font size" border="0" src="./Regular Expressions - A Gentle User Guide and Tutorial_files/bigger.gif" alt="Increase font size"></a>
+</div>
+<h4>HTML Stuff</h4>
+<p class="g-sb-n">
+<a title="It was the Last HTML standard - the future was XHTML - but HTML 5 rises from the ashes" href="http://www.w3.org/TR/html4/" target="_blank" class="w-db">W3C HTML 4.01</a><br>
+<a title="HTML is alive and well and moving toward HTML5 - the objective being an incremental standard - reconciling HTML4 and XHTML - in your dreams?" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/" target="_blank" class="w-db">HTML5 (WHATWG)</a><br>
+<a title="HTML4 - HTML5 differences - well today&#39;s differences - and tomorrow&#39;s. Who knows." href="http://dev.w3.org/html5/html4-differences/" target="_blank" class="w-db">HTML4 vs HTML5</a><br>
+<a title="W3C current HTML5 Reference" href="http://dev.w3.org/html5/html-author/" target="_blank" class="w-db">HTML5 Reference</a><br>
+<a title="Excellent tool and great for finding page bugs as well" href="http://validator.w3.org/" target="_blank" class="w-db">W3C Page Validator</a><br>
+<a title="Quick list of valid DTD&#39;s - explains one of life&#39;s great mysteries" href="http://www.w3.org/QA/2002/04/valid-dtd-list.html" target="_blank" class="w-db">W3C DOCTYPE</a>
+</p>
+<h4>CSS Stuff</h4>
+<p class="g-sb-n">
+<a title="CSS1 - the only approved spec" href="http://www.w3.org/TR/1999/REC-CSS1-19990111" target="_blank" class="w-db">W3C CSS1</a><br>
+<a title="CSS2.1 - the lastest non-approved spec" href="http://www.w3.org/TR/2007/CR-CSS21-20070719/" target="_blank" class="w-db">W3C CSS2.1</a>
+</p>
+<h4>DOM Stuff</h4>
+<p class="g-sb-n">
+<a title="W3C&#39;s main DOM site with links to all their DOM documentation" href="http://www.w3c.org/DOM/" target="_blank" class="w-db">W3C DOM</a><br>
+<a title="W3C DOM Events specification" href="http://www.w3.org/TR/DOM-Level-2-Events/" target="_blank" class="w-db">W3C DOM Events</a><br>
+<a title="Good documentation about the Gecko (Mozilla etc) DOM implementation" href="http://www.mozilla.org/docs/dom/" target="_blank" class="w-db">Gecko DOM</a><br>
+<a href="http://msdn.microsoft.com/workshop/author/dhtml/dhtml_node_entry.asp" target="_blank" class="w-db">MSIE DOM</a>
+</p>
+<h4>Usability/Access</h4>
+<p class="g-sb-n">
+<a title="Excellent resource - research based as opposed to opnions. The guide is superb" href="http://www.usability.gov/" target="_blank" class="w-db">usability.gov</a><br>
+<a title="Bit heavy on motherhood." href="http://www.w3.org/WAI/guid-tech.html" target="_blank" class="w-db">W3C -WAI</a><br>
+<a title="Use to be the yale style guide - now renamed - good stuff" href="http://www.webstyleguide.com/index.html?/contents.html" target="_blank" class="w-db">Web Style Guide</a><br>
+<a title="Good research based information - super bibliography" href="http://psychology.wichita.edu/optimalweb/default.htm" target="_blank" class="w-db">Michael L Bernard</a><br>
+<a title="Good background explanations such as how screen readers work and some useful tools - perhaps a bit light on research references" href="http://www.webaim.org/" target="_blank" class="w-db">WebAim.org</a><br>
+</p>
+<h4>Jolly Useful</h4>
+<p class="g-sb-n">
+<a title="Good solid stuff well presented and paced" href="http://www.quirksmode.org/" target="_blank" class="w-db">Peter-Paul Koch</a><br>
+<a title="Outspoken site on use of Web Standards - many excellent articles" href="http://www.alistapart.com/" target="_blank" class="t-db">A List Apart</a><br>
+<a title="Some really great uses of CSS - is this CSS&#39;s future?" href="http://www.meyerweb.com/eric/css/" target="_blank" class="t-db">Eric Meyer on CSS</a><br>
+<a title="Real world layouts - highly pratical site for us hard working folks" href="http://glish.com/css/" target="_blank" class="t-db">glish.com</a><br>
+<a title="DOCTYPE defintions and Quirks mode" href="http://hsivonen.iki.fi/doctype/" target="_blank" class="t-db">DOCTYPE definitions</a>
+</p>
+<h4>Our Stuff</h4>
+<p class="g-sb-n">
+<a href="http://www.zytrax.com/tech/dom/" class="t-db">Our DOM Pages</a><br>
+<a title="Full list of all DOM &#39;Interfaces&#39; on a single page. We add specific pages as we use the feature" href="http://www.zytrax.com/tech/dom/guide.html" class="t-db">DOM User Guide</a><br>
+<a title="A programming excercise on DOM inspection/structure. Mozilla/Gecko only" href="http://www.zytrax.com/tech/dom/w3c_dom.html" class="t-db">DOM Explorer</a><br>
+<a title="Overview of navigating the DOM using Javascript" href="http://www.zytrax.com/tech/dom/navigate.html" class="t-db">DOM Navigation</a><br>
+<a title="CSS Techniques and workarounds, including 3 column layout, pop-ups and more" href="http://www.zytrax.com/tech/css/workarounds.html" class="t-db">CSS Techniques</a><br>
+<a title="CSS short forms to avoid all that &#39;border-with-right&#39; stuff" href="http://www.zytrax.com/tech/css/shortcut.html" class="t-db">CSS Short Cuts</a><br>
+<a title="CSS overview with selectors and W3C spec links" href="http://www.zytrax.com/tech/css/syntax.html" class="t-db">CSS overview</a><br>
+<a title="Some CSS, HTML and Javascript wheezes and kluges that cost us blood to find" href="http://www.zytrax.com/tech/web/really.html" class="t-db">Oh Really!</a>
+</p>
+<h4>Javascript</h4>
+<p class="g-sb-n">
+<a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm" class="t-db">ECMA-262</a>
+</p>
+<h4>Pop-out Menus</h4>
+<p class="g-sb-n">
+<a href="http://www.webmasterbase.com/examples/dhtmlpopup.html" target="_blank" class="t-db">webmasterbase.com</a><br>
+<a href="http://www.brainjar.com/dhtml/menubar/" target="_blank" class="t-db">Brainjar Menubar</a><br>
+<a href="http://www.zytrax.com/tech/web/popout.htm" class="t-db">Our Lite JS Menus</a><br>
+<a href="http://www.zytrax.com/tech/css/workarounds.html#popout" class="t-db">Our CSS Menus</a><br>
+<a href="http://www.softcomplex.com/products/tigra_menu/" class="t-db">Tigra Menus</a>
+</p>
+</div>
+<ul class="b-b">
+<li class="b-b-l" id="layout"><a class="b-b-a" href="http://www.zytrax.com/about_site.htm#buttons"><span>CSS</span> Layout</a></li>
+<li class="b-b-l" id="popups"><a class="b-b-a" href="http://www.zytrax.com/about_site.htm#buttons"><span>CSS</span> Popup</a></li>
+</ul>
+<p align="center"><img src="./Regular Expressions - A Gentle User Guide and Tutorial_files/pf.gif" border="0" alt=""><a title="View full width page format" href="http://www.zytrax.com/tech/web/regex.htm?pf=yes" class="t-db"> printer friendly</a></p>
+<p align="center"><a href="http://www.zytrax.com/tech/web/regex.htm#" onclick="window.print();return false;"><img src="./Regular Expressions - A Gentle User Guide and Tutorial_files/print.gif" border="0" alt="Print Page"></a></p>
+<p align="center"><a href="http://www.zytrax.com/security/spf.html"><img src="./Regular Expressions - A Gentle User Guide and Tutorial_files/protectedbyspf_13a.gif" border="0" alt="SPF Record Conformant Domain Logo"></a></p>
+</div>
+
+
+<div class="l-f">
+<div class="l-100">
+<!-- standard footer full width -->
+<table border="0" cellspacing="0" align="center">
+  <tbody><tr valign="top">
+    <td class="p-f-s" align="left">
+		
+		Copyright © 1994 - 2013 ZyTrax, Inc.<br> All rights reserved. 
+		<a href="http://www.zytrax.com/legal.html" class="p-f-s">Legal and Privacy</a>
+		</td>
+		<td align="center"><a href="http://www.zytrax.com/isp/web" target="_blank" class="p-f-s">site by zytrax</a><br> <a href="http://www.super.net.sg/" target="_blank" class="p-f-s"><img src="./Regular Expressions - A Gentle User Guide and Tutorial_files/super-net-s.gif" border="0" alt="Hosted by super.net.sg"></a></td>
+		<td class="p-f-s" align="right">
+		<a href="javascript:mailus('web-master','zytrax.com','About Web site')" class="p-f-s">web-master at zytrax</a><br>
+		Page modified: April 17 2013.
+		</td>
+  </tr>
+</tbody></table>
+</div>
+</div>
+
+<!-- pop-out tables only if Javascript supported -->
+
+
+
+
+
+
+</body></html>
